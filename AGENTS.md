@@ -1,44 +1,44 @@
 # AGENTS.md — luanmds.github.io
 
-> Arquivo de referência para agentes de IA. Mantenha sempre atualizado após mudanças arquiteturais.
+> Reference file for AI agents. Always keep it up to date after architectural changes.
 
 ---
 
-## Visão Geral do Projeto
+## Project Overview
 
-Blog estático bilíngue (Português-BR padrão + Inglês) para publicação de artigos com imagens.
-Hospedado gratuitamente no GitHub Pages em `https://luanmds.github.io/`.
-
----
-
-## Metodologia: Spec-Driven Development (SDD)
-
-**Fluxo obrigatório:** `Spec (PLAN mode) → Tasks (SQL) → Implement (code)`
-
-- **NUNCA codar sem spec e tasks aprovados** em PLAN mode
-- Qualquer decisão com 2+ opções válidas: **parar e consultar o usuário**
-- Este arquivo (`AGENTS.md`) deve ser atualizado sempre que houver mudanças arquiteturais
+Bilingual static blog (Brazilian Portuguese as default + English) for publishing articles with images.
+Hosted for free on GitHub Pages at `https://luanmds.github.io/`.
 
 ---
 
-## Stack Tecnológica
+## Methodology: Spec-Driven Development (SDD)
 
-| Camada         | Tecnologia                             |
+**Mandatory flow:** `Spec (PLAN mode) → Tasks (SQL) → Implement (code)`
+
+- **NEVER write code without an approved spec and tasks** in PLAN mode
+- Any decision with 2+ valid options: **stop and ask the user**
+- This file (`AGENTS.md`) must be updated whenever there are architectural changes
+
+---
+
+## Tech Stack
+
+| Layer          | Technology                             |
 |----------------|----------------------------------------|
 | SSG            | Hugo extended v0.154.5                 |
-| Tema           | PaperMod (git submodule)               |
-| Conteúdo       | Markdown + Hugo Page Bundles           |
-| Idiomas        | pt (default `/`) + en (`/en/`)         |
-| Busca          | Fuse.js (nativo PaperMod, client-side) |
-| Comentários    | Giscus (GitHub Discussions)            |
-| Dev local      | Docker (hugomods/hugo:exts)            |
+| Theme          | PaperMod (git submodule)               |
+| Content        | Markdown + Hugo Page Bundles           |
+| Languages      | pt (default `/`) + en (`/en/`)         |
+| Search         | Fuse.js (PaperMod native, client-side) |
+| Comments       | Giscus (GitHub Discussions)            |
+| Local dev      | Docker (hugomods/hugo:exts)            |
 | Hosting        | GitHub Pages                           |
 | CI/CD          | GitHub Actions                         |
-| Repositório    | luanmds/luanmds.github.io              |
+| Repository     | luanmds/luanmds.github.io              |
 
 ---
 
-## Arquitetura e Estrutura do Projeto
+## Architecture and Project Structure
 
 ```
 luanmds.github.io/
@@ -46,37 +46,37 @@ luanmds.github.io/
 │   └── workflows/
 │       └── deploy.yml          # CI/CD: build Hugo extended → deploy GitHub Pages
 ├── archetypes/
-│   └── post/                   # Template para novos posts (Page Bundle)
-│       ├── index.md            # Template pt
-│       └── index.en.md         # Template en
-├── assets/                     # CSS/JS customizados (overrides do tema)
-├── content/                    # Conteúdo pt (idioma padrão)
+│   └── post/                   # Template for new posts (Page Bundle)
+│       ├── index.md            # pt template
+│       └── index.en.md         # en template
+├── assets/                     # Custom CSS/JS (theme overrides)
+├── content/                    # pt content (default language)
 │   ├── posts/
 │   │   └── <slug>/
-│   │       ├── index.md        # Conteúdo pt
-│   │       └── cover.png       # Imagem co-localizada
+│   │       ├── index.md        # pt content
+│   │       └── cover.png       # Co-located image
 │   ├── about/index.md
 │   ├── search/index.md
-│   └── en/                     # Conteúdo en (contentDir do idioma inglês)
+│   └── en/                     # en content (contentDir for English)
 │       ├── posts/
 │       │   └── <slug>/
-│       │       ├── index.md    # Conteúdo en
+│       │       ├── index.md    # en content
 │       │       └── cover.png
 │       ├── about/index.md
 │       └── search/index.md
 ├── i18n/
-│   ├── pt.yaml                 # Strings de UI em português
-│   └── en.yaml                 # Strings de UI em inglês
+│   ├── pt.yaml                 # UI strings in Portuguese
+│   └── en.yaml                 # UI strings in English
 ├── layouts/
 │   └── partials/
-│       └── comments.html       # Embed Giscus
-├── static/                     # Arquivos estáticos (favicon, etc.)
+│       └── comments.html       # Giscus embed
+├── static/                     # Static files (favicon, etc.)
 ├── themes/
 │   └── PaperMod/               # Submodule: adityatelange/hugo-PaperMod
-├── docker-compose.yml          # Dev local: hugo server na porta 1313
-├── hugo.toml                   # Configuração principal do Hugo
-├── AGENTS.md                   # Este arquivo
-└── specs/                      # Specs SDD (uma pasta por spec)
+├── docker-compose.yml          # Local dev: hugo server on port 1313
+├── hugo.toml                   # Main Hugo configuration
+├── AGENTS.md                   # This file
+└── specs/                      # SDD specs (one folder per spec)
     ├── 001-hugo-setup/
     ├── 002-multilingual/
     ├── 003-content-structure/
@@ -86,145 +86,146 @@ luanmds.github.io/
 
 ---
 
-## Padrão de Conteúdo: Page Bundles
+## Content Pattern: Page Bundles
 
-Cada post é um **Leaf Bundle** (pasta com `index.md`):
+Each post is a **Leaf Bundle** (a folder with `index.md`):
 
 ```
-content/posts/meu-artigo/
-├── index.md        # pt — front matter + conteúdo
-└── cover.png       # Imagem de capa co-localizada
+content/posts/my-article/
+├── index.md        # pt — front matter + content
+└── cover.png       # Co-located cover image
 
 content/en/posts/my-article/
-├── index.md        # en — front matter + conteúdo
+├── index.md        # en — front matter + content
 └── cover.png
 ```
 
-**Front matter padrão (`index.md`):**
+**Default front matter (`index.md`):**
 ```yaml
 ---
-title: "Título do Artigo"
+title: "Article Title"
 date: 2026-04-21
 draft: false
 tags: ["tag1", "tag2"]
-categories: ["categoria"]
-summary: "Resumo do artigo"
+categories: ["category"]
+summary: "Article summary"
 cover:
   image: cover.png
-  alt: "Descrição da imagem"
+  alt: "Image description"
   relative: true
 ---
 ```
 
 ---
 
-## Configuração de Idiomas
+## Language Configuration
 
-- **pt** → URL base `/` (padrão), contentDir: `content/`
-- **en** → URL base `/en/`, contentDir: `content/en/`
-- Seletor de idioma disponível no header (PaperMod nativo)
-- Strings de UI: `i18n/pt.yaml` e `i18n/en.yaml`
-
----
-
-## Features Configuradas
-
-| Feature       | Implementação                    | Status      |
-|---------------|----------------------------------|-------------|
-| Busca         | Fuse.js + JSON index             | ✅ ativo    |
-| Tags          | Taxonomia nativa Hugo            | ✅ ativo    |
-| Comentários   | Giscus (GitHub Discussions)      | ✅ parcial* |
-| Dark mode     | PaperMod nativo                  | ✅ ativo    |
-| RSS Feed      | Hugo nativo                      | ✅ ativo    |
-| Sitemap       | Hugo nativo                      | ✅ ativo    |
-| Robots.txt    | Hugo nativo                      | ✅ ativo    |
-
-> *Giscus: `repoId` e `categoryId` precisam ser preenchidos em `hugo.toml` após configurar em [giscus.app](https://giscus.app).
+- **pt** → base URL `/` (default), contentDir: `content/`
+- **en** → base URL `/en/`, contentDir: `content/en/`
+- Language switcher available in the header (PaperMod native)
+- UI strings: `i18n/pt.yaml` and `i18n/en.yaml`
 
 ---
 
-## Specs SDD
+## Configured Features
 
-| Spec | Descrição                   | Status    |
+| Feature       | Implementation                   | Status       |
+|---------------|----------------------------------|--------------|
+| Search        | Fuse.js + JSON index             | ✅ active    |
+| Tags          | Hugo native taxonomy             | ✅ active    |
+| Comments      | Giscus (GitHub Discussions)      | ✅ partial*  |
+| Dark mode     | PaperMod native                  | ✅ active    |
+| RSS Feed      | Hugo native                      | ✅ active    |
+| Sitemap       | Hugo native                      | ✅ active    |
+| Robots.txt    | Hugo native                      | ✅ active    |
+
+> *Giscus: `repoId` and `categoryId` must be filled in `hugo.toml` after setting up at [giscus.app](https://giscus.app).
+
+---
+
+## SDD Specs
+
+| Spec | Description                 | Status    |
 |------|-----------------------------|-----------|
 | 001  | Hugo Setup                  | ✅ done   |
-| 002  | Configuração Multilíngue    | ✅ done   |
-| 003  | Estrutura de Conteúdo       | ✅ done   |
-| 004  | Features (busca/tags/etc.)  | ✅ done   |
+| 002  | Multilingual Configuration  | ✅ done   |
+| 003  | Content Structure           | ✅ done   |
+| 004  | Features (search/tags/etc.) | ✅ done   |
 | 005  | Deploy GitHub Pages         | ✅ done   |
 
 ---
 
-## Git — Branching e Commits
+## Git — Branching and Commits
 
-### Branch principal
+### Main branch
 
-A branch principal do repositório é **`main`**. Todo deploy é disparado por push nela.
+The repository's principal branch is **`main`**. Every deployment is triggered by a push to it.
 
-### Nomenclatura de branches
+### Branch naming
 
-As branches devem seguir o padrão **Conventional Commits**:
+Branches must follow the **Conventional Commits** pattern:
 
 ```
-<tipo>/<escopo-curto>
+<type>/<short-scope>
 ```
 
-| Tipo | Uso | Exemplo |
+| Type | Use | Example |
 |------|-----|---------|
-| `feat` | Nova funcionalidade ou conteúdo | `feat/post-introducao-ao-go` |
-| `fix` | Correção de bug ou conteúdo errado | `fix/link-quebrado-sobre` |
-| `chore` | Manutenção, configs, dependências | `chore/atualizar-papermod` |
-| `docs` | Documentação (AGENTS.md, specs) | `docs/spec-006-seo` |
-| `style` | Ajustes visuais / CSS overrides | `style/fonte-headings` |
-| `refactor` | Reestruturação sem mudança de comportamento | `refactor/reorganizar-content` |
-| `ci` | Mudanças no workflow GitHub Actions | `ci/add-link-checker` |
+| `feat` | New feature or content | `feat/post-intro-to-go` |
+| `fix` | Bug fix or incorrect content | `fix/broken-link-about` |
+| `chore` | Maintenance, configs, dependencies | `chore/update-papermod` |
+| `docs` | Documentation (AGENTS.md, specs) | `docs/spec-006-seo` |
+| `style` | Visual tweaks / CSS overrides | `style/heading-font` |
+| `refactor` | Restructuring without behavior change | `refactor/reorganize-content` |
+| `ci` | GitHub Actions workflow changes | `ci/add-link-checker` |
 
-### Mensagens de commit
+### Commit messages
 
-Seguir [Conventional Commits](https://www.conventionalcommits.org/):
+Follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 ```
-<tipo>(<escopo>): <descrição curta no imperativo>
+<type>(<scope>): <short description in imperative mood>
 
-[corpo opcional]
+[optional body]
 
 Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
 ```
 
-**Exemplos:**
+**Examples:**
 ```
 feat(posts): add article about docker networking
 fix(i18n): correct portuguese translation for read_time key
 chore(theme): update PaperMod submodule to latest
-docs(agents): add branching conventions to AGENTS.md
+docs(agents): translate AGENTS.md to English
 ```
 
 ---
 
-## Desenvolvimento Local
+## Local Development
 
 ```bash
-# Iniciar servidor de desenvolvimento (porta 1313)
+# Start development server (port 1313)
 docker compose up
 
-# Build de produção
+# Production build
 docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify
 
-# Novo post pt
-mkdir -p content/posts/meu-artigo
-# Crie content/posts/meu-artigo/index.md usando archetypes/post/index.md como base
+# New pt post
+mkdir -p content/posts/my-article
+# Create content/posts/my-article/index.md using archetypes/post/index.md as base
 
-# Atualizar submodule do tema
+# Update theme submodule
 git submodule update --remote themes/PaperMod
 ```
 
 ---
 
-## Notas para Agentes
+## Notes for Agents
 
-- Hugo **extended** é obrigatório (PaperMod usa recursos extended)
-- O `baseURL` em `hugo.toml` é `https://luanmds.github.io/`
-- Giscus `repoId` e `categoryId` são placeholders — usuário preenche em [giscus.app](https://giscus.app)
-- Docker cria arquivos como `root` — sempre usar `--user $(id -u):$(id -g)` ou corrigir permissões depois
-- Rodar `docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify` para validar antes de commitar
-- GitHub Actions usa `peaceiris/actions-hugo@v3` com `extended: true`
+- Hugo **extended** is required (PaperMod uses extended-only features)
+- `baseURL` in `hugo.toml` is `https://luanmds.github.io/`
+- Giscus `repoId` and `categoryId` are placeholders — user fills them in at [giscus.app](https://giscus.app)
+- Docker creates files as `root` — always use `--user $(id -u):$(id -g)` or fix permissions afterwards
+- Run `docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify` to validate before committing
+- GitHub Actions uses `peaceiris/actions-hugo@v3` with `extended: true`
+
