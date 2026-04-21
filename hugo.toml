@@ -22,7 +22,7 @@ defaultContentLanguageInSubdir = false
   home = ["HTML", "RSS", "JSON"]
 
 [params]
-  author = "Luan Martins"
+  author = "Luan Mello"
   description = "Blog sobre tecnologia, desenvolvimento de software e mais."
   defaultTheme = "auto"
   disableThemeToggle = false
@@ -45,7 +45,7 @@ defaultContentLanguageInSubdir = false
 
   [params.homeInfoParams]
     Title = "Olá! 👋"
-    Content = "Bem-vindo ao meu blog. Escrevo sobre tecnologia, desenvolvimento de software e o que mais me interessar."
+    Content = "Bem-vindo ao meu blog. Sou Luan Mello, engenheiro de software back-end do Rio de Janeiro. Escrevo sobre tecnologia, desenvolvimento de software e o que mais me interessar."
 
   [[params.socialIcons]]
     name = "github"
@@ -72,7 +72,7 @@ defaultContentLanguageInSubdir = false
   [languages.pt]
     languageName = "Português"
     weight = 1
-    title = "Luan Martins"
+    title = "Luan Mello"
     [languages.pt.params]
       description = "Blog sobre tecnologia, desenvolvimento de software e mais."
     [languages.pt.menus]
@@ -100,7 +100,7 @@ defaultContentLanguageInSubdir = false
   [languages.en]
     languageName = "English"
     weight = 2
-    title = "Luan Martins"
+    title = "Luan Mello"
     contentDir = "content/en"
     [languages.en.params]
       description = "Blog about technology, software development and more."
