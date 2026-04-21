@@ -13,11 +13,24 @@ Hosted for free on GitHub Pages at `https://luanmds.github.io/`.
 
 ## Methodology: Spec-Driven Development (SDD)
 
-**Mandatory flow:** `Spec (PLAN mode) → Tasks (SQL) → Implement (code)`
+**Mandatory flow:** `Spec (PLAN mode) → Verify and Validate → Create Tasks (SQL) → Implement (code + tests)`
 
 - **NEVER write code without an approved spec and tasks** in PLAN mode
+- MANDATORY: Create the spec in `specs/` folder, Verify and Validate the spec with user before continue 
 - Any decision with 2+ valid options: **stop and ask the user**
 - This file (`AGENTS.md`) must be updated whenever there are architectural changes
+- After Implement phase, Validate the changes with user. If all ok, commit the changes and create a Pull Request in repository.
+
+### Implement phase — Testing with Playwright
+
+After completing the implementation of a spec, **always ask the user**:
+
+> "Would you like to validate the implementation with automated browser tests using the Playwright skill?"
+
+- If **yes**: invoke the `playwright-skill` skill immediately and run tests against the local dev server (`http://localhost:1313` via `docker compose up`). Fix any failures before proceeding.
+- If **no**: skip and proceed to the validation/commit step.
+
+The Playwright skill is located at `.github/skills/playwright/`. The dev server must be running before executing tests (`docker compose up -d`).
 
 ---
 
@@ -144,6 +157,8 @@ cover:
 ---
 
 ## SDD Specs
+
+- All specs are in `specs/` folder. Verify them when necessary.
 
 | Spec | Description                 | Status    |
 |------|-----------------------------|-----------|
