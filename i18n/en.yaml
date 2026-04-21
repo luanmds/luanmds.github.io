@@ -1,0 +1,36 @@
+prev_page:
+  other: "« Previous"
+
+next_page:
+  other: "Next »"
+
+read_time:
+  one: "1 minute read"
+  other: "{{ .Count }} minutes read"
+
+toc:
+  other: "Table of Contents"
+
+edit_post:
+  other: "Edit Post"
+
+code_copy:
+  other: "copy"
+
+code_copied:
+  other: "copied!"
+
+share_post:
+  other: "Share:"
+
+tags:
+  other: "Tags"
+
+categories:
+  other: "Categories"
+
+search_placeholder:
+  other: "Search articles..."
+
+no_results:
+  other: "No results found."

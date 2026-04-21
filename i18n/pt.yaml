@@ -1,0 +1,36 @@
+prev_page:
+  other: "« Anterior"
+
+next_page:
+  other: "Próximo »"
+
+read_time:
+  one: "1 minuto de leitura"
+  other: "{{ .Count }} minutos de leitura"
+
+toc:
+  other: "Índice"
+
+edit_post:
+  other: "Editar Post"
+
+code_copy:
+  other: "copiar"
+
+code_copied:
+  other: "copiado!"
+
+share_post:
+  other: "Compartilhar:"
+
+tags:
+  other: "Tags"
+
+categories:
+  other: "Categorias"
+
+search_placeholder:
+  other: "Buscar artigos..."
+
+no_results:
+  other: "Nenhum resultado encontrado."
