@@ -174,7 +174,8 @@ cover:
 
 ### Main branch
 
-The repository's principal branch is **`main`**. Every deployment is triggered by a push to it.
+- The repository's principal branch is **`main`**. Every deployment is triggered by a push to it.
+- *NEVER commits directly in main branch.*
 
 ### Branch naming
 
