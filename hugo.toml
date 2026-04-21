@@ -104,6 +104,9 @@ defaultContentLanguageInSubdir = false
     contentDir = "content/en"
     [languages.en.params]
       description = "Blog about technology, software development and more."
+      [languages.en.params.homeInfoParams]
+        Title = "Hey there! 👋"
+        Content = "Welcome to my blog. I'm Luan Mello, a back-end software engineer from Rio de Janeiro, Brazil. I write about technology, software development and whatever else I find interesting."
     [languages.en.menus]
       [[languages.en.menus.main]]
         identifier = "posts"
