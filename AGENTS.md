@@ -155,6 +155,52 @@ cover:
 
 ---
 
+## Git — Branching e Commits
+
+### Branch principal
+
+A branch principal do repositório é **`main`**. Todo deploy é disparado por push nela.
+
+### Nomenclatura de branches
+
+As branches devem seguir o padrão **Conventional Commits**:
+
+```
+<tipo>/<escopo-curto>
+```
+
+| Tipo | Uso | Exemplo |
+|------|-----|---------|
+| `feat` | Nova funcionalidade ou conteúdo | `feat/post-introducao-ao-go` |
+| `fix` | Correção de bug ou conteúdo errado | `fix/link-quebrado-sobre` |
+| `chore` | Manutenção, configs, dependências | `chore/atualizar-papermod` |
+| `docs` | Documentação (AGENTS.md, specs) | `docs/spec-006-seo` |
+| `style` | Ajustes visuais / CSS overrides | `style/fonte-headings` |
+| `refactor` | Reestruturação sem mudança de comportamento | `refactor/reorganizar-content` |
+| `ci` | Mudanças no workflow GitHub Actions | `ci/add-link-checker` |
+
+### Mensagens de commit
+
+Seguir [Conventional Commits](https://www.conventionalcommits.org/):
+
+```
+<tipo>(<escopo>): <descrição curta no imperativo>
+
+[corpo opcional]
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
+```
+
+**Exemplos:**
+```
+feat(posts): add article about docker networking
+fix(i18n): correct portuguese translation for read_time key
+chore(theme): update PaperMod submodule to latest
+docs(agents): add branching conventions to AGENTS.md
+```
+
+---
+
 ## Desenvolvimento Local
 
 ```bash
