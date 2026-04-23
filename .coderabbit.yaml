@@ -1,0 +1,23 @@
+language: en-US
+
+reviews:
+  profile: chill
+  high_level_summary: true
+  review_status: true
+  review_details: false
+  poem: false
+  auto_review:
+    enabled: true
+    auto_incremental_review: true
+    drafts: false
+  path_filters:
+    - "**"
+    - "!public/**"
+    - "!resources/**"
+  path_instructions:
+    - path: ".github/workflows/**"
+      instructions: "Prioritize CI/CD and GitHub Pages deployment risks. Flag functional regressions and security issues, avoiding style nitpicks."
+    - path: "content/**/*.md"
+      instructions: "Focus on broken links, invalid front matter, pt/en inconsistencies, and issues that affect Hugo rendering."
+    - path: "hugo.toml"
+      instructions: "Validate impact on multilingual setup, taxonomies, baseURL, and configuration changes that affect build/deploy."
