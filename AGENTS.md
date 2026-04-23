@@ -13,9 +13,10 @@ Hosted for free on GitHub Pages at `https://luanmds.github.io/`.
 
 ## Methodology: Spec-Driven Development (SDD)
 
-**Mandatory flow:** `Spec (PLAN mode) → Verify and Validate → Create Tasks (SQL) → Implement (code + tests)`
+**Mandatory flow:** `Spec (PLAN mode) → Verify and Validate → Create Tasks (Markdown) → Implement (code + tests)`
 
 - **NEVER write code without an approved spec and tasks** in PLAN mode
+- Tasks must be stored as `tasks.md` inside each spec folder (Markdown checklist format)
 - MANDATORY: Create the spec in `specs/` folder, Verify and Validate the spec with user before continue 
 - Any decision with 2+ valid options: **stop and ask the user**
 - This file (`AGENTS.md`) must be updated whenever there are architectural changes
@@ -167,6 +168,7 @@ cover:
 | 003  | Content Structure           | ✅ done   |
 | 004  | Features (search/tags/etc.) | ✅ done   |
 | 005  | Deploy GitHub Pages         | ✅ done   |
+| 006  | CodeRabbit Configuration    | ✅ done   |
 
 ---
 
@@ -244,4 +246,3 @@ git submodule update --remote themes/PaperMod
 - Docker creates files as `root` — always use `--user $(id -u):$(id -g)` or fix permissions afterwards
 - Run `docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify` to validate before committing
 - GitHub Actions uses `peaceiris/actions-hugo@v3` with `extended: true`
-

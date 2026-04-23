@@ -1,0 +1,5 @@
+- [ ] Install CodeRabbit GitHub App in the repository
+- [x] Add `.coderabbit.yaml` with reviewed defaults
+- [x] Exclude generated paths (`public/**` and `resources/**`) from review
+- [x] Set CodeRabbit review language to `en-US` and align path instructions in English
+- [ ] Open a test PR and validate CodeRabbit automatic comments
