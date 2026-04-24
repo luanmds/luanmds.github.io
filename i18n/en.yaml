@@ -34,3 +34,17 @@ search_placeholder:
 
 no_results:
   other: "No results found."
+
+nav:
+  scroll_to_top_title:
+    other: "Scroll to top"
+  skip_to_main:
+    other: "Skip to main content"
+
+search:
+  open_button_title:
+    other: "Search (/)"
+  close_button_title:
+    other: "Close (Esc)"
+  input_placeholder:
+    other: "Search"

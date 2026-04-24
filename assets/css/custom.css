@@ -1,0 +1,88 @@
+.home-hero {
+  border: 1px solid rgb(var(--color-neutral-200));
+  background:
+    radial-gradient(circle at top right, rgba(6, 182, 212, 0.16), transparent 55%),
+    linear-gradient(120deg, rgba(2, 6, 23, 0.06), rgba(15, 23, 42, 0.03));
+}
+
+.dark .home-hero {
+  border-color: rgb(var(--color-neutral-700));
+  background:
+    radial-gradient(circle at top right, rgba(34, 211, 238, 0.2), transparent 60%),
+    linear-gradient(120deg, rgba(2, 6, 23, 0.75), rgba(8, 51, 68, 0.2));
+}
+
+.home-chip {
+  border: 1px solid rgb(var(--color-primary-300));
+  background-color: rgba(34, 211, 238, 0.12);
+  color: rgb(var(--color-primary-800));
+}
+
+.dark .home-chip {
+  border-color: rgb(var(--color-primary-800));
+  background-color: rgba(34, 211, 238, 0.15);
+  color: rgb(var(--color-primary-200));
+}
+
+.about-panel {
+  border: 1px solid rgb(var(--color-neutral-200));
+  background-color: rgba(248, 250, 252, 0.75);
+}
+
+.dark .about-panel {
+  border-color: rgb(var(--color-neutral-700));
+  background-color: rgba(15, 23, 42, 0.45);
+}
+
+.translation-switch-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.translation-switch-separator {
+  color: rgb(var(--color-neutral-500));
+  font-weight: 600;
+}
+
+.translation-switch-item {
+  border: 1px solid rgb(var(--color-primary-300));
+  border-radius: 6px;
+  color: rgb(var(--color-primary-800));
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  text-decoration: none;
+}
+
+.translation-switch-item:hover {
+  background-color: rgba(34, 211, 238, 0.18);
+  border-color: rgb(var(--color-primary-500));
+}
+
+.translation-switch-item--active {
+  background-color: rgb(var(--color-primary-600));
+  border-color: rgb(var(--color-primary-600));
+  color: rgb(var(--color-neutral));
+  cursor: default;
+}
+
+.dark .translation-switch-item {
+  border-color: rgb(var(--color-primary-700));
+  color: rgb(var(--color-primary-200));
+}
+
+.dark .translation-switch-item:hover {
+  background-color: rgba(34, 211, 238, 0.22);
+  border-color: rgb(var(--color-primary-400));
+}
+
+.dark .translation-switch-item--active {
+  background-color: rgb(var(--color-primary-500));
+  border-color: rgb(var(--color-primary-500));
+  color: rgb(var(--color-neutral-950));
+}
+
+.dark .translation-switch-separator {
+  color: rgb(var(--color-neutral-400));
+}

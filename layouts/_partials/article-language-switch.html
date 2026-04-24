@@ -1,0 +1,50 @@
+{{ if and .IsTranslated (gt (len .AllTranslations) 0) }}
+  {{ $ptURL := "" }}
+  {{ $enURL := "" }}
+
+  {{ if eq .Lang "pt" }}
+    {{ $ptURL = .RelPermalink }}
+  {{ else if eq .Lang "en" }}
+    {{ $enURL = .RelPermalink }}
+  {{ end }}
+
+  {{ range .AllTranslations }}
+    {{ if and (eq .Lang "pt") (eq $ptURL "") }}
+      {{ $ptURL = .RelPermalink }}
+    {{ end }}
+    {{ if and (eq .Lang "en") (eq $enURL "") }}
+      {{ $enURL = .RelPermalink }}
+    {{ end }}
+  {{ end }}
+  <div class="translation-switch mb-1 rounded-lg px-4 py-1 text-sm print:hidden">
+    <div class="translation-switch-list">
+      {{ if and (eq .Lang "pt") $ptURL }}
+        <span class="translation-switch-item translation-switch-item--active">PT-BR</span>
+      {{ else if $ptURL }}
+        <a
+          href="{{ $ptURL }}"
+          hreflang="pt"
+          class="translation-switch-item"
+        >
+          PT-BR
+        </a>
+      {{ end }}
+
+      {{ if and $ptURL $enURL }}
+        <span class="translation-switch-separator" aria-hidden="true">|</span>
+      {{ end }}
+
+      {{ if and (eq .Lang "en") $enURL }}
+        <span class="translation-switch-item translation-switch-item--active">EN</span>
+      {{ else if $enURL }}
+        <a
+          href="{{ $enURL }}"
+          hreflang="en"
+          class="translation-switch-item"
+        >
+          EN
+        </a>
+      {{ end }}
+    </div>
+  </div>
+{{ end }}

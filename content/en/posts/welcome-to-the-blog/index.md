@@ -1,5 +1,6 @@
 ---
 title: "Welcome to the Blog"
+translationKey: "welcome-to-the-blog"
 date: 2026-04-21
 draft: false
 tags: ["meta", "blog", "hugo"]
@@ -30,7 +31,7 @@ All content is written in **Markdown** and organized as [Page Bundles](https://g
 
 The blog is bilingual: articles will be written in **Portuguese (default)** and **English**.
 
-You can switch languages using the selector in the menu.
+You can switch languages using the selector in the menu and the contextual link inside the article.
 
 ## What's coming?
 

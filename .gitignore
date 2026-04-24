@@ -5,3 +5,9 @@
 public/
 resources/_gen/
 .hugo_build.lock
+
+# Local brainstorming artifacts
+.superpowers/
+
+# Local isolated git worktrees
+.worktrees/
