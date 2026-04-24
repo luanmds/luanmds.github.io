@@ -1,0 +1,119 @@
+<article class="home-post-card mt-6 flex w-full max-w-none flex-row">
+  {{- $images := $.Resources.ByType "image" }}
+
+  {{- $thumbPattern := "*thumb*" }}
+  {{- with .Params.thumbnail }}
+    {{- if reflect.IsMap . }}
+      {{- $thumbPattern = .image | default $thumbPattern }}
+    {{- else }}
+      {{- $thumbPattern = . }}
+    {{- end }}
+  {{- end }}
+
+  {{- $featurePattern := "*feature*" }}
+  {{- with .Params.feature }}
+    {{- if reflect.IsMap . }}
+      {{- $featurePattern = .image | default $featurePattern }}
+    {{- else }}
+      {{- $featurePattern = . }}
+    {{- end }}
+  {{- end }}
+
+  {{- $coverPattern := "*cover*" }}
+  {{- with .Params.cover }}
+    {{- if reflect.IsMap . }}
+      {{- $coverPattern = .image | default $coverPattern }}
+    {{- else }}
+      {{- $coverPattern = . }}
+    {{- end }}
+  {{- end }}
+
+  {{- $thumbnail := $images.GetMatch $thumbPattern }}
+  {{- $feature := $images.GetMatch $featurePattern }}
+  {{- $cover := $images.GetMatch $coverPattern }}
+  {{- $listImage := $thumbnail | default $feature | default $cover }}
+
+  {{- with $listImage }}
+    <div class="home-post-card__media flex-none pe-4 sm:pe-6">
+      <a
+        href="{{ with $.Params.externalUrl }}
+          {{ . }}
+        {{ else }}
+          {{ $.Permalink }}
+        {{ end }}"
+        aria-label="{{ $.Title | emojify }}"
+      >
+        {{ $coverAlt := $.Params.coverAlt | default "" }}
+        {{ with $.Params.cover }}
+          {{ if reflect.IsMap . }}
+            {{ $coverAlt = .alt | default $coverAlt }}
+          {{ end }}
+        {{ end }}
+        {{ $imageAlt := $.Params.thumbnailAlt | default $.Params.featureAlt | default $coverAlt | default "" }}
+        <img
+          alt="{{ $imageAlt }}"
+          {{ if eq .MediaType.SubType "svg" }}
+            class="home-post-card__image w-28 max-h-[5rem] max-w-[7rem] rounded-md object-cover sm:max-h-[8rem] sm:w-44 sm:max-w-[12rem]"
+            src="{{ .Permalink }}"
+          {{ else }}
+            class="home-post-card__image h-20 w-28 rounded-md object-cover sm:h-28 sm:w-44"
+            srcset="
+            {{- (.Fill "176x128 smart").Permalink }}
+            176w, {{- (.Fill "352x256 smart").Permalink }} 2x"
+            src="{{ (.Fill "176x128 smart").Permalink }}"
+            width="176"
+            height="128"
+          {{ end }}
+          {{ if $.Site.Params.enableImageLazyLoading | default true }}
+            loading="lazy"
+          {{ end }}
+        />
+      </a>
+    </div>
+  {{- end }}
+
+  <div class="home-post-card__content min-w-0 flex-1">
+    <h3 class="home-post-card__title flex items-center text-xl font-semibold">
+      {{ with .Params.externalUrl }}
+        <div>
+          <a
+            class="text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+            href="{{ . }}"
+            target="_blank"
+            rel="external"
+            >{{ $.Title | emojify }}</a
+          >
+          <span
+            class="cursor-default align-top text-xs text-neutral-400 dark:text-neutral-500"
+            title="{{ i18n "list.externalurl_title" }}"
+          >
+            <span class="rtl:hidden">&#8599;</span>
+            <span class="ltr:hidden">&#8598;</span>
+          </span>
+        </div>
+      {{ else }}
+        <a
+          class="text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="{{ .Permalink }}"
+          >{{ .Title | emojify }}</a
+        >
+      {{ end }}
+      {{ if and .Draft .Site.Params.article.showDraftLabel }}
+        <div class="ms-2">
+          {{ partial "badge.html" (i18n "article.draft" | emojify) }}
+        </div>
+      {{ end }}
+      {{ if templates.Exists "_partials/extend-article-link.html" }}
+        {{ partial "extend-article-link.html" . }}
+      {{ end }}
+    </h3>
+    <div class="home-post-card__meta text-sm text-neutral-500 dark:text-neutral-400">
+      {{ partial "article-meta.html" . }}
+    </div>
+    {{ if .Params.showSummary | default (.Site.Params.list.showSummary | default false) }}
+      <div class="prose py-1 dark:prose-invert max-w-none">
+        {{ .Summary | emojify }}
+      </div>
+    {{ end }}
+  </div>
+</article>
