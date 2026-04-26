@@ -32,15 +32,21 @@
   {{- $feature := $images.GetMatch $featurePattern }}
   {{- $cover := $images.GetMatch $coverPattern }}
   {{- $listImage := $thumbnail | default $feature | default $cover }}
+  {{- $href := .Permalink }}
+  {{- $target := "" }}
+  {{- $rel := "" }}
+  {{- if .Params.externalUrl }}
+    {{- $href = .Params.externalUrl }}
+    {{- $target = "_blank" }}
+    {{- $rel = "noopener noreferrer external" }}
+  {{- end }}
 
   {{- with $listImage }}
     <div class="home-post-card__media flex-none pe-4 sm:pe-6">
       <a
-        href="{{ with $.Params.externalUrl }}
-          {{ . }}
-        {{ else }}
-          {{ $.Permalink }}
-        {{ end }}"
+        href="{{ $href }}"
+        {{ if $target }}target="{{ $target }}"{{ end }}
+        {{ if $rel }}rel="{{ $rel }}"{{ end }}
         aria-label="{{ $.Title | emojify }}"
       >
         {{ $coverAlt := $.Params.coverAlt | default "" }}
@@ -74,15 +80,15 @@
 
   <div class="home-post-card__content min-w-0 flex-1">
     <h3 class="home-post-card__title flex items-center text-xl font-semibold">
-      {{ with .Params.externalUrl }}
-        <div>
-          <a
-            class="text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-            href="{{ . }}"
-            target="_blank"
-            rel="external"
-            >{{ $.Title | emojify }}</a
-          >
+      <div>
+        <a
+          class="text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="{{ $href }}"
+          {{ if $target }}target="{{ $target }}"{{ end }}
+          {{ if $rel }}rel="{{ $rel }}"{{ end }}
+          >{{ $.Title | emojify }}</a
+        >
+        {{ with .Params.externalUrl }}
           <span
             class="cursor-default align-top text-xs text-neutral-400 dark:text-neutral-500"
             title="{{ i18n "list.externalurl_title" }}"
@@ -90,14 +96,8 @@
             <span class="rtl:hidden">&#8599;</span>
             <span class="ltr:hidden">&#8598;</span>
           </span>
-        </div>
-      {{ else }}
-        <a
-          class="text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="{{ .Permalink }}"
-          >{{ .Title | emojify }}</a
-        >
-      {{ end }}
+        {{ end }}
+      </div>
       {{ if and .Draft .Site.Params.article.showDraftLabel }}
         <div class="ms-2">
           {{ partial "badge.html" (i18n "article.draft" | emojify) }}
