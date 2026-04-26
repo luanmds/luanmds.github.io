@@ -57,6 +57,8 @@ summaryLength = 0
 
   [params.header]
     layout = "basic"
+    logo = "img/logo_blog.png"
+    logoDark = "img/logo_blog_dark.png"
     showTitle = true
 
   [params.footer]
