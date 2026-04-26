@@ -1,5 +1,5 @@
 baseURL = "https://luanmds.github.io/"
-title = "Luan Mello"
+title = "luanmds.com"
 theme = "congo"
 
 enableRobotsTXT = true
@@ -119,7 +119,7 @@ summaryLength = 0
     languageName = "Portugues"
     languageDirection = "ltr"
     weight = 1
-    title = "Luan Mello"
+    title = "LuanMDS.com"
     [languages.pt.params]
       dateFormat = "2 Jan 2006"
       mainSections = ["posts"]
@@ -173,7 +173,7 @@ summaryLength = 0
     languageName = "English"
     languageDirection = "ltr"
     weight = 2
-    title = "Luan Mello"
+    title = "LuanMDS.com"
     contentDir = "content/en"
     [languages.en.params]
       dateFormat = "Jan 2, 2006"

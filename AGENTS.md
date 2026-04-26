@@ -31,7 +31,7 @@ After completing the implementation of a spec, **always ask the user**:
 - If **yes**: invoke the `playwright-skill` skill immediately and run tests against the local dev server (`http://localhost:1313` via `docker compose up`). Fix any failures before proceeding.
 - If **no**: skip and proceed to the validation/commit step.
 
-The Playwright skill is located at `.github/skills/playwright/`. The dev server must be running before executing tests (`docker compose up -d`).
+The Playwright skill is located at `.opencode/skills/playwright/`. The dev server must be running before executing tests (`docker compose up -d`).
 
 ---
 
@@ -63,7 +63,9 @@ luanmds.github.io/
 │   └── post/                   # Template for new posts (Page Bundle)
 │       ├── index.md            # pt template
 │       └── index.en.md         # en template
-├── assets/                     # Custom CSS/JS (theme overrides)
+├── assets/                     # Custom CSS/JS/images (theme overrides)
+│   ├── css/
+│   └── img/                    # Header logos and other image assets
 ├── content/                    # pt content (default language)
 │   ├── posts/
 │   │   └── <slug>/
@@ -82,8 +84,14 @@ luanmds.github.io/
 │   ├── pt.yaml                 # UI strings in Portuguese
 │   └── en.yaml                 # UI strings in English
 ├── layouts/
-│   └── partials/
-│       └── comments.html       # Giscus embed
+│   ├── _partials/
+│   │   ├── article-language-switch.html
+│   │   ├── article-link.html
+│   │   ├── comments.html       # Giscus embed
+│   │   ├── home/
+│   │   │   └── custom.html
+│   │   └── logo.html
+│   └── single.html
 ├── static/                     # Static files (favicon, etc.)
 ├── themes/
 │   ├── PaperMod/               # Legacy submodule (kept temporarily for rollback)

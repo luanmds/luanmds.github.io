@@ -1,0 +1,32 @@
+{{- if .Site.Params.header.logo }}
+  {{- $logo := resources.Get .Site.Params.header.logo }}
+  {{- $logoDark := resources.Get .Site.Params.header.logoDark }}
+  {{- if $logo }}
+    <a href="{{ "" | relLangURL }}" class="mr-2 flex items-center">
+      <img
+        src="{{ $logo.Permalink }}"
+        width="70em"
+        height="{{ $logo.Height }}"
+        class="h-7 w-auto object-contain object-left {{ if $logoDark }}dark:hidden flex{{ end }}"
+        alt="{{ .Site.Title }}"
+      />
+      {{- if $logoDark }}
+        <img
+          src="{{ $logoDark.Permalink }}"
+          width="70em"
+          height="{{ $logoDark.Height }}"
+          class="hidden h-7 w-auto object-contain object-left dark:flex"
+          alt="{{ .Site.Title }}"
+        />
+      {{- end }}
+    </a>
+  {{- end }}
+{{- end }}
+{{- if .Site.Params.header.showTitle | default true }}
+  <a
+    class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+    rel="me"
+    href="{{ "" | relLangURL }}"
+    >{{ .Site.Title | markdownify | emojify }}</a
+  >
+{{- end }}
