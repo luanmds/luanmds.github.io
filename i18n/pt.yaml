@@ -39,7 +39,7 @@ nav:
   scroll_to_top_title:
     other: "Voltar ao topo"
   skip_to_main:
-    other: "Pular para o conteudo principal"
+    other: "Pular para o conteúdo principal"
 
 search:
   open_button_title:

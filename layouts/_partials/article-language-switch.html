@@ -19,7 +19,7 @@
   <div class="translation-switch mb-1 rounded-lg px-4 py-1 text-sm print:hidden">
     <div class="translation-switch-list">
       {{ if and (eq .Lang "pt") $ptURL }}
-        <span class="translation-switch-item translation-switch-item--active">PT-BR</span>
+        <span class="translation-switch-item translation-switch-item--active" aria-current="page">PT-BR</span>
       {{ else if $ptURL }}
         <a
           href="{{ $ptURL }}"
@@ -35,7 +35,7 @@
       {{ end }}
 
       {{ if and (eq .Lang "en") $enURL }}
-        <span class="translation-switch-item translation-switch-item--active">EN</span>
+        <span class="translation-switch-item translation-switch-item--active" aria-current="page">EN</span>
       {{ else if $enURL }}
         <a
           href="{{ $enURL }}"

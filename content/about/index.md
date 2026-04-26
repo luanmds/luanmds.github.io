@@ -12,18 +12,18 @@ showAuthor: false
 
 Sou **Luan Mello**, engenheiro de software back-end no Rio de Janeiro.
 
-Atuo principalmente com **.NET e C#**, construindo APIs e sistemas distribuidos voltados para confiabilidade, performance e manutencao de longo prazo.
+Atuo principalmente com **.NET e C#**, construindo APIs e sistemas distribuídos voltados para confiabilidade, desempenho e manutenção de longo prazo.
 
-## Foco tecnico
+## Foco técnico
 
 - Arquitetura de backend para produtos e plataformas
-- Microsservicos, mensageria e integracao orientada a eventos
-- Qualidade de codigo, testes e boas praticas de engenharia
+- Microsserviços, mensageria e integração orientada a eventos
+- Qualidade de código, testes e boas práticas de engenharia
 - IA aplicada ao workflow de desenvolvimento
 
-## Experiencia e abordagem
+## Experiência e abordagem
 
-Tenho base em Ciencia da Computacao e gosto de combinar fundamentos com execucao pragmatica. No dia a dia, procuro simplificar problemas complexos, priorizando clareza de design, observabilidade e evolucao continua do software.
+Tenho base em Ciência da Computação e gosto de combinar fundamentos com execução pragmática. No dia a dia, procuro simplificar problemas complexos, priorizando clareza de design, observabilidade e evolução contínua do software.
 
 ## Onde me encontrar
 

@@ -74,9 +74,13 @@
       </div>
     </section>
     <footer class="mx-auto w-full max-w-7xl pt-8 print:hidden">
-      {{ partial "author.html" . }}
+      {{ if .Params.showAuthor | default (.Site.Params.article.showAuthor | default true) }}
+        {{ partial "author.html" . }}
+      {{ end }}
       {{ partial "sharing-links.html" . }}
-      {{ partial "article-pagination.html" . }}
+      {{ if .Params.showPagination | default (.Site.Params.article.showPagination | default true) }}
+        {{ partial "article-pagination.html" . }}
+      {{ end }}
       {{ if .Params.showComments | default (.Site.Params.article.showComments | default false) }}
         {{ if templates.Exists "_partials/comments.html" }}
           <div class="pt-3">

@@ -116,7 +116,7 @@ summaryLength = 0
 [languages]
   [languages.pt]
     languageCode = "pt-BR"
-    languageName = "Portugues"
+    languageName = "Português"
     languageDirection = "ltr"
     weight = 1
     title = "LuanMDS.com"
