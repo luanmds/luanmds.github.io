@@ -34,3 +34,17 @@ search_placeholder:
 
 no_results:
   other: "Nenhum resultado encontrado."
+
+nav:
+  scroll_to_top_title:
+    other: "Voltar ao topo"
+  skip_to_main:
+    other: "Pular para o conteúdo principal"
+
+search:
+  open_button_title:
+    other: "Buscar (/)"
+  close_button_title:
+    other: "Fechar (Esc)"
+  input_placeholder:
+    other: "Buscar"

@@ -31,7 +31,7 @@ After completing the implementation of a spec, **always ask the user**:
 - If **yes**: invoke the `playwright-skill` skill immediately and run tests against the local dev server (`http://localhost:1313` via `docker compose up`). Fix any failures before proceeding.
 - If **no**: skip and proceed to the validation/commit step.
 
-The Playwright skill is located at `.github/skills/playwright/`. The dev server must be running before executing tests (`docker compose up -d`).
+The Playwright skill is located at `.opencode/skills/playwright/`. The dev server must be running before executing tests (`docker compose up -d`).
 
 ---
 
@@ -40,10 +40,10 @@ The Playwright skill is located at `.github/skills/playwright/`. The dev server 
 | Layer          | Technology                             |
 |----------------|----------------------------------------|
 | SSG            | Hugo extended v0.154.5                 |
-| Theme          | PaperMod (git submodule)               |
+| Theme          | Congo (git submodule)                  |
 | Content        | Markdown + Hugo Page Bundles           |
 | Languages      | pt (default `/`) + en (`/en/`)         |
-| Search         | Fuse.js (PaperMod native, client-side) |
+| Search         | Fuse.js (Congo native, client-side)    |
 | Comments       | Giscus (GitHub Discussions)            |
 | Local dev      | Docker (hugomods/hugo:exts)            |
 | Hosting        | GitHub Pages                           |
@@ -63,7 +63,9 @@ luanmds.github.io/
 │   └── post/                   # Template for new posts (Page Bundle)
 │       ├── index.md            # pt template
 │       └── index.en.md         # en template
-├── assets/                     # Custom CSS/JS (theme overrides)
+├── assets/                     # Custom CSS/JS/images (theme overrides)
+│   ├── css/
+│   └── img/                    # Header logos and other image assets
 ├── content/                    # pt content (default language)
 │   ├── posts/
 │   │   └── <slug>/
@@ -82,11 +84,18 @@ luanmds.github.io/
 │   ├── pt.yaml                 # UI strings in Portuguese
 │   └── en.yaml                 # UI strings in English
 ├── layouts/
-│   └── partials/
-│       └── comments.html       # Giscus embed
+│   ├── _partials/
+│   │   ├── article-language-switch.html
+│   │   ├── article-link.html
+│   │   ├── comments.html       # Giscus embed
+│   │   ├── home/
+│   │   │   └── custom.html
+│   │   └── logo.html
+│   └── single.html
 ├── static/                     # Static files (favicon, etc.)
 ├── themes/
-│   └── PaperMod/               # Submodule: adityatelange/hugo-PaperMod
+│   ├── PaperMod/               # Legacy submodule (kept temporarily for rollback)
+│   └── congo/                  # Active submodule: jpanther/congo
 ├── docker-compose.yml          # Local dev: hugo server on port 1313
 ├── hugo.toml                   # Main Hugo configuration
 ├── AGENTS.md                   # This file
@@ -136,7 +145,7 @@ cover:
 
 - **pt** → base URL `/` (default), contentDir: `content/`
 - **en** → base URL `/en/`, contentDir: `content/en/`
-- Language switcher available in the header (PaperMod native)
+- Language switcher available in the header (Congo locale action)
 - UI strings: `i18n/pt.yaml` and `i18n/en.yaml`
 
 ---
@@ -148,7 +157,7 @@ cover:
 | Search        | Fuse.js + JSON index             | ✅ active    |
 | Tags          | Hugo native taxonomy             | ✅ active    |
 | Comments      | Giscus (GitHub Discussions)      | ✅ partial*  |
-| Dark mode     | PaperMod native                  | ✅ active    |
+| Dark mode     | Congo native                     | ✅ active    |
 | RSS Feed      | Hugo native                      | ✅ active    |
 | Sitemap       | Hugo native                      | ✅ active    |
 | Robots.txt    | Hugo native                      | ✅ active    |
@@ -191,7 +200,7 @@ Branches must follow the **Conventional Commits** pattern:
 |------|-----|---------|
 | `feat` | New feature or content | `feat/post-intro-to-go` |
 | `fix` | Bug fix or incorrect content | `fix/broken-link-about` |
-| `chore` | Maintenance, configs, dependencies | `chore/update-papermod` |
+| `chore` | Maintenance, configs, dependencies | `chore/update-congo` |
 | `docs` | Documentation (AGENTS.md, specs) | `docs/spec-006-seo` |
 | `style` | Visual tweaks / CSS overrides | `style/heading-font` |
 | `refactor` | Restructuring without behavior change | `refactor/reorganize-content` |
@@ -213,7 +222,7 @@ Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
 ```
 feat(posts): add article about docker networking
 fix(i18n): correct portuguese translation for read_time key
-chore(theme): update PaperMod submodule to latest
+chore(theme): update Congo submodule to latest
 docs(agents): translate AGENTS.md to English
 ```
 
@@ -232,15 +241,15 @@ docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify
 mkdir -p content/posts/my-article
 # Create content/posts/my-article/index.md using archetypes/post/index.md as base
 
-# Update theme submodule
-git submodule update --remote themes/PaperMod
+# Update active theme submodule
+git submodule update --remote themes/congo
 ```
 
 ---
 
 ## Notes for Agents
 
-- Hugo **extended** is required (PaperMod uses extended-only features)
+- Hugo **extended** is required (Congo uses extended-only features)
 - `baseURL` in `hugo.toml` is `https://luanmds.github.io/`
 - Giscus `repoId` and `categoryId` are placeholders — user fills them in at [giscus.app](https://giscus.app)
 - Docker creates files as `root` — always use `--user $(id -u):$(id -g)` or fix permissions afterwards
