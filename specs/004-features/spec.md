@@ -1,7 +1,7 @@
 # Spec 004 — Features: Busca, Tags, Giscus
 
 **Status:** ✅ done  
-**Objetivo:** Ativar busca Fuse.js, taxonomia de tags/categorias, comentários Giscus, sitemap e robots.txt.
+**Objetivo:** Ativar busca Fuse.js, taxonomia de categorias, comentários Giscus, sitemap e robots.txt.
 
 ## Busca (Fuse.js)
 
@@ -9,18 +9,7 @@ PaperMod integra busca client-side via [Fuse.js](https://fusejs.io/). Requer:
 1. Output `JSON` na home (`outputs = ["HTML", "RSS", "JSON"]` no `hugo.toml`)
 2. Página `content/search/index.md` com `layout: search`
 
-A busca filtra por título, tags, categorias e sumário dos artigos.
-
-## Tags e Categorias
-
-Configuradas como taxonomias nativas do Hugo:
-```toml
-[taxonomies]
-  tag = "tags"
-  category = "categories"
-```
-
-Páginas de listagem geradas automaticamente em `/tags/` e `/categories/`.
+A busca filtra por título, categorias e sumário dos artigos.
 
 ## Giscus (Comentários)
 
