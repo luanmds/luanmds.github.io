@@ -57,9 +57,8 @@
 
 ## Refinamento 10.2 — Favicon com logo (branch: fix/favicon-logo)
 
-- [ ] Create branch `fix/favicon-logo` from `main`
-- [ ] Use ImageMagick to generate `static/favicon.png` from `assets/img/logo_blog.png` (square crop, 64×64px)
-- [ ] Verify Congo picks up `static/favicon.png` by checking `themes/congo/layouts/partials/head.html`
-- [ ] Run production build and verify no errors
-- [ ] Ask user about Playwright validation before committing
-- [ ] Commit and open PR
+- [x] Create branch `fix/favicon-logo` from `main`
+- [x] Generate `static/favicon-32x32.png` (32×32), `static/favicon-16x16.png` (16×16) and `static/apple-touch-icon.png` (180×180) from `assets/img/logo_blog.png` via center-crop + Pillow resize
+- [x] Verify Congo picks up the files (`head.html` uses `favicon-32x32.png` and `favicon-16x16.png` from `static/` by default)
+- [x] Run production build and verify no errors
+- [x] Commit and open PR
