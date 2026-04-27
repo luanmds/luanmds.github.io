@@ -56,7 +56,7 @@ summaryLength = 0
   description = "Blog sobre tecnologia, desenvolvimento de software e mais."
 
   [params.header]
-    layout = "basic"
+    layout = "hybrid"
     logo = "img/logo_blog.png"
     logoDark = "img/logo_blog_dark.png"
     showTitle = true
