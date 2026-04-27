@@ -101,3 +101,25 @@ Migrar o blog para o tema Congo sem quebrar rotas atuais nem funcionalidades exi
 - Fork profundo do Congo.
 - Troca de tipografia padrao do tema.
 - Mudancas amplas de arquitetura de conteudo alem do necessario para traducao pareada.
+
+---
+
+## 10) Refinamentos pós-implementação
+
+### 10.1 Responsividade mobile (fix/mobile-responsiveness)
+
+**Problema:** Layout `basic` do header não colapsa em telas pequenas; cards de post usam `flex-row` fixo, ficando espremidos no mobile.
+
+**Solução aprovada:**
+- Mudar `layout = "basic"` para `layout = "hybrid"` no `hugo.toml`. O layout `hybrid` nativo do Congo exibe links horizontais no desktop e hamburger collapsible no mobile — sem necessidade de override manual.
+- `assets/css/custom.css`: adicionar CSS para altura da imagem dos cards no mobile.
+- `layouts/_partials/article-link.html`: mudar `flex-row` → `flex-col sm:flex-row` no `<article>` e ajustar classes de imagem para empilhar verticalmente no mobile.
+
+### 10.2 Favicon com logo (fix/favicon-logo)
+
+**Problema:** `static/` vazia; Congo usa favicon padrão (quadrado roxo/violeta).
+
+**Solução aprovada:**
+- Gerar `static/favicon.png` derivado de `assets/img/logo_blog.png` via ImageMagick (crop quadrado centralizado, 64×64px).
+- Congo detecta `static/favicon.png` automaticamente e injeta nos `<link rel="icon">`.
+- Nenhuma mudança em partials ou `hugo.toml`.

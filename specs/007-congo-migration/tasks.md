@@ -43,3 +43,22 @@
 - [ ] Ask user: "Would you like to validate the implementation with automated browser tests using the Playwright skill?"
 - [ ] If approved, run Playwright validation and fix issues before completion
 - [ ] Update `AGENTS.md` if the migration changes architecture, structure, or operating conventions
+
+## Refinamento 10.1 — Mobile Responsiveness (branch: fix/mobile-responsiveness)
+
+- [x] Create branch `fix/mobile-responsiveness` from `main`
+- [x] Switch `[params.header] layout` from `basic` to `hybrid` in `hugo.toml` (native Congo layout: hamburger on mobile, links on desktop — no override needed)
+- [x] Add CSS in `assets/css/custom.css` for mobile image height constraint on post cards
+- [x] Change `layouts/_partials/article-link.html`: `flex-row` → `flex-col sm:flex-row` on the `<article>` element
+- [x] Adjust image CSS classes in `article-link.html` to be full-width when stacked vertically on mobile
+- [x] Run production build and verify no errors
+- [x] Ask user about Playwright validation before committing
+- [x] Commit and open PR — https://github.com/luanmds/luanmds.github.io/pull/5
+
+## Refinamento 10.2 — Favicon com logo (branch: fix/favicon-logo)
+
+- [x] Create branch `fix/favicon-logo` from `main`
+- [x] Generate `static/favicon-32x32.png` (32×32), `static/favicon-16x16.png` (16×16) and `static/apple-touch-icon.png` (180×180) from `assets/img/logo_blog.png` via center-crop + Pillow resize
+- [x] Verify Congo picks up the files (`head.html` uses `favicon-32x32.png` and `favicon-16x16.png` from `static/` by default)
+- [x] Run production build and verify no errors
+- [x] Commit and open PR
