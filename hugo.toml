@@ -39,7 +39,6 @@ summaryLength = 0
     endLevel = 4
 
 [taxonomies]
-  tag = "tags"
   category = "categories"
 
 [params]
@@ -141,11 +140,6 @@ summaryLength = 0
         pageRef = "posts"
         weight = 10
       [[languages.pt.menus.main]]
-        identifier = "tags"
-        name = "Tags"
-        pageRef = "tags"
-        weight = 20
-      [[languages.pt.menus.main]]
         identifier = "search"
         name = "Buscar"
         weight = 30
@@ -195,11 +189,6 @@ summaryLength = 0
         name = "Posts"
         pageRef = "posts"
         weight = 10
-      [[languages.en.menus.main]]
-        identifier = "tags"
-        name = "Tags"
-        pageRef = "tags"
-        weight = 20
       [[languages.en.menus.main]]
         identifier = "search"
         name = "Search"
