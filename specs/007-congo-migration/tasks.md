@@ -46,15 +46,14 @@
 
 ## Refinamento 10.1 — Mobile Responsiveness (branch: fix/mobile-responsiveness)
 
-- [ ] Create branch `fix/mobile-responsiveness` from `main`
-- [ ] Copy Congo's `themes/congo/layouts/partials/header/basic.html` to `layouts/partials/header/basic.html`
-- [ ] Add hamburger `<button>` and mobile nav toggle to the override (hidden on sm+, visible on mobile only)
-- [ ] Add CSS in `assets/css/custom.css` for mobile nav open/closed state and hamburger icon
-- [ ] Change `layouts/_partials/article-link.html`: `flex-row` → `flex-col sm:flex-row` on the `<article>` element
-- [ ] Adjust image CSS classes in `article-link.html` to be full-width when stacked vertically on mobile
-- [ ] Run production build and verify no errors
-- [ ] Ask user about Playwright validation before committing
-- [ ] Commit and open PR
+- [x] Create branch `fix/mobile-responsiveness` from `main`
+- [x] Switch `[params.header] layout` from `basic` to `hybrid` in `hugo.toml` (native Congo layout: hamburger on mobile, links on desktop — no override needed)
+- [x] Add CSS in `assets/css/custom.css` for mobile image height constraint on post cards
+- [x] Change `layouts/_partials/article-link.html`: `flex-row` → `flex-col sm:flex-row` on the `<article>` element
+- [x] Adjust image CSS classes in `article-link.html` to be full-width when stacked vertically on mobile
+- [x] Run production build and verify no errors
+- [x] Ask user about Playwright validation before committing
+- [x] Commit and open PR — https://github.com/luanmds/luanmds.github.io/pull/5
 
 ## Refinamento 10.2 — Favicon com logo (branch: fix/favicon-logo)
 

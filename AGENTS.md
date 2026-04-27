@@ -24,6 +24,12 @@ Hosted for free on GitHub Pages at `https://luanmds.github.io/`.
 - This file (`AGENTS.md`) must be updated whenever there are architectural changes
 - After Implement phase, Validate the changes with user. If all ok, commit the changes and create a Pull Request in repository.
 
+
+### Updating Specs and check Tasks
+
+- When update specs ALWAYS update the `tasks.md` in it.
+- Check with all tasks from a specific spec are done. Else, ask the user if he wants to implement or to remove them. 
+
 ### Implement phase — Testing with Playwright
 
 After completing the implementation of a spec, **always ask the user**:
