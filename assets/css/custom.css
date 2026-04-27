@@ -86,3 +86,10 @@
 .dark .translation-switch-separator {
   color: rgb(var(--color-neutral-400));
 }
+
+/* Mobile post card: constrain image height when stacked vertically */
+@media (max-width: 639px) {
+  .home-post-card__image {
+    height: 10rem;
+  }
+}

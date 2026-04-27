@@ -1,4 +1,4 @@
-<article class="home-post-card mt-6 flex w-full max-w-none flex-row">
+<article class="home-post-card mt-6 flex w-full max-w-none flex-col sm:flex-row">
   {{- $images := $.Resources.ByType "image" }}
 
   {{- $thumbPattern := "*thumb*" }}
@@ -42,7 +42,7 @@
   {{- end }}
 
   {{- with $listImage }}
-    <div class="home-post-card__media flex-none pe-4 sm:pe-6">
+    <div class="home-post-card__media mb-4 flex-none sm:mb-0 sm:pe-6">
       <a
         href="{{ $href }}"
         {{ if $target }}target="{{ $target }}"{{ end }}
@@ -59,10 +59,10 @@
         <img
           alt="{{ $imageAlt }}"
           {{ if eq .MediaType.SubType "svg" }}
-            class="home-post-card__image w-28 max-h-[5rem] max-w-[7rem] rounded-md object-cover sm:max-h-[8rem] sm:w-44 sm:max-w-[12rem]"
+            class="home-post-card__image w-full max-h-[12rem] rounded-md object-cover sm:max-h-none sm:w-44 sm:max-w-[11rem]"
             src="{{ .Permalink }}"
           {{ else }}
-            class="home-post-card__image h-20 w-28 rounded-md object-cover sm:h-28 sm:w-44"
+            class="home-post-card__image w-full rounded-md object-cover sm:h-28 sm:w-44"
             srcset="
             {{- (.Fill "176x128 smart").Permalink }}
             176w, {{- (.Fill "352x256 smart").Permalink }} 2x"

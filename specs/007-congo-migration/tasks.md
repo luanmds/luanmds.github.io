@@ -43,3 +43,24 @@
 - [ ] Ask user: "Would you like to validate the implementation with automated browser tests using the Playwright skill?"
 - [ ] If approved, run Playwright validation and fix issues before completion
 - [ ] Update `AGENTS.md` if the migration changes architecture, structure, or operating conventions
+
+## Refinamento 10.1 — Mobile Responsiveness (branch: fix/mobile-responsiveness)
+
+- [ ] Create branch `fix/mobile-responsiveness` from `main`
+- [ ] Copy Congo's `themes/congo/layouts/partials/header/basic.html` to `layouts/partials/header/basic.html`
+- [ ] Add hamburger `<button>` and mobile nav toggle to the override (hidden on sm+, visible on mobile only)
+- [ ] Add CSS in `assets/css/custom.css` for mobile nav open/closed state and hamburger icon
+- [ ] Change `layouts/_partials/article-link.html`: `flex-row` → `flex-col sm:flex-row` on the `<article>` element
+- [ ] Adjust image CSS classes in `article-link.html` to be full-width when stacked vertically on mobile
+- [ ] Run production build and verify no errors
+- [ ] Ask user about Playwright validation before committing
+- [ ] Commit and open PR
+
+## Refinamento 10.2 — Favicon com logo (branch: fix/favicon-logo)
+
+- [ ] Create branch `fix/favicon-logo` from `main`
+- [ ] Use ImageMagick to generate `static/favicon.png` from `assets/img/logo_blog.png` (square crop, 64×64px)
+- [ ] Verify Congo picks up `static/favicon.png` by checking `themes/congo/layouts/partials/head.html`
+- [ ] Run production build and verify no errors
+- [ ] Ask user about Playwright validation before committing
+- [ ] Commit and open PR
