@@ -51,3 +51,25 @@ Gerados automaticamente pelo Hugo com `enableRobotsTXT = true`.
 - [x] Tags e categorias configuradas
 - [x] `layouts/partials/comments.html` com embed Giscus
 - [x] `enableRobotsTXT = true` e sitemap.xml gerados no build
+
+---
+
+## Refinamento — Remover página de Tags (branch: fix/remove-tags)
+
+**Decisão:** Tags não serão utilizadas no blog. A página `/tags/` e os itens de menu de Tags devem ser removidos.
+
+**Solução aprovada:**
+- `hugo.toml`: remover `[[languages.pt.menus.main]]` com `identifier = "tags"`.
+- `hugo.toml`: remover `[[languages.en.menus.main]]` com `identifier = "tags"`.
+- `hugo.toml`: remover `tag = "tags"` da seção `[taxonomies]` para impedir geração de páginas `/tags/`.
+- Posts com `tags:` no front matter não causam erro — Hugo ignora taxonomias não configuradas.
+
+### Tasks (branch: fix/remove-tags)
+
+- [ ] Create branch `fix/remove-tags` from `main`
+- [ ] Remove `[[languages.pt.menus.main]]` block with `identifier = "tags"` from `hugo.toml`
+- [ ] Remove `[[languages.en.menus.main]]` block with `identifier = "tags"` from `hugo.toml`
+- [ ] Remove `tag = "tags"` from `[taxonomies]` section in `hugo.toml`
+- [ ] Run production build and verify no errors and no `/tags/` pages generated
+- [ ] Ask user about Playwright validation before committing
+- [ ] Commit and open PR

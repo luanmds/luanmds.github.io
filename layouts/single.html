@@ -23,7 +23,7 @@
       {{ if .Params.showBreadcrumbs | default (.Site.Params.article.showBreadcrumbs | default false) }}
         {{ partial "breadcrumbs.html" . }}
       {{ end }}
-      <h1 class="mb-3 mt-0 text-center text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      <h1 class="mb-3 mt-3 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
         {{ .Title | emojify }}
       </h1>
       {{ if and (eq .Type "posts") (ne .Section "search") }}
