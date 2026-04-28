@@ -11,3 +11,6 @@ resources/_gen/
 
 # Local isolated git worktrees
 .worktrees/
+
+# project scripts
+scripts/

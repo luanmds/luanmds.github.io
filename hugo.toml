@@ -118,7 +118,7 @@ summaryLength = 0
     languageName = "Português"
     languageDirection = "ltr"
     weight = 1
-    title = "LuanMDS.com"
+    title = "LuanMDS"
     [languages.pt.params]
       dateFormat = "2 Jan 2006"
       mainSections = ["posts"]
@@ -167,7 +167,7 @@ summaryLength = 0
     languageName = "English"
     languageDirection = "ltr"
     weight = 2
-    title = "LuanMDS.com"
+    title = "LuanMDS"
     contentDir = "content/en"
     [languages.en.params]
       dateFormat = "Jan 2, 2006"

@@ -84,3 +84,4 @@ Detailed context documentation is in `.docs/`. Use the table below to find the r
 | External services and APIs | [`.docs/integrations.md`](.docs/integrations.md) | GitHub Pages, Actions, Giscus, CodeRabbit |
 | Known risks, technical debt, fragile parts | [`.docs/concerns.md`](.docs/concerns.md) | Congo updates, CI alerts, Giscus, design system |
 | What features exist today | [`.docs/features.md`](.docs/features.md) | Complete inventory of implemented functionality |
+| Article format, front matter, images, migration | [`.docs/articles.md`](.docs/articles.md) | Page bundle structure, front matter fields, image rules, pngquant |
