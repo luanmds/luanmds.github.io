@@ -12,6 +12,19 @@ defaultContentLanguage = "pt"
 defaultContentLanguageInSubdir = false
 summaryLength = 0
 
+[module]
+  [[module.mounts]]
+    # PT language reads content/ but excludes the nested en/ directory
+    source = "content"
+    target = "content"
+    lang = "pt"
+    excludeFiles = ["en/**"]
+  [[module.mounts]]
+    # EN language reads only content/en/
+    source = "content/en"
+    target = "content"
+    lang = "en"
+
 [pagination]
   pagerSize = 10
 
@@ -85,8 +98,8 @@ summaryLength = 0
     showReadingTime = true
     showTableOfContents = true
     showTaxonomies = true
-    showWordCount = true
-    showComments = true
+    showWordCount = false
+    showComments = false
 
   [params.list]
     showBreadcrumbs = false
@@ -118,7 +131,7 @@ summaryLength = 0
     languageName = "Português"
     languageDirection = "ltr"
     weight = 1
-    title = "LuanMDS.com"
+    title = "LuanMDS"
     [languages.pt.params]
       dateFormat = "2 Jan 2006"
       mainSections = ["posts"]
@@ -167,8 +180,7 @@ summaryLength = 0
     languageName = "English"
     languageDirection = "ltr"
     weight = 2
-    title = "LuanMDS.com"
-    contentDir = "content/en"
+    title = "LuanMDS"
     [languages.en.params]
       dateFormat = "Jan 2, 2006"
       mainSections = ["posts"]

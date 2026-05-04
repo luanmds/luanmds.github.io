@@ -11,3 +11,8 @@ resources/_gen/
 
 # Local isolated git worktrees
 .worktrees/
+
+# Scripts - Python cache/local artifacts only
+scripts/__pycache__/
+scripts/*.pyc
+scripts/*.log
