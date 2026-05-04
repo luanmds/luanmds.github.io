@@ -201,11 +201,11 @@ Continuando nosso exemplo anterior, podemos ter uma classe auxiliar para criar u
 
 ```csharp
 public class CustomerBuilderStub {
-private Long CustomerId;
+private long CustomerId;
 private string Document;
 private int Age;
 private Coupon Coupon;
-public CustomerBuilderStub withId(Long customerId) {
+public CustomerBuilderStub withId(long customerId) {
 this.CustomerId = customerId;
 return this;
 }
@@ -253,7 +253,7 @@ public void Purchase_fails_when_not_enough_inventory()
 var storeMock = new Mock<IStore>();
 // configura uma resposta fechada
 storeMock.Setup(x => x.HasEnoughInventory(Product.Shampoo,
-5).Returns(false);
+5)).Returns(false);
 var sut = new Customer();
 bool success = sut.Purchase(storeMock.Object, Product.Shampoo, 5);
 Assert.False(success);

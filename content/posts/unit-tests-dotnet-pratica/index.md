@@ -235,7 +235,7 @@ Times.Never);
 [MemberData(nameof(CalculateScoreData))]
 public void
 CalculateScore_should_return_correct_value_to_the_debits_amount(decimal
-debits, int expected score)
+debits, int expectedScore)
 {
 int score = ScoreService.CalculateScore(debits);
 score.Should().Be(expectedScore);

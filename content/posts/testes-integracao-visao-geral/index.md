@@ -13,7 +13,7 @@ translationKey: "integration-tests"
 ---
 
 
-Nesse artigo vamos abordar de forma compilada os conceitos, definições e boas práticas gerais em Testes de Integração. No detalhe, entenderemos em quais cenários os testes de integração se encaixam, como implementar de forma fácil de manter, além de ver quando não usar mocks em seus cenários. **Compreender** **isso** **lhe** **capacita** **a** **tomar** **decisões** **relacionadas** **a** **testes** **automatizados** **e** **a** **medir** **o** **esforço** **necessário** **antes** **mesmo** **de** **implementar, usando qualquer linguagem de programação ou framework**.
+Nesse artigo vamos abordar de forma compilada os conceitos, definições e boas práticas gerais em Testes de Integração. No detalhe, entenderemos em quais cenários os testes de integração se encaixam, como implementar de forma fácil de manter, além de ver quando não usar mocks em seus cenários. **Compreender isso lhe capacita a tomar decisões relacionadas a testes automatizados e a medir o esforço necessário antes mesmo de implementar, usando qualquer linguagem de programação ou framework**.
 
 **Hands-on:** Para consolidar esses estudos, desenvolvi o repositório [**tests-dotnet-best-practices**](https://github.com/luanmds/tests-dotnet-best-practices). Lá, você encontrará alguns exemplos de implementação prática incluindo todos os conceitos que discutiremos neste artigo!
 
@@ -27,7 +27,7 @@ A famosa pirâmide de testes ordena os tipos de testes que um software pode real
 
 Os **testes de integração** ocupam uma camada intermediária, sendo responsáveis por verificar a conexão, interação e os contratos entre componentes, módulos ou serviços. Além de expor problemas a nível de sistema e garantir uma alta cobertura servindo de um feedback importante antes de cada deploy.
 
-Vale comentar que o**s testes de integração não garantem 100% de cobertura** e deve ser utilizado em conjunto com outros testes - como o de unidade, mas remove aquela “*pulga atrás da orelha”* respondendo perguntas como: *“Se eu atualizar esse módulo, vai quebrar nos módulos dependentes?”* ou *“Como eu garanto que esse fluxo continue funcionando quando o componente X não estiver disponível?”*.
+Vale comentar que **os testes de integração não garantem 100% de cobertura** e deve ser utilizado em conjunto com outros testes - como o de unidade, mas remove aquela “*pulga atrás da orelha”* respondendo perguntas como: *“Se eu atualizar esse módulo, vai quebrar nos módulos dependentes?”* ou *“Como eu garanto que esse fluxo continue funcionando quando o componente X não estiver disponível?”*.
 
 ## Abordagens para testar integrações
 

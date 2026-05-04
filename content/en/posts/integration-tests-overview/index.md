@@ -25,7 +25,7 @@ Enjoy the read!
 
 The famous test pyramid organizes the types of tests a software can perform, always from cheaper (Unit Tests at the base) to more expensive (E2E in the top). The integration tests are in the middle, above the unit tests, typically making up 20% to 30% of your test suite.
 
-Integration tests occupy an intermediate layer, being responsable to verify the connection, interaction and contracts between components, modules, or services. Additionally, they expose system-level problems and ensure high coverage as an important feedback before every deployment.
+Integration tests occupy an intermediate layer, being responsible to verify the connection, interaction and contracts between components, modules, or services. Additionally, they expose system-level problems and ensure high coverage as an important feedback before every deployment.
 
 It is worth noting that **integration tests do not guarantee 100% coverage** and should be used in conjunction with other tests, like unit tests. However, they remove that nagging doubt by answering questions such as: "If I update this module, will it break the dependent modules?" or "How can I ensure this flow keeps working when component X is unavailable?"
 
@@ -53,7 +53,7 @@ For a more modern perspective, particularly in microservices and distributed sys
 
 Not every feature requires an integration test. The true value of these tests lies in validating flows that cross the boundaries of your application. Indispensable scenarios include:
 
-#### 1. Communication with Persistence and Cache Infrastructure
+### 1. Communication with Persistence and Cache Infrastructure
 
 Scenarios where the application connects with a database (e.g., SQL or NoSQL) and cache systems (e.g., Redis). This ensures that queries, ORM mappings (like Entity Framework), migrations, and integrity constraints (foreign keys, indexes) execute as expected on the real database engine.
 
@@ -78,8 +78,6 @@ To implement integration tests requires more than just writing code; requires an
 Before you touch the keyboard, the fundamental first step is to map and to diagram all the components of system. Include the **SUT (System Under Test)**. In the integration context, the SUT generally is your API or a specific service that connects with the “external world”. This provides a clear view of your infrastructure boundaries and external dependencies.
 
 **Focus on areas where the code performs I/O operations**, such as databases, third-party APIs, microservices, and message queues. Pay special attention to highly coupled components, as they are undoubtedly the most fragile! If your architecture uses Adapters or Repository patterns, these are your primary targets to verify accurate data translation between your domain and external systems.
-
-BDD (Behaviour-Driven Design) and Event Storming can make this mapping process easier. To measure coupling, you can use Afferent and Efferent Coupling metrics
 
 Techniques like [*BDD (Behaviour-Driven Design)*](https://behave.readthedocs.io/en/latest/philosophy/) and [*Event Storming*](https://www.eventstorming.com/), can make this mapping process easier. To measure coupling, you can use [Afferent and Efferent Coupling](https://coupling.dev/posts/related-topics/afferent-and-efferent-coupling/) metrics.
 

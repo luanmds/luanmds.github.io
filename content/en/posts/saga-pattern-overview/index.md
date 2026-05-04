@@ -37,9 +37,9 @@ There are ways to keep data consistent with distributed transactions beyond Saga
 
 A saga is a flow represented by a transaction sequence following a specific synchronous and/or asynchronous order. These transactions aren’t distributed and each transaction is local. After a transaction is confirmed to finish, it calls the next transaction so on until the end of Saga. Be possible to have a saga identifier for each transaction in the chain and get a complete tracker flow.
 
-![](image2.png)
+![Diagram illustrating a saga as a sequence of local transactions](image2.png)
 
-### Orchestatrion and Coreography
+### Orchestration and Choreography
 
 Saga can be implemented using two actual models:
 
@@ -47,13 +47,13 @@ With an **Orchestrator**, known as **Saga Execution Coordinator (SEC)**, control
 
 In this simple sample, a Broker consolidates, manages and provides all the communication between the three services. Orchestration includes a strong dependency on the centraliser as a bad side. In this case, if the broker is offline, all services are offline too.
 
-![](image6.png)
+![Diagram of the Orchestration model: a centralized broker coordinating services](image6.png)
 
-Or the Coreography model, like a Flash Mob (I am old!), each participant - or a microservice, in our case - knows how and when to make your step wait or not for the step of other participants. Backing to our reality, microservices know the saga, your steps and when to start your local transaction.
+Or the Choreography model, like a Flash Mob (I am old!), each participant - or a microservice, in our case - knows how and when to make your step wait or not for the step of other participants. Backing to our reality, microservices know the saga, your steps and when to start your local transaction.
 
 The example below shows a flow binding four systems (A, B, C and D) and three steps to do. In each step, the systems act on a received action, in this case, we use a messaging broker and HTTP protocol. The biggest drawback is the administration and monitoring of each system to guarantee end-to-end operations.
 
-![](image5.png)
+![Diagram of the Choreography model: four systems communicating without a central coordinator](image5.png)
 
 ### Challenges to implement
 
@@ -81,7 +81,7 @@ The Saga begin with the creation of a marketing post (with discounts, coupons, p
 
 Next, go with to success Saga flow complete:
 
-![](image4.png)
+![Diagram of the successful Saga flow for the marketing post use case](image4.png)
 
 So beautiful! But, what if when to create a new post and notification to customers by e-mail was concluded at the same time the post wasn’t updated on the website? We have a critical failure and must handle it. Next, I show how to deal with this problem.
 
@@ -93,7 +93,7 @@ When there is a failure, we can keep retaining a step of Saga for a certain amou
 
 Lookback the before flow let’s imagine a situation where the messaging was offline by some seconds and the message to the Website service wasn’t sent (step 3). Assuming that the Post Service has a policy of retaining messages trying a certain amount of times each x minutes, we have the flow:
 
-![](image7.png)
+![Diagram showing the Retry Pattern: Post Service retrying until messaging is back online](image7.png)
 
 Is great, right? the service performed many retentions until messaging was online again. Also, we don’t need an alert screaming around. But…when we are sure of failure, even after applying all policies of retry? Need to take other actions to resolve or undo this in our Saga. The answer can be the Compensating Transactions.
 
@@ -105,7 +105,7 @@ To compensate, Saga’s pattern has the compensating transactions as an indicato
 
 Therefore, we continue with critical failure cases where customers receive notifications with new promotions or discounts but there are not any promotions on the website! The next steps are to undo and send an errata they like as compensation. So, changing point of fail in flow and has a new resolution:
 
-![](image1.png)
+![Diagram of compensating transactions 3a and 3b triggered when step 2 fails](image1.png)
 
 Steps 3a and 3b are compensating transactions that activate as soon as step 2 fails.
 
@@ -117,7 +117,7 @@ Reviewing all flow, prevent the previous failure just by adjusting the send of P
 
 Finally, here is the refactored flow:
 
-![](image3.png)
+![Diagram of the refactored Saga flow with reduced rollback risk](image3.png)
 
 ### It’s all folks…
 
