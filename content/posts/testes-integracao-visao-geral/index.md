@@ -21,7 +21,7 @@ Boa leitura!
 
 ## Pirâmide de testes e onde a integração entra
 
-![](image2.png)
+![Pirâmide de testes destacando a camada de testes de integração](image2.png)
 
 A famosa pirâmide de testes ordena os tipos de testes que um software pode realizar, sempre do mais barato (o Unit Tests na base) para o mais caro (E2E no topo). Os testes de integração estão ali no meio, acima dos testes de unidade, lidando com 20% a 30% da suíte de testes.
 
@@ -37,10 +37,10 @@ Para escolher uma abordagem é necessário entender como estão acoplados os com
 
 Os tipos de abordagens são:
 
-- **Big Bang:** Todos os módulos são integrados simultaneamente e testados como um todo. Embora pareça rápido, é a abordagem mais arriscada, pois torna a depuração extremamente difícil quando um erro ocorre, já que a falha pode estar em qualquer lugar da cadeia. ![](image1.png)
+- **Big Bang:** Todos os módulos são integrados simultaneamente e testados como um todo. Embora pareça rápido, é a abordagem mais arriscada, pois torna a depuração extremamente difícil quando um erro ocorre, já que a falha pode estar em qualquer lugar da cadeia. ![Diagrama da abordagem Big Bang: todos os módulos integrados de uma vez](image1.png)
 - **Incremental:** Abordagens focadas em testar um conjunto de módulos da aplicação. Seguem elas: - **Top-Down:** O teste começa pelas camadas superiores (como Controllers ou APIs) e desce em direção às camadas de infraestrutura. Utiliza-se *Stubs* para substituir os módulos inferiores que ainda não foram integrados. - **Bottom-Up:** Inicia-se pelos módulos de baixo nível (como Repositórios e Drivers de banco de dados) e sobe para as camadas de lógica de negócio. É excelente para validar a persistência de dados logo no início do desenvolvimento. - **Sanduíche (Híbrida):** Combina as vantagens das abordagens *Top-Down* e *Bottom-Up*, testando o núcleo do sistema enquanto as camadas periféricas são integradas gradualmente.
 
-![](image3.png)
+![Diagrama das abordagens incrementais: Top-Down, Bottom-Up e Sanduíche](image3.png)
 
 ### Escopo de Teste
 
@@ -53,7 +53,7 @@ Para uma visão mais moderna e aplicada a microsserviços e sistemas distribuíd
 
 Nem toda funcionalidade exige um teste de integração. O valor desses testes reside na validação de fluxos que cruzam as fronteiras da aplicação. Os cenários onde eles são indispensáveis incluem:
 
-#### 1. Comunicação com Infraestrutura de Persistência e Cache
+### 1. Comunicação com Infraestrutura de Persistência e Cache
 
 Cenários onde a aplicação interage com bancos de dados (SQL ou NoSQL) e sistemas de cache (como Redis). Garantindo que as *queries*, mapeamentos de ORM (como Entity Framework), migrações e restrições de integridade (chaves estrangeiras, índices) funcionem conforme o esperado no motor de banco de dados real.
 
