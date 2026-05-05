@@ -1,21 +1,21 @@
-# luanmds.github.io
+# 📝 luanmds.github.io
 
 A bilingual static blog (Brazilian Portuguese + English) for publishing technical articles with co-located images. Powered by Hugo extended, themed with Congo, and hosted on GitHub Pages.
 
-**Live:** [https://luanmds.github.io](https://luanmds.github.io)  
-**Repository:** [github.com/luanmds/luanmds.github.io](https://github.com/luanmds/luanmds.github.io)
+**🌐 Live:** [https://luanmds.github.io](https://luanmds.github.io)  
+**📦 Repository:** [github.com/luanmds/luanmds.github.io](https://github.com/luanmds/luanmds.github.io)
 
 ---
 
-## Quick Start
+## ⚡ Quick Start
 
-### Prerequisites
+### 📋 Prerequisites
 
 - **Hugo extended** v0.154.5+ (required — Congo uses extended-only SCSS compilation)
 - **Docker** + Docker Compose (for local development)
 - **Git** with submodule support
 
-### Local Development
+### 🚀 Local Development
 
 Clone the repository with all submodules:
 
@@ -32,7 +32,7 @@ docker compose up
 
 Open `http://localhost:1313` in your browser. Changes to content, layouts, or styles auto-reload.
 
-### Build for Production
+### 🏗️ Build for Production
 
 Generate optimized static site:
 
@@ -42,7 +42,7 @@ hugo --minify
 
 Output goes to `public/` directory.
 
-### Validate Build
+### ✅ Validate Build
 
 Verify the build with Hugo extended in Docker:
 
@@ -52,55 +52,37 @@ docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify
 
 ---
 
-## Project Structure
-
-| Directory | Purpose |
-|-----------|---------|
-| `content/` | Articles as page bundles (folder = post, contains `index.md` + images) |
-| `layouts/` | Hugo template overrides for the Congo theme |
-| `assets/` | CSS customizations, SCSS, images (logo, favicon, etc.) |
-| `i18n/` | Translation files (YAML) for PT (default) and EN |
-| `static/` | Static files served as-is (robots.txt, sitemap, etc.) |
-| `data/` | Data files (YAML/TOML) for structured content |
-| `archetypes/` | Templates for `hugo new` command |
-| `specs/` | Spec-Driven Development specs and task lists |
-| `.docs/` | Detailed architecture, conventions, and reference documentation |
-| `scripts/` | Utility scripts for maintenance and content processing |
-| `themes/` | Git submodules for Congo (active) and PaperMod (legacy) |
-
----
-
-## Technology Stack
+## 🛠️ Technology Stack
 
 | Technology | Purpose |
 |-----------|---------|
-| **Hugo extended** | Static site generator — compiles Markdown + Go templates into HTML |
-| **Congo** | Active theme (Git submodule from `jpanther/congo`) |
-| **GitHub Pages** | Free static hosting |
-| **GitHub Actions** | CI/CD — automatic build and deploy on push to `main` |
-| **Fuse.js** | Client-side full-text search (native Congo integration) |
-| **Giscus** | Comment system via GitHub Discussions (currently placeholder config) |
+| **Hugo extended** | ⚡ Static site generator — compiles Markdown + Go templates into HTML |
+| **Congo** | 🎨 Active theme (Git submodule from `jpanther/congo`) |
+| **GitHub Pages** | 🌍 Free static hosting |
+| **GitHub Actions** | 🔄 CI/CD — automatic build and deploy on push to `main` |
+| **Fuse.js** | 🔍 Client-side full-text search (native Congo integration) |
+| **Giscus** | 💬 Comment system via GitHub Discussions (currently placeholder config) |
 
 ---
 
-## Key Features
+## ✨ Key Features
 
-- **Bilingual Support** — Two language versions (PT default on `/`, EN on `/en/`) with language switching in header and article context switcher
-- **Dark Mode** — Native dark/light theme toggle with system preference auto-detection
-- **Client-Side Search** — Full-text search via Fuse.js, no backend required
-- **Taxonomies** — Tags (with dedicated page) and categories
-- **RSS Feeds** — Separate feeds for each language
-- **Page Bundles** — Articles organized as folders with co-located images and assets
-- **Markdown Authoring** — All content written in Markdown with YAML front matter
-- **Responsive Design** — Mobile-first layout via Congo theme
-- **Breadcrumbs & Pagination** — Navigation aids in articles
-- **Future-Dated Posts** — Automatic handling of scheduled publications
+- **🌐 Bilingual Support** — Two language versions (PT default on `/`, EN on `/en/`) with language switching in header and article context switcher
+- **🌙 Dark Mode** — Native dark/light theme toggle with system preference auto-detection
+- **🔍 Client-Side Search** — Full-text search via Fuse.js, no backend required
+- **🏷️ Taxonomies** — Tags (with dedicated page) and categories
+- **📡 RSS Feeds** — Separate feeds for each language
+- **📦 Page Bundles** — Articles organized as folders with co-located images and assets
+- **📝 Markdown Authoring** — All content written in Markdown with YAML front matter
+- **📱 Responsive Design** — Mobile-first layout via Congo theme
+- **🔗 Breadcrumbs & Pagination** — Navigation aids in articles
+- **📅 Future-Dated Posts** — Automatic handling of scheduled publications
 
 ---
 
-## Configuration
+## ⚙️ Configuration
 
-### Main Config: `hugo.toml`
+### 📋 Main Config: `hugo.toml`
 
 Core settings:
 - `baseURL = "https://luanmds.github.io/"` — production URL (auto-adjusted for local dev)
@@ -109,14 +91,14 @@ Core settings:
 - Menu configuration (Posts, Tags, Search, About, language/appearance switchers)
 - Giscus placeholders (waiting for user setup at [giscus.app](https://giscus.app))
 
-### Theme Customizations
+### 🎨 Theme Customizations
 
 - **CSS overrides** in `assets/css/` (compiled via Hugo's SCSS processor)
 - **Layout overrides** in `layouts/` (e.g., custom home, single post, search page)
 - **Logo assets** in `assets/img/` (light/dark variants)
 - **Theme color scheme** — set to `graphite` in config
 
-### Internationalization (`i18n/`)
+### 🌍 Internationalization (`i18n/`)
 
 Translation strings for UI elements (nav, pagination, search, etc.) in:
 - `i18n/pt.yaml` — Brazilian Portuguese
@@ -124,11 +106,11 @@ Translation strings for UI elements (nav, pagination, search, etc.) in:
 
 ---
 
-## Development Workflow
+## 🔄 Development Workflow
 
 This project follows **Spec-Driven Development (SDD)**.
 
-### Workflow
+### 📋 Workflow
 
 1. **Spec** — Create spec in `specs/` folder (use `specs/000-template/spec.md` as template)
 2. **Tasks** — Define implementation tasks in `specs/*/tasks.md` (Markdown checklist)
@@ -137,7 +119,7 @@ This project follows **Spec-Driven Development (SDD)**.
 5. **Validate** — Run build, verify in local dev server, check all tasks marked Done
 6. **PR** — Create pull request to `main` with task completion evidence
 
-### Full Methodology
+### 📚 Full Methodology
 
 See `AGENTS.md` for complete Spec-Driven Development guide, including:
 - When to ask the user for decisions
@@ -145,7 +127,7 @@ See `AGENTS.md` for complete Spec-Driven Development guide, including:
 - Testing strategy and Playwright integration
 - Git worktree usage for isolated feature branches
 
-### Pre-Commit Validation
+### 🔍 Pre-Commit Validation
 
 Always validate locally before committing:
 
@@ -153,7 +135,7 @@ Always validate locally before committing:
 docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify
 ```
 
-### Deployment
+### 🚀 Deployment
 
 GitHub Actions automatically:
 1. Pulls repo on push to `main`
@@ -164,28 +146,28 @@ Config: `.github/workflows/` (uses `peaceiris/actions-hugo@v3` with `extended: t
 
 ---
 
-## Documentation Map
+## 📚 Documentation Map
 
 Detailed documentation is in `.docs/`. Use this table to find what you need:
 
 | Topic | File | Contains |
 |-------|------|----------|
-| Project identity, author, purpose | [`.docs/project.md`](.docs/project.md) | What is the project, who built it, what problem it solves |
-| Dependencies, versions, tools | [`.docs/stack.md`](.docs/stack.md) | Hugo version, theme, Docker setup, Fuse.js, Giscus |
-| Architecture & design decisions | [`.docs/architecture.md`](.docs/architecture.md) | SSG model, bilingual strategy, theme overrides, CI/CD design |
-| Naming, commits, front matter | [`.docs/conventions.md`](.docs/conventions.md) | Conventional Commits, slugs, article YAML fields, what to avoid |
-| Folder structure & responsibilities | [`.docs/structure.md`](.docs/structure.md) | Purpose of every directory and subdirectory |
-| Testing & validation strategy | [`.docs/testing.md`](.docs/testing.md) | Playwright skill usage, build-as-test, local validation process |
-| External services & integrations | [`.docs/integrations.md`](.docs/integrations.md) | GitHub Pages, Actions, Giscus setup, CodeRabbit configuration |
-| Known risks & technical debt | [`.docs/concerns.md`](.docs/concerns.md) | Congo upgrade fragility, Giscus placeholder status, design system gaps |
-| Complete feature inventory | [`.docs/features.md`](.docs/features.md) | Everything that works: search, dark mode, tags, comments, etc. |
-| Article authoring guide | [`.docs/articles.md`](.docs/articles.md) | Page bundle format, front matter fields, image handling, pngquant rules |
+| 📝 Project identity, author, purpose | [`.docs/project.md`](.docs/project.md) | What is the project, who built it, what problem it solves |
+| 🛠️ Dependencies, versions, tools | [`.docs/stack.md`](.docs/stack.md) | Hugo version, theme, Docker setup, Fuse.js, Giscus |
+| 🏗️ Architecture & design decisions | [`.docs/architecture.md`](.docs/architecture.md) | SSG model, bilingual strategy, theme overrides, CI/CD design |
+| 📋 Naming, commits, front matter | [`.docs/conventions.md`](.docs/conventions.md) | Conventional Commits, slugs, article YAML fields, what to avoid |
+| 📂 Folder structure & responsibilities | [`.docs/structure.md`](.docs/structure.md) | Purpose of every directory and subdirectory |
+| ✅ Testing & validation strategy | [`.docs/testing.md`](.docs/testing.md) | Playwright skill usage, build-as-test, local validation process |
+| 🔗 External services & integrations | [`.docs/integrations.md`](.docs/integrations.md) | GitHub Pages, Actions, Giscus setup, CodeRabbit configuration |
+| ⚠️ Known risks & technical debt | [`.docs/concerns.md`](.docs/concerns.md) | Congo upgrade fragility, Giscus placeholder status, design system gaps |
+| ✨ Complete feature inventory | [`.docs/features.md`](.docs/features.md) | Everything that works: search, dark mode, tags, comments, etc. |
+| ✍️ Article authoring guide | [`.docs/articles.md`](.docs/articles.md) | Page bundle format, front matter fields, image handling, pngquant rules |
 
 ---
 
-## Writing Content
+## ✍️ Writing Content
 
-### Page Bundle Format
+### 📦 Page Bundle Format
 
 Articles live in `content/posts/article-slug/`:
 
@@ -198,7 +180,7 @@ content/
         └── [other images]
 ```
 
-### Front Matter Example
+### 📄 Front Matter Example
 
 ```yaml
 ---
@@ -212,13 +194,13 @@ translationKey: "my-article"  # Pair with same key in other language for switche
 ---
 ```
 
-### Image Handling
+### 🖼️ Image Handling
 
 - **Cover image** — `cover.png` in the page bundle (auto-used in listings and article header)
 - **Inline images** — Store in same folder, reference with `![alt text](image.png)`
 - **Optimization** — Use `pngquant` to compress PNG files before committing (see `.docs/articles.md` for automation)
 
-### Bilingual Articles
+### 🌐 Bilingual Articles
 
 To create a PT/EN article pair:
 
@@ -231,9 +213,9 @@ See `.docs/articles.md` for complete authoring guide.
 
 ---
 
-## Testing & Validation
+## 🧪 Testing & Validation
 
-### Build Validation
+### 🔨 Build Validation
 
 Test that Hugo can build without errors:
 
@@ -241,7 +223,7 @@ Test that Hugo can build without errors:
 docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify
 ```
 
-### Local Testing
+### 🖥️ Local Testing
 
 Start the dev server and manually test:
 
@@ -251,7 +233,7 @@ docker compose up
 # Test language switching, dark mode, search, links, responsive design
 ```
 
-### Automated Browser Tests
+### 🤖 Automated Browser Tests
 
 After implementing UI changes, validate with Playwright:
 
@@ -261,36 +243,36 @@ After implementing UI changes, validate with Playwright:
 
 See `.docs/testing.md` for detailed test strategy.
 
-### Code Review
+### 👀 Code Review
 
 CodeRabbit automatically reviews pull requests. Config in `.coderabbit.yaml`.
 
 ---
 
-## Important Notes for Developers
+## ⚠️ Important Notes for Developers
 
-- **Hugo extended is mandatory** — Congo theme requires SCSS transpilation, which only works with extended version
-- **Docker user permissions** — Use `--user $(id -u):$(id -g)` flag or fix file ownership afterwards (Docker creates files as root by default)
-- **Git submodules** — Update after clone: `git submodule update --init --recursive`
-- **Giscus comments** — Currently disabled (placeholder config). To enable: go to [giscus.app](https://giscus.app), configure repo, and update `repoId` and `categoryId` in `hugo.toml`
-- **GitHub Actions** — Uses `peaceiris/actions-hugo@v3` with `extended: true` for CI/CD
-
----
-
-## Links
-
-**Author:** Luan Mello (Backend engineer, .NET specialist, distributed systems)
-
-- GitHub: [@luanmds](https://github.com/luanmds)
-- LinkedIn: [luanmds](https://www.linkedin.com/in/luanmds/)
-- Medium: [@luanmds](https://luanmds.medium.com/)
-- Dev.to: [@luanmds](https://dev.to/luanmds)
-
-**Live Blog:** [https://luanmds.github.io](https://luanmds.github.io)  
-**GitHub Repo:** [github.com/luanmds/luanmds.github.io](https://github.com/luanmds/luanmds.github.io)
+- **⭐ Hugo extended is mandatory** — Congo theme requires SCSS transpilation, which only works with extended version
+- **🔒 Docker user permissions** — Use `--user $(id -u):$(id -g)` flag or fix file ownership afterwards (Docker creates files as root by default)
+- **📦 Git submodules** — Update after clone: `git submodule update --init --recursive`
+- **💬 Giscus comments** — Currently disabled (placeholder config). To enable: go to [giscus.app](https://giscus.app), configure repo, and update `repoId` and `categoryId` in `hugo.toml`
+- **🔄 GitHub Actions** — Uses `peaceiris/actions-hugo@v3` with `extended: true` for CI/CD
 
 ---
 
-## License
+## 🔗 Links
+
+**👤 Author:** Luan Mello (Backend engineer, .NET specialist, distributed systems)
+
+- 🐙 GitHub: [@luanmds](https://github.com/luanmds)
+- 💼 LinkedIn: [luanmds](https://www.linkedin.com/in/luanmds/)
+- ✍️ Medium: [@luanmds](https://luanmds.medium.com/)
+- 📰 Dev.to: [@luanmds](https://dev.to/luanmds)
+
+**🌐 Live Blog:** [https://luanmds.github.io](https://luanmds.github.io)  
+**📦 GitHub Repo:** [github.com/luanmds/luanmds.github.io](https://github.com/luanmds/luanmds.github.io)
+
+---
+
+## 📄 License
 
 This project is open source. The blog content (articles in `content/`) is authored by Luan Mello. The template, configurations, and customizations are available for reference and adaptation.
