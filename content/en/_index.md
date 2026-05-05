@@ -1,6 +1,6 @@
 ---
 title: "Luan Mello"
-description: "Blog about technology, software development, and distributed systems."
+description: "Blog about Software engineering focused on backend, distributed architecture, and practical AI for developers."
 ---
 
 Software engineering focused on backend, distributed architecture, and practical AI for developers.
