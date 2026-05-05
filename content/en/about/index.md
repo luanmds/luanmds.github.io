@@ -10,24 +10,23 @@ showBreadcrumbs: false
 showAuthor: false
 ---
 
-I'm **Luan Mello**, a back-end software engineer based in Rio de Janeiro, Brazil.
+<img src="/img/profile/luanmds-profile.jpg" alt="Profile photo of Luan Mello" style="width: 200px; height: 200px; border-radius: 9999px; object-fit: cover; margin: 0 auto;" />
 
-I primarily work with **.NET and C#**, building APIs and distributed systems focused on reliability, performance, and long-term maintainability.
+I'm a Software Engineer based in Rio de Janeiro, Brazil, focused on Distributed Systems and Backend Architecture. With experience at companies like Stone, Saphira, and BTG Pactual, I specialized in building large-scale microservices and resilient data flows using technologies such as .NET, Kafka, Azure/AWS, and related tools.
 
-## Technical focus
+## Tech Stack & Expertise
+- .NET & C#: Development of mission-critical services.
+- Architecture: Event-Driven, CQRS, Event Sourcing, and C4/UML modeling.
+- Infrastructure: Cloud (Azure/AWS), Docker, and Kafka-based messaging.
+- Quality: Clean Code, automated testing, and modern engineering practices.
 
-- Backend architecture for products and platforms
-- Microservices, messaging, and event-driven integration
-- Code quality, testing, and engineering best practices
-- Practical AI workflows for software teams
-
-## Experience and approach
-
-With a Computer Science background, I like combining strong fundamentals with pragmatic delivery. I focus on simplifying complex problems through clear design, observability, and continuous improvement.
+I write to document my studies, share practical day-to-day learnings, and help other engineers make better architecture and software design decisions.
 
 ## Find me online
 
-- LinkedIn: [in/luanmds](https://www.linkedin.com/in/luanmds/)
-- GitHub: [luanmds](https://github.com/luanmds)
-- Medium: [luanmds.medium.com](https://luanmds.medium.com/)
-- Dev.to: [dev.to/luanmds](https://dev.to/luanmds)
+<div class="not-prose" style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem; margin-top: 0.5rem; font-size: 1.5rem; line-height: 1;">
+  <a href="https://www.linkedin.com/in/luanmds/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">{{< icon linkedin >}}</a>
+  <a href="https://github.com/luanmds" target="_blank" rel="noopener noreferrer" aria-label="GitHub">{{< icon github >}}</a>
+  <a href="https://luanmds.medium.com/" target="_blank" rel="noopener noreferrer" aria-label="Medium">{{< icon medium >}}</a>
+  <a href="https://dev.to/luanmds" target="_blank" rel="noopener noreferrer" aria-label="Dev.to">{{< icon dev >}}</a>
+</div>
