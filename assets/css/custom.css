@@ -1,26 +1,26 @@
 .home-hero {
   border: 1px solid rgb(var(--color-neutral-200));
   background:
-    radial-gradient(circle at top right, rgba(6, 182, 212, 0.16), transparent 55%),
+    radial-gradient(circle at top right, rgba(201, 59, 59, 0.12), transparent 55%),
     linear-gradient(120deg, rgba(2, 6, 23, 0.06), rgba(15, 23, 42, 0.03));
 }
 
 .dark .home-hero {
   border-color: rgb(var(--color-neutral-700));
   background:
-    radial-gradient(circle at top right, rgba(34, 211, 238, 0.2), transparent 60%),
-    linear-gradient(120deg, rgba(2, 6, 23, 0.75), rgba(8, 51, 68, 0.2));
+    radial-gradient(circle at top right, rgba(255, 110, 97, 0.18), transparent 60%),
+    linear-gradient(120deg, rgba(13, 11, 11, 0.75), rgba(55, 0, 4, 0.2));
 }
 
 .home-chip {
   border: 1px solid rgb(var(--color-primary-300));
-  background-color: rgba(34, 211, 238, 0.12);
+  background-color: rgba(201, 59, 59, 0.10);
   color: rgb(var(--color-primary-800));
 }
 
 .dark .home-chip {
   border-color: rgb(var(--color-primary-800));
-  background-color: rgba(34, 211, 238, 0.15);
+  background-color: rgba(255, 110, 97, 0.15);
   color: rgb(var(--color-primary-200));
 }
 
@@ -56,7 +56,7 @@
 }
 
 .translation-switch-item:hover {
-  background-color: rgba(34, 211, 238, 0.18);
+  background-color: rgba(201, 59, 59, 0.12);
   border-color: rgb(var(--color-primary-500));
 }
 
@@ -73,7 +73,7 @@
 }
 
 .dark .translation-switch-item:hover {
-  background-color: rgba(34, 211, 238, 0.22);
+  background-color: rgba(255, 110, 97, 0.18);
   border-color: rgb(var(--color-primary-400));
 }
 

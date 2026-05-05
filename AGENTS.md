@@ -22,14 +22,15 @@ Hosted for free on GitHub Pages at `https://luanmds.github.io/`.
 - MANDATORY: Create the spec in `specs/` folder, Verify and Validate the spec with user before continue 
 - Any decision with 2+ valid options: **stop and ask the user**
 - This file (`AGENTS.md`) must be updated whenever there are architectural changes
-- After Implement phase, Validate the changes with user. If all ok, commit the changes and create a Pull Request in repository.
+- Always use `specs/000-template/spec.md` + `specs/000-template/tasks.md` as the official template for all new specs.
+- After Implement phase, Validate the changes with user. If all ok: if have tasks from a spec as done, mark it in `tasks.md` from spec, after, commit the changes and create a Pull Request in repository.
+- **MANDATORY** When complete a task in `tasks.md` file, mark it as "Done" before commit the changes.
 
 
 ### Updating Specs and Tasks
 
 - When update specs ALWAYS update the `tasks.md` in it.
 - Check with all tasks from a specific spec are done. Else, ask the user if he wants to implement or to remove them. 
-- Use `specs/000-template/spec.md` + `specs/000-template/tasks.md` as the official template for all new specs.
 
 ### Implement phase — Testing with Playwright
 
@@ -56,7 +57,7 @@ All specs are in `specs/` folder. Verify them when necessary.
 | 004  | Features (search/tags/etc.) | ✅ done   |
 | 005  | Deploy GitHub Pages         | ✅ done   |
 | 006  | CodeRabbit Configuration    | ✅ done   |
-| 007  | Congo Migration             | 🟡 proposed |
+| 007  | Congo Migration             | ✅ done   |
 | 008  | Spec Template + Branding    | ✅ done |
 
 ---

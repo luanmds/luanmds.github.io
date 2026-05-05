@@ -55,7 +55,7 @@ summaryLength = 0
   category = "categories"
 
 [params]
-  colorScheme = "graphite"
+  colorScheme = "crimson"
   defaultAppearance = "light"
   autoSwitchAppearance = true
   defaultThemeColor = "#f8fafc"

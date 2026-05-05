@@ -1,19 +1,20 @@
 # Spec 007 — Migração para Congo + About estruturado + link PT/EN no artigo
 
-**Status:** proposed  
-**Data:** 2026-04-22  
-**Objetivo:** Migrar tema PaperMod -> Congo, preservar URLs atuais, manter recursos existentes, personalizar Home/About (direcao B1: Grafite + Ciano), e adicionar link de traducao dentro do artigo.
+**Status:** concluído
+**Data:** 2026-04-22
+**Atualização:** 2026-05-05
+**Objetivo:** Migrar o tema PaperMod para Congo, preservar URLs atuais, manter recursos existentes, personalizar Home/About com a paleta Crimson Circuitry e adicionar link de tradução contextual dentro dos artigos.
 
 ## Contexto
 
-Spec de migração de tema com preservação de URLs e paridade funcional entre PT/EN.
+O blog utilizava o tema PaperMod. A migração para o Congo moderniza o visual e abre espaço para customizações moderadas de layout e paleta de cores, mantendo paridade funcional completa entre PT e EN.
 
 ## Escopo
 
-- Migração PaperMod -> Congo
-- Preservação de rotas existentes
-- Ajustes de Home/About
-- Link contextual PT/EN dentro de artigos traduzidos
+1. Migração PaperMod → Congo
+2. Preservação de rotas existentes
+3. Ajustes de Home/About com paleta Crimson Circuitry
+4. Link contextual PT/EN dentro de artigos traduzidos
 
 ## Fora de escopo
 
@@ -21,118 +22,132 @@ Spec de migração de tema com preservação de URLs e paridade funcional entre 
 - Troca da tipografia padrão do tema
 - Mudanças amplas de arquitetura além da migração
 
-## 1) Objetivo
+## Decisões aprovadas
 
-Migrar o blog para o tema Congo sem quebrar rotas atuais nem funcionalidades existentes, modernizando Home/About com personalizacao moderada e adicionando troca de idioma contextual dentro de cada post.
+- Tema alvo: **Congo** (submodulo git em `themes/congo`)
+- Estratégia: overrides moderados em `layouts/` sem fork do tema
+- Visual: paleta **Crimson Circuitry** (vermelho + cinza quente) via `assets/css/schemes/crimson.css`
+- Tipografia: manter padrão do Congo
+- Troca de idioma no artigo: automática via Hugo (`.IsTranslated` + `.Translations`)
+- Seletor global de idioma no header: mantido
+- URLs atuais: preservadas (sem alteração de slugs ou permalinks)
+- About: estruturado com base em informações públicas de LinkedIn e GitHub
+- Recursos a manter: busca, Giscus, tags/categorias, dark mode, RSS, sitemap e robots
+- `showComments = false` até `repoId`/`categoryId` do Giscus serem preenchidos pelo usuário
 
-## 2) Decisoes aprovadas
+## Critérios de aceitação
 
-1. Tema alvo: **Congo**
-2. Estrategia: **Opcao 2** (migracao com overrides moderados em `layouts/`)
-3. Visual: base **B1** (paleta Grafite + Ciano)
-4. Tipografia: manter tipografia padrao do Congo
-5. Troca de idioma no artigo: automatica via Hugo (`.IsTranslated` + `.Translations`)
-6. Seletor global de idioma no header: **mantido**
-7. URLs atuais: **preservadas**
-8. About: estruturado com base em informacoes publicas de LinkedIn e GitHub
-9. Recursos a manter: busca, Giscus, tags/categorias, dark mode, RSS, sitemap e robots
-
-## 3) Estado atual relevante
-
-- Tema atual: `PaperMod` em `hugo.toml`
-- Site bilingue ativo (`pt` padrao, `en` em `content/en`)
-- About atual simples em:
-  - `content/about/index.md`
-  - `content/en/about/index.md`
-- Giscus via `layouts/partials/comments.html`
-- Busca e i18n ativos no arranjo atual do PaperMod
-
-## 4) Arquitetura proposta
-
-### 4.1 Migracao do tema
-
-- Adicionar/ativar Congo no projeto e ajustar `hugo.toml` para parametros do novo tema.
-- Manter configuracoes base de multilingual, menus pt/en, taxonomias e outputs necessarios.
-- Atualizar configuracoes que hoje sao especificas do PaperMod para equivalentes do Congo.
-
-### 4.2 Preservacao de URLs
-
-- Nao alterar estrutura de content paths nem slugs existentes.
-- Evitar mudancas em permalink/sections que alterem rotas publicas.
-- Validar no build local se rotas antigas continuam resolvendo.
-
-### 4.3 Home e About (customizacao moderada)
-
-- Criar overrides pontuais de layout para:
-  - Home com estrutura B1: hero curto + destaque de conteudo + lista/grade de posts
-  - About com secoes estruturadas (bio, foco tecnico, experiencia/impacto, links)
-- Aplicar paleta Grafite + Ciano via CSS custom em `assets/` (sem fork completo do tema).
-
-### 4.4 Link de traducao dentro do artigo
-
-- No template single de post, renderizar bloco de linguagem quando houver traducao:
-  - condicao: `.IsTranslated`
-  - destino: item de `.Translations` correspondente ao outro idioma
-- Manter seletor global de idioma no header.
-- Para posts com slugs diferentes entre idiomas, usar `translationKey` para mapear pares.
-- Para posts novos, padrao recomendado: mesmo slug nos dois idiomas.
-
-### 4.5 Busca, comentarios e recursos globais
-
-- Busca: habilitar no Congo com pagina e output exigidos pelo tema/estrategia escolhida.
-- Comentarios: portar/ajustar partial de Giscus para continuar em paginas de post.
-- Manter tags/categorias, dark mode, RSS, sitemap e robots no comportamento esperado.
-
-## 5) Dados para pagina About
-
-- Fonte de verdade: informacoes publicas de LinkedIn e GitHub do autor.
-- Criar versoes PT e EN equivalentes em intencao e conteudo.
-- Nao incluir afirmacoes nao verificaveis.
-
-## 6) Tratamento de erros e fallback
-
-- Se post nao tiver traducao pareada, nao mostrar link PT/EN no artigo.
-- Se algum recurso do Congo nao tiver equivalencia direta, criar override local focado e documentado.
-- Se a migracao impactar rota existente, bloquear merge ate corrigir compatibilidade.
-
-## 7) Criterios de aceitacao
-
-1. Tema ativo passa a ser Congo sem quebrar build.
+1. Tema ativo é o Congo; build sem erros.
 2. URLs existentes continuam funcionando.
-3. Home e About refletem direcao visual B1 (Grafite + Ciano).
+3. Home e About refletem a paleta Crimson Circuitry em light e dark mode.
 4. About PT/EN estruturados e consistentes.
-5. Cada post com traducao exibe link para o idioma alternativo.
-6. Posts sem traducao nao exibem link de troca contextual.
+5. Cada post com tradução exibe link para o idioma alternativo.
+6. Posts sem tradução não exibem link de troca contextual.
 7. Seletor global de idioma no header continua ativo.
-8. Busca, Giscus, tags/categorias, dark mode, RSS, sitemap e robots continuam operacionais.
+8. Busca, tags/categorias, dark mode, RSS, sitemap e robots operacionais.
 
-## 8) Validacao
+## Riscos e mitigação
 
-- Build local de producao com Hugo extended sem erros.
-- Verificacao manual das principais rotas PT e EN, incluindo About/Home e post com traducao.
-- Verificacao funcional dos recursos obrigatorios mantidos.
-- Opcional apos implementacao: validacao automatizada com Playwright (mediante confirmacao do usuario).
+- **Risco:** atualização do Congo quebrar overrides locais em `layouts/`.
+  **Mitigação:** manter overrides focados e documentados; revisar ao atualizar o submodulo.
+- **Risco:** paleta com contraste insuficiente em dark mode.
+  **Mitigação:** Congo usa automaticamente `primary-300/400` (tons claros) no dark mode; verificar visualmente após implementação.
+- **Risco:** Giscus inativo enquanto IDs não forem preenchidos.
+  **Mitigação:** `showComments = false` como padrão explícito; não é bloqueante para o merge.
 
-## 10) Refinamentos pós-implementação
+## Artefatos previstos
 
-### 10.1 Responsividade mobile (fix/mobile-responsiveness)
+- `hugo.toml`
+- `assets/css/schemes/crimson.css`
+- `assets/css/custom.css`
+- `layouts/` (overrides de home, artigo e partials)
+- `content/about/index.md`
+- `content/en/about/index.md`
+- `static/` (favicons)
 
-**Problema:** Layout `basic` do header não colapsa em telas pequenas; cards de post usam `flex-row` fixo, ficando espremidos no mobile.
+## Validação
 
-**Solução aprovada:**
-- Mudar `layout = "basic"` para `layout = "hybrid"` no `hugo.toml`. O layout `hybrid` nativo do Congo exibe links horizontais no desktop e hamburger collapsible no mobile — sem necessidade de override manual.
-- `assets/css/custom.css`: adicionar CSS para altura da imagem dos cards no mobile.
-- `layouts/_partials/article-link.html`: mudar `flex-row` → `flex-col sm:flex-row` no `<article>` e ajustar classes de imagem para empilhar verticalmente no mobile.
+- Build de produção: `docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify`
+- Verificação manual das principais rotas PT e EN via `docker compose up` (`http://localhost:1313`)
+- Verificação visual de light e dark mode em home, about e post com tradução
+- Opcional: validação automatizada com Playwright (mediante confirmação do usuário)
 
-### 10.2 Favicon com logo (fix/favicon-logo)
-
-**Problema:** `static/` vazia; Congo usa favicon padrão (quadrado roxo/violeta).
-
-**Solução aprovada:**
-- Gerar `static/favicon.png` derivado de `assets/img/logo_blog.png` via ImageMagick (crop quadrado centralizado, 64×64px).
-- Congo detecta `static/favicon.png` automaticamente e injeta nos `<link rel="icon">`.
-- Nenhuma mudança em partials ou `hugo.toml`.
-
-## 11) Referência de tarefas
+## Referência de tarefas
 
 - Ver `specs/007-congo-migration/tasks.md`.
+
+---
+
+## Refinamentos pós-implementação
+
+### 10.1 — Responsividade mobile (fix/mobile-responsiveness) — CONCLUÍDO
+
+- Layout `hybrid` ativo no header (hamburger no mobile, links no desktop).
+- CSS mobile para altura dos cards de post em `assets/css/custom.css`.
+- PR #5 merged.
+
+### 10.2 — Favicon com logo (fix/favicon-logo) — CONCLUÍDO
+
+- Favicons gerados em `static/` a partir de `assets/img/logo_blog.png`.
+- Congo detecta automaticamente os arquivos.
+- PR merged.
+
+### 10.3 — Paleta Crimson Circuitry (style/crimson-palette) — CONCLUÍDO
+
+Substituição da paleta Grafite + Ciano pela Crimson Circuitry.
+
+- Renomear `assets/css/schemes/graphite.css` → `assets/css/schemes/crimson.css`
+- Atualizar `colorScheme = "crimson"` em `hugo.toml`
+- Escala **primary** (vermelhos): âncoras em `#ff6e61` (400), `#c93b3b` (600), `#8a0009` (800)
+- Escala **neutral** (cinza quente, base branca): branco em 50, Gallery `#f0f0f0` em ~200, Mine Shaft `#3b3b3b` em 700
+- Escala **secondary** (pedra quente): complemento terroso sem hue contrastante
+- Substituir 7 valores `rgba` hardcoded de ciano no `custom.css` por equivalentes crimson
+- Dark mode: Congo usa `primary-300/400` automaticamente em modo escuro — comportamento "lean lighter" sem override manual
+
+#### Escala Primary (vermelhos)
+
+| Step | Hex | RGB |
+|---|---|---|
+| 50 | #fff2f1 | 255, 242, 241 |
+| 100 | #ffe4e2 | 255, 228, 226 |
+| 200 | #ffc3be | 255, 195, 190 |
+| 300 | #ff9b91 | 255, 155, 145 |
+| 400 | #ff6e61 | 255, 110, 97 |
+| 500 | #e4544e | 228, 84, 78 |
+| 600 | #c93b3b | 201, 59, 59 |
+| 700 | #a91d22 | 169, 29, 34 |
+| 800 | #8a0009 | 138, 0, 9 |
+| 900 | #600006 | 96, 0, 6 |
+| 950 | #370004 | 55, 0, 4 |
+
+#### Escala Neutral (cinza quente, base branca)
+
+| Step | RGB |
+|---|---|
+| 50 | 255, 255, 255 |
+| 100 | 250, 250, 249 |
+| 200 | 240, 240, 238 |
+| 300 | 214, 212, 209 |
+| 400 | 168, 165, 161 |
+| 500 | 120, 117, 111 |
+| 600 | 83, 80, 80 |
+| 700 | 59, 59, 59 |
+| 800 | 38, 36, 36 |
+| 900 | 23, 21, 21 |
+| 950 | 13, 11, 11 |
+
+#### Escala Secondary (pedra quente)
+
+| Step | RGB |
+|---|---|
+| 50 | 250, 248, 245 |
+| 100 | 245, 241, 235 |
+| 200 | 232, 224, 213 |
+| 300 | 212, 200, 184 |
+| 400 | 184, 168, 152 |
+| 500 | 154, 136, 120 |
+| 600 | 125, 108, 92 |
+| 700 | 99, 84, 72 |
+| 800 | 71, 60, 52 |
+| 900 | 46, 39, 32 |
+| 950 | 26, 21, 16 |
