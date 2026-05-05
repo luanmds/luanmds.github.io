@@ -89,7 +89,7 @@ Core settings:
 - `languageCode = "pt-BR"` (default language)
 - `defaultContentLanguage = "pt"`
 - Menu configuration (Posts, Tags, Search, About, language/appearance switchers)
-- Giscus placeholders (waiting for user setup at [giscus.app](https://giscus.app))
+- **Giscus is currently disabled** — placeholder config (awaiting user setup at [giscus.app](https://giscus.app))
 
 ### 🎨 Theme Customizations
 
@@ -254,7 +254,7 @@ CodeRabbit automatically reviews pull requests. Config in `.coderabbit.yaml`.
 - **⭐ Hugo extended is mandatory** — Congo theme requires SCSS transpilation, which only works with extended version
 - **🔒 Docker user permissions** — Use `--user $(id -u):$(id -g)` flag or fix file ownership afterwards (Docker creates files as root by default)
 - **📦 Git submodules** — Update after clone: `git submodule update --init --recursive`
-- **💬 Giscus comments** — Currently disabled (placeholder config). To enable: go to [giscus.app](https://giscus.app), configure repo, and update `repoId` and `categoryId` in `hugo.toml`
+- **💬 Giscus comments — DISABLED FOR NOW** — Currently uses placeholder config. To enable in the future: go to [giscus.app](https://giscus.app), configure repo, and update `repoId` and `categoryId` in `hugo.toml`
 - **🔄 GitHub Actions** — Uses `peaceiris/actions-hugo@v3` with `extended: true` for CI/CD
 
 ---
