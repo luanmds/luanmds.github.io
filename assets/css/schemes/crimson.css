@@ -1,0 +1,43 @@
+/* Crimson Circuitry scheme */
+/* Paleta: Sangria #8a0009 | Gallery #f0f0f0 | Mine Shaft #3b3b3b | Flush Mahogany #c93b3b | Bittersweet #ff6e61 */
+:root {
+  --color-neutral: 255, 255, 255;
+  /* Neutral — cinza quente, base branca */
+  --color-neutral-50: 255, 255, 255;
+  --color-neutral-100: 250, 250, 249;
+  --color-neutral-200: 240, 240, 238;
+  --color-neutral-300: 214, 212, 209;
+  --color-neutral-400: 168, 165, 161;
+  --color-neutral-500: 120, 117, 111;
+  --color-neutral-600: 83, 80, 80;
+  --color-neutral-700: 59, 59, 59;
+  --color-neutral-800: 38, 36, 36;
+  --color-neutral-900: 23, 21, 21;
+  --color-neutral-950: 13, 11, 11;
+
+  /* Primary — vermelhos (âncoras: 400=#ff6e61, 600=#c93b3b, 800=#8a0009) */
+  --color-primary-50: 255, 242, 241;
+  --color-primary-100: 255, 228, 226;
+  --color-primary-200: 255, 195, 190;
+  --color-primary-300: 255, 155, 145;
+  --color-primary-400: 255, 110, 97;
+  --color-primary-500: 228, 84, 78;
+  --color-primary-600: 201, 59, 59;
+  --color-primary-700: 169, 29, 34;
+  --color-primary-800: 138, 0, 9;
+  --color-primary-900: 96, 0, 6;
+  --color-primary-950: 55, 0, 4;
+
+  /* Secondary — pedra quente (complemento terroso) */
+  --color-secondary-50: 250, 248, 245;
+  --color-secondary-100: 245, 241, 235;
+  --color-secondary-200: 232, 224, 213;
+  --color-secondary-300: 212, 200, 184;
+  --color-secondary-400: 184, 168, 152;
+  --color-secondary-500: 154, 136, 120;
+  --color-secondary-600: 125, 108, 92;
+  --color-secondary-700: 99, 84, 72;
+  --color-secondary-800: 71, 60, 52;
+  --color-secondary-900: 46, 39, 32;
+  --color-secondary-950: 26, 21, 16;
+}

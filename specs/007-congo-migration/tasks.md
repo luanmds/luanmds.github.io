@@ -1,64 +1,72 @@
-- [ ] Create branch `style/congo-migration-home-about` from `main`
-- [ ] Add `.superpowers/` to `.gitignore` to avoid committing brainstorming artifacts
+## Migração do tema — CONCLUÍDO
 
-## Theme migration
+- [x] Adicionar tema Congo como submódulo git em `themes/congo` e atualizar `.gitmodules`
+- [x] Alterar `theme` no `hugo.toml` de `PaperMod` para `congo`
+- [x] Remover ou desativar parâmetros exclusivos do PaperMod no `hugo.toml`
+- [x] Adicionar parâmetros compatíveis com Congo para aparência, busca, metadados de artigo, comentários e comportamento da homepage
 
-- [ ] Add Congo theme as git submodule at `themes/congo` and update `.gitmodules`
-- [ ] Switch `theme` in `hugo.toml` from `PaperMod` to `congo`
-- [ ] Remove or disable PaperMod-only params from `hugo.toml`
-- [ ] Add Congo-compatible params for appearance, search, article metadata, comments, and homepage behavior
+## Multilinguismo e estabilidade de URLs — CONCLUÍDO
 
-## Multilingual and URL stability
+- [x] Manter estrutura bilíngue (`content/` e `content/en/`) e preservar links de menu em PT/EN
+- [x] Manter rotas e slugs atuais sem adicionar mudanças de permalink que alterem URLs
+- [x] Validar URLs representativas em PT e EN após a migração (home, about, posts, tags, busca)
 
-- [ ] Keep current bilingual structure (`content/` and `content/en/`) and preserve menu links in PT/EN
-- [ ] Keep current routes and slugs unchanged; do not add permalink changes that alter URLs
-- [ ] Validate representative URLs in PT and EN after migration (home, about, posts, tags, search)
+## Customização de Home + About — CONCLUÍDO (paleta atualizada no 10.3)
 
-## Home + About customization (B1 / Grafite + Ciano)
+- [x] Criar arquivo CSS de override em `assets/` com tokens da paleta
+- [x] Adicionar overrides moderados de layout em `layouts/` para home (hero curto + destaque + recentes)
+- [x] Reescrever `content/about/index.md` com seções estruturadas em PT baseadas em dados públicos de LinkedIn/GitHub
+- [x] Reescrever `content/en/about/index.md` com seções equivalentes em EN
 
-- [ ] Create CSS override file in `assets/` with B1 palette tokens (grafite + ciano)
-- [ ] Add moderate layout overrides in `layouts/` for home (hero curto + destaque + recentes)
-- [ ] Rewrite `content/about/index.md` with structured PT sections based on public LinkedIn/GitHub data
-- [ ] Rewrite `content/en/about/index.md` with equivalent structured EN sections
+## Seletor de idioma no artigo — CONCLUÍDO
 
-## In-article language switch
+- [x] Verificar presença do bloco `.IsTranslated` + `.Translations` no layout de artigo individual
+- [x] Manter seletor global de idioma no header ativo (verificar funcionamento)
+- [x] Adicionar `translationKey` nos pares PT/EN existentes com slugs diferentes (verificar pares existentes)
+- [x] Garantir que posts sem tradução não renderizem o bloco de troca de idioma
 
-- [ ] Add a post-level language switch block in single-article layout using `.IsTranslated` + `.Translations`
-- [ ] Keep global language selector in header active
-- [ ] Add `translationKey` for existing PT/EN post pairs with different slugs
-- [ ] Ensure posts without translation do not render the in-article switch block
+## Verificação de paridade de recursos — CONCLUÍDO
 
-## Feature parity checks
+- [x] Verificar se as páginas de busca (`content/search/index.md`, `content/en/search/index.md`) existem e funcionam
+- [x] Verificar se o partial do Giscus em `layouts/partials/comments.html` renderiza quando `showComments` está habilitado
+- [x] Verificar se as listagens de tags/categorias funcionam em PT e EN
+- [x] Verificar se o toggle de dark mode funciona no novo tema
+- [x] Verificar se RSS, sitemap e robots.txt são gerados no build
 
-- [ ] Ensure Congo search is active and search pages (`content/search/index.md`, `content/en/search/index.md`) still work
-- [ ] Ensure Giscus partial at `layouts/partials/comments.html` still renders when `showComments`/equivalent is enabled
-- [ ] Ensure tags/categories listings still work in PT and EN
-- [ ] Ensure dark mode toggle still works in the new theme
-- [ ] Ensure RSS, sitemap, and robots.txt are still generated
+## Refinamento 10.1 — Responsividade mobile — CONCLUÍDO
 
-## Validation and docs
+- [x] Criar branch `fix/mobile-responsiveness` a partir de `main`
+- [x] Alterar `[params.header] layout` de `basic` para `hybrid` no `hugo.toml`
+- [x] Adicionar CSS em `assets/css/custom.css` para limitar altura da imagem nos cards de post no mobile
+- [x] Alterar `layouts/_partials/article-link.html`: `flex-row` → `flex-col sm:flex-row` no elemento `<article>`
+- [x] Ajustar classes de imagem em `article-link.html` para largura total quando empilhadas verticalmente no mobile
+- [x] Executar build de produção e verificar ausência de erros
+- [x] Fazer commit e abrir PR — https://github.com/luanmds/luanmds.github.io/pull/5
 
-- [ ] Run production build: `docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify`
-- [ ] Manually verify key pages locally via `docker compose up` (`http://localhost:1313`)
-- [ ] Ask user: "Would you like to validate the implementation with automated browser tests using the Playwright skill?"
-- [ ] If approved, run Playwright validation and fix issues before completion
-- [ ] Update `AGENTS.md` if the migration changes architecture, structure, or operating conventions
+## Refinamento 10.2 — Favicon com logo — CONCLUÍDO
 
-## Refinamento 10.1 — Mobile Responsiveness (branch: fix/mobile-responsiveness)
+- [x] Criar branch `fix/favicon-logo` a partir de `main`
+- [x] Gerar `static/favicon-32x32.png`, `static/favicon-16x16.png` e `static/apple-touch-icon.png`
+- [x] Verificar se o Congo detecta os arquivos automaticamente
+- [x] Executar build de produção e verificar ausência de erros
+- [x] Fazer commit e abrir PR
 
-- [x] Create branch `fix/mobile-responsiveness` from `main`
-- [x] Switch `[params.header] layout` from `basic` to `hybrid` in `hugo.toml` (native Congo layout: hamburger on mobile, links on desktop — no override needed)
-- [x] Add CSS in `assets/css/custom.css` for mobile image height constraint on post cards
-- [x] Change `layouts/_partials/article-link.html`: `flex-row` → `flex-col sm:flex-row` on the `<article>` element
-- [x] Adjust image CSS classes in `article-link.html` to be full-width when stacked vertically on mobile
-- [x] Run production build and verify no errors
-- [x] Ask user about Playwright validation before committing
-- [x] Commit and open PR — https://github.com/luanmds/luanmds.github.io/pull/5
+## Refinamento 10.3 — Paleta Crimson Circuitry (branch: style/crimson-palette)
 
-## Refinamento 10.2 — Favicon com logo (branch: fix/favicon-logo)
+- [ ] Criar branch `style/crimson-palette` a partir de `main`
+- [ ] Renomear `assets/css/schemes/graphite.css` → `assets/css/schemes/crimson.css`
+- [ ] Atualizar `colorScheme = "crimson"` no `hugo.toml`
+- [ ] Escrever escala primary (vermelhos: 50–950) em `crimson.css`
+- [ ] Escrever escala neutral (base branca, cinza quente, Mine Shaft em 700) em `crimson.css`
+- [ ] Escrever escala secondary (pedra quente: 50–950) em `crimson.css`
+- [ ] Substituir 7 valores `rgba` hardcoded de ciano em `assets/css/custom.css` por equivalentes crimson
+- [ ] Executar build de produção: `docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify`
+- [ ] Verificar manualmente light e dark mode em home, about e um artigo via `docker compose up`
+- [ ] Perguntar ao usuário: "Deseja validar com Playwright?"
+- [ ] Se aprovado, executar validação com Playwright e corrigir problemas encontrados
+- [ ] Fazer commit e abrir PR
 
-- [x] Create branch `fix/favicon-logo` from `main`
-- [x] Generate `static/favicon-32x32.png` (32×32), `static/favicon-16x16.png` (16×16) and `static/apple-touch-icon.png` (180×180) from `assets/img/logo_blog.png` via center-crop + Pillow resize
-- [x] Verify Congo picks up the files (`head.html` uses `favicon-32x32.png` and `favicon-16x16.png` from `static/` by default)
-- [x] Run production build and verify no errors
-- [x] Commit and open PR
+## Validação e documentação
+
+- [ ] Atualizar `AGENTS.md` se houver mudanças arquiteturais
+- [ ] Marcar spec 007 como `concluído` após todas as tarefas finalizadas
