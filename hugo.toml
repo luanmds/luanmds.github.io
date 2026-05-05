@@ -1,5 +1,5 @@
 baseURL = "https://luanmds.github.io/"
-title = "luanmds.com"
+title = "LuanMDS"
 theme = "congo"
 
 enableRobotsTXT = true
@@ -164,6 +164,14 @@ summaryLength = 0
         pageRef = "about"
         weight = 40
       [[languages.pt.menus.main]]
+        identifier = "github"
+        url = "https://github.com/luanmds"
+        weight = 45
+        [languages.pt.menus.main.params]
+          icon = "github"
+          showName = false
+          target = "_blank"
+      [[languages.pt.menus.main]]
         identifier = "locale"
         weight = 50
         [languages.pt.menus.main.params]
@@ -212,6 +220,14 @@ summaryLength = 0
         name = "About"
         pageRef = "about"
         weight = 40
+      [[languages.en.menus.main]]
+        identifier = "github"
+        url = "https://github.com/luanmds"
+        weight = 45
+        [languages.en.menus.main.params]
+          icon = "github"
+          showName = false
+          target = "_blank"
       [[languages.en.menus.main]]
         identifier = "locale"
         weight = 50

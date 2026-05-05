@@ -29,6 +29,7 @@ Hosted for free on GitHub Pages at `https://luanmds.github.io/`.
 
 - When update specs ALWAYS update the `tasks.md` in it.
 - Check with all tasks from a specific spec are done. Else, ask the user if he wants to implement or to remove them. 
+- Use `specs/000-template/spec.md` + `specs/000-template/tasks.md` as the official template for all new specs.
 
 ### Implement phase — Testing with Playwright
 
@@ -55,6 +56,8 @@ All specs are in `specs/` folder. Verify them when necessary.
 | 004  | Features (search/tags/etc.) | ✅ done   |
 | 005  | Deploy GitHub Pages         | ✅ done   |
 | 006  | CodeRabbit Configuration    | ✅ done   |
+| 007  | Congo Migration             | 🟡 proposed |
+| 008  | Spec Template + Branding    | ✅ done |
 
 ---
 

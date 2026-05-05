@@ -1,41 +1,46 @@
 # Spec 002 — Configuração Multilíngue
 
-**Status:** ✅ done  
+**Status:** done  
+**Data:** 2026-05-04 (padronização)  
 **Objetivo:** Configurar suporte bilíngue pt (padrão) + en com seletor de idioma.
 
 ## Contexto
 
-O blog é bilíngue. O idioma padrão é **Português (pt)**, acessível na raiz `/`.
-O inglês fica em `/en/` com seu próprio `contentDir` (`content/en/`).
+O blog é bilíngue. O idioma padrão é **Português (pt)** na raiz `/`, e o inglês é servido em `/en/`.
 
-## Decisões
+## Escopo
 
-- **Idioma padrão:** `pt` na raiz `/` (sem subdiretório)
-- **Inglês:** `/en/` com `contentDir = "content/en"`
-- **Seletor de idioma:** nativo do PaperMod (aparece no header automaticamente)
-- **i18n:** arquivos `i18n/pt.yaml` e `i18n/en.yaml` com strings de UI
+1. Configurar idiomas no `hugo.toml`.
+2. Separar conteúdo PT e EN mantendo URLs previsíveis.
+3. Garantir menus e i18n para os dois idiomas.
 
-## Estrutura de URLs
+## Fora de escopo
 
-| Conteúdo | URL pt | URL en |
-|----------|--------|--------|
-| Home | `/` | `/en/` |
-| Posts | `/posts/` | `/en/posts/` |
-| Tags | `/tags/` | `/en/tags/` |
-| Busca | `/search/` | `/en/search/` |
-| Sobre | `/about/` | `/en/about/` |
+- Tradução completa de todos os artigos existentes.
+- Alterações visuais profundas de tema.
 
-## Artefatos produzidos
+## Decisões aprovadas
 
-| Arquivo | Descrição |
-|---------|-----------|
-| `hugo.toml` (bloco `[languages]`) | Configuração pt e en |
-| `i18n/pt.yaml` | Strings de UI em português |
-| `i18n/en.yaml` | Strings de UI em inglês |
+- Idioma padrão em `pt` na raiz `/`.
+- Inglês em `/en/` com conteúdo em `content/en/`.
+- Uso de arquivos `i18n/pt.yaml` e `i18n/en.yaml` para strings de interface.
 
-## Tasks concluídas
+## Critérios de aceitação
 
-- [x] Bloco `[languages.pt]` e `[languages.en]` no `hugo.toml`
-- [x] `i18n/pt.yaml` e `i18n/en.yaml` criados
-- [x] Menus separados por idioma configurados no `hugo.toml`
-- [x] Build gera páginas PT e EN corretamente
+1. Páginas PT e EN geradas corretamente.
+2. Rotas de home, posts, busca e about funcionando em ambos idiomas.
+3. Menus por idioma configurados sem conflitos.
+
+## Artefatos previstos
+
+- `hugo.toml` (bloco `[languages]`)
+- `i18n/pt.yaml`
+- `i18n/en.yaml`
+
+## Validação
+
+- Build local confirmando geração bilíngue.
+
+## Referência de tarefas
+
+- Ver `specs/002-multilingual/tasks.md`.

@@ -2,7 +2,24 @@
 
 **Status:** proposed  
 **Data:** 2026-04-22  
-**Escopo:** migrar tema PaperMod -> Congo, preservar URLs atuais, manter recursos existentes, personalizar Home/About (direcao B1: Grafite + Ciano), e adicionar link de traducao dentro do artigo.
+**Objetivo:** Migrar tema PaperMod -> Congo, preservar URLs atuais, manter recursos existentes, personalizar Home/About (direcao B1: Grafite + Ciano), e adicionar link de traducao dentro do artigo.
+
+## Contexto
+
+Spec de migração de tema com preservação de URLs e paridade funcional entre PT/EN.
+
+## Escopo
+
+- Migração PaperMod -> Congo
+- Preservação de rotas existentes
+- Ajustes de Home/About
+- Link contextual PT/EN dentro de artigos traduzidos
+
+## Fora de escopo
+
+- Fork profundo do Congo
+- Troca da tipografia padrão do tema
+- Mudanças amplas de arquitetura além da migração
 
 ## 1) Objetivo
 
@@ -96,14 +113,6 @@ Migrar o blog para o tema Congo sem quebrar rotas atuais nem funcionalidades exi
 - Verificacao funcional dos recursos obrigatorios mantidos.
 - Opcional apos implementacao: validacao automatizada com Playwright (mediante confirmacao do usuario).
 
-## 9) Fora de escopo
-
-- Fork profundo do Congo.
-- Troca de tipografia padrao do tema.
-- Mudancas amplas de arquitetura de conteudo alem do necessario para traducao pareada.
-
----
-
 ## 10) Refinamentos pós-implementação
 
 ### 10.1 Responsividade mobile (fix/mobile-responsiveness)
@@ -123,3 +132,7 @@ Migrar o blog para o tema Congo sem quebrar rotas atuais nem funcionalidades exi
 - Gerar `static/favicon.png` derivado de `assets/img/logo_blog.png` via ImageMagick (crop quadrado centralizado, 64×64px).
 - Congo detecta `static/favicon.png` automaticamente e injeta nos `<link rel="icon">`.
 - Nenhuma mudança em partials ou `hugo.toml`.
+
+## 11) Referência de tarefas
+
+- Ver `specs/007-congo-migration/tasks.md`.

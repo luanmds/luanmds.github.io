@@ -1,0 +1,5 @@
+- [x] Disponibilizar Hugo extended via Docker (`hugomods/hugo:exts`)
+- [x] Inicializar o site com `hugo new site . --force`
+- [x] Adicionar PaperMod como submodule em `themes/PaperMod`
+- [x] Criar configuração base em `hugo.toml`
+- [x] Validar build com `hugo --minify`
