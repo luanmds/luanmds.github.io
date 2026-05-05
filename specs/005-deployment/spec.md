@@ -1,45 +1,46 @@
 # Spec 005 — Deploy GitHub Pages
 
-**Status:** ✅ done  
-**Objetivo:** Build e deploy automático no GitHub Pages via GitHub Actions.
+**Status:** done  
+**Data:** 2026-05-04 (padronização)  
+**Objetivo:** Automatizar build e deploy no GitHub Pages via GitHub Actions.
 
 ## Contexto
 
-O repositório `luanmds/luanmds.github.io` usa GitHub Pages com deploy via **GitHub Actions** (não o modo classic com branch `gh-pages`). Isso dá controle total sobre o processo de build.
+O repositório publica o blog no GitHub Pages usando pipeline de CI/CD em vez do modo clássico com branch dedicada.
 
-## Workflow: `.github/workflows/deploy.yml`
+## Escopo
 
-```
-push → main
-  └── job: build
-        ├── checkout (com --recurse-submodules para PaperMod)
-        ├── peaceiris/actions-hugo@v3 (extended: true)
-        ├── hugo --minify
-        └── upload artifact (./public)
-  └── job: deploy
-        └── actions/deploy-pages@v4
-```
+1. Criar workflow de build com Hugo extended.
+2. Publicar artefato no GitHub Pages.
+3. Garantir paridade de versão do Hugo entre local e CI.
 
-## Ativação no GitHub
+## Fora de escopo
 
-Para ativar o deploy:
-1. Vá em **Settings → Pages** do repositório
-2. Em **Source**, selecione **GitHub Actions**
-3. Faça push para `main` — o workflow dispara automaticamente
+- Provisionamento de infraestrutura fora do GitHub.
+- Estratégias multi-ambiente (staging/prod).
 
-## Versão do Hugo no CI
+## Decisões aprovadas
 
-O workflow usa `HUGO_VERSION: 0.154.5` (mesma versão do Docker local) para garantir paridade entre dev e produção.
+- Deploy via GitHub Actions.
+- Uso de `peaceiris/actions-hugo@v3` com `extended: true`.
+- Publicação com `actions/deploy-pages@v4`.
 
-## Artefatos produzidos
+## Critérios de aceitação
 
-| Arquivo | Descrição |
-|---------|-----------|
-| `.github/workflows/deploy.yml` | Workflow de build e deploy |
+1. Workflow `deploy.yml` executa em push para `main`.
+2. Build Hugo finaliza sem erro.
+3. Artefato é publicado no GitHub Pages.
 
-## Tasks concluídas
+## Artefatos previstos
 
-- [x] `.github/workflows/deploy.yml` criado com Hugo extended + Pages deploy
-- [x] `baseURL = "https://luanmds.github.io/"` configurado no `hugo.toml`
-- [x] Build `hugo --minify` local validado sem erros (31 pt + 20 en páginas)
-- [ ] Verificar site ao vivo após primeiro push (pendente: requer push para main)
+- `.github/workflows/deploy.yml`
+- `hugo.toml` (baseURL e parâmetros de publicação)
+
+## Validação
+
+- Build local de produção sem erros.
+- Verificação do site publicado após push para `main`.
+
+## Referência de tarefas
+
+- Ver `specs/005-deployment/tasks.md`.

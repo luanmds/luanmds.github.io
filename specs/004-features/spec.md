@@ -1,47 +1,54 @@
-# Spec 004 — Features: Busca, Tags, Giscus
+# Spec 004 — Features: Busca, Taxonomias e Giscus
 
-**Status:** ✅ done  
-**Objetivo:** Ativar busca Fuse.js, taxonomia de categorias, comentários Giscus, sitemap e robots.txt.
+**Status:** done  
+**Data:** 2026-05-04 (padronização)  
+**Objetivo:** Ativar busca, taxonomias úteis, comentários Giscus e metadados de publicação (sitemap/robots).
 
-## Busca (Fuse.js)
+## Contexto
 
-PaperMod integra busca client-side via [Fuse.js](https://fusejs.io/). Requer:
-1. Output `JSON` na home (`outputs = ["HTML", "RSS", "JSON"]` no `hugo.toml`)
-2. Página `content/search/index.md` com `layout: search`
+O blog precisava de recursos editoriais além da renderização básica: busca client-side, organização por taxonomias e comentários por post.
 
-A busca filtra por título, categorias e sumário dos artigos.
+## Escopo
 
-## Giscus (Comentários)
+1. Habilitar busca no site em PT e EN.
+2. Configurar taxonomias no Hugo.
+3. Integrar comentários com Giscus.
+4. Garantir geração de `robots.txt` e `sitemap.xml`.
 
-Sistema de comentários baseado em **GitHub Discussions** — gratuito e open source.
+## Fora de escopo
 
-**Configuração necessária pelo usuário:**
-1. Acesse [giscus.app](https://giscus.app)
-2. Configure o repositório `luanmds/luanmds.github.io`
-3. Copie `repoId` e `categoryId`
-4. Preencha em `hugo.toml` nos campos `params.giscus.repoId` e `params.giscus.categoryId`
+- Moderação automática de comentários.
+- Busca semântica com backend dedicado.
 
-## Sitemap e Robots.txt
+## Decisões aprovadas
 
-Gerados automaticamente pelo Hugo com `enableRobotsTXT = true`.
+- Busca baseada em output JSON da home + páginas `search` por idioma.
+- Giscus como mecanismo de comentários por ser gratuito e integrado ao GitHub.
+- Refinamento posterior removeu `tags` da navegação e da taxonomia ativa.
 
-## Artefatos produzidos
+## Critérios de aceitação
 
-| Arquivo | Descrição |
-|---------|-----------|
-| `hugo.toml` (outputs, taxonomies) | Configuração de busca e taxonomias |
-| `content/search/index.md` | Página de busca pt (layout: search) |
-| `content/en/search/index.md` | Página de busca en (layout: search) |
-| `layouts/partials/comments.html` | Embed Giscus configurável via hugo.toml |
+1. Busca funcional em PT e EN.
+2. Comentários renderizados quando configuração do Giscus estiver completa.
+3. Taxonomias configuradas sem gerar páginas não desejadas (`/tags/` removida).
+4. Build gera `robots.txt` e `sitemap.xml`.
 
----
+## Riscos e mitigação
 
-## Refinamento — Remover página de Tags (branch: fix/remove-tags)
+- **Risco:** IDs do Giscus ausentes no `hugo.toml`.  
+  **Mitigação:** orientar preenchimento via `giscus.app`.
 
-**Decisão:** Tags não serão utilizadas no blog. A página `/tags/` e os itens de menu de Tags devem ser removidos.
+## Artefatos previstos
 
-**Solução aprovada:**
-- `hugo.toml`: remover `[[languages.pt.menus.main]]` com `identifier = "tags"`.
-- `hugo.toml`: remover `[[languages.en.menus.main]]` com `identifier = "tags"`.
-- `hugo.toml`: remover `tag = "tags"` da seção `[taxonomies]` para impedir geração de páginas `/tags/`.
-- Posts com `tags:` no front matter não causam erro — Hugo ignora taxonomias não configuradas.
+- `hugo.toml`
+- `content/search/index.md`
+- `content/en/search/index.md`
+- `layouts/partials/comments.html`
+
+## Validação
+
+- Build local e inspeção das páginas de busca/comentários.
+
+## Referência de tarefas
+
+- Ver `specs/004-features/tasks.md`.

@@ -27,6 +27,11 @@
     class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
     rel="me"
     href="{{ "" | relLangURL }}"
-    >{{ .Site.Title | markdownify | emojify }}</a
   >
+    <span class="font-semibold tracking-tight">
+      <span class="text-primary-600 dark:text-primary-400">&lt;</span>
+      <span class="px-1 text-neutral-900 dark:text-neutral-100">LuanMDS</span>
+      <span class="text-primary-600 dark:text-primary-400">/&gt;</span>
+    </span>
+  </a>
 {{- end }}

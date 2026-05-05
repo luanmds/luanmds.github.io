@@ -1,0 +1,4 @@
+- [x] Criar archetypes de post em PT e EN (`archetypes/post/`)
+- [x] Criar páginas `about` e `search` para PT e EN
+- [x] Criar posts de exemplo bilíngues com imagens co-localizadas
+- [x] Validar build com renderização de imagens dos bundles

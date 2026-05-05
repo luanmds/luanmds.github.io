@@ -1,57 +1,49 @@
 # Spec 003 — Estrutura de Conteúdo
 
-**Status:** ✅ done  
+**Status:** done  
+**Data:** 2026-05-04 (padronização)  
 **Objetivo:** Definir Page Bundles, archetypes e criar posts de exemplo com imagens.
 
 ## Contexto
 
-Todo conteúdo segue o padrão **Page Bundle (Leaf Bundle)**: cada post é uma pasta com `index.md` e seus recursos (imagens) co-localizados. Isso simplifica a gestão de assets por artigo.
+O conteúdo do blog segue padrão de **Page Bundle (Leaf Bundle)**, com cada post em pasta própria contendo `index.md` e assets co-localizados.
 
-## Padrão de Diretórios
+## Escopo
 
-```
-content/posts/<slug>/
-├── index.md       # Conteúdo pt
-└── cover.png      # Imagem co-localizada
+1. Definir padrão de diretórios para posts PT e EN.
+2. Criar archetypes para acelerar produção de conteúdo.
+3. Estruturar páginas institucionais mínimas em dois idiomas.
 
-content/en/posts/<slug>/
-├── index.md       # Conteúdo en
-└── cover.png
-```
+## Fora de escopo
 
-## Front Matter Padrão
+- Migração de acervo legado externo.
+- Otimização avançada de mídia.
 
-```yaml
----
-title: "Título"
-date: YYYY-MM-DD
-draft: false
-tags: ["tag1"]
-categories: ["categoria"]
-summary: "Resumo"
-cover:
-  image: cover.png
-  alt: "Descrição"
-  relative: true   # obrigatório para Page Bundles
----
-```
+## Decisões aprovadas
 
-## Artefatos produzidos
+- Estrutura por bundle (`content/posts/<slug>/index.md` + mídia local).
+- Front matter padronizado para metadados editoriais.
+- Manutenção de equivalência entre conteúdo PT e EN.
 
-| Arquivo | Descrição |
-|---------|-----------|
-| `archetypes/post/index.md` | Template pt para novos posts |
-| `archetypes/post/index.en.md` | Template en para novos posts |
-| `content/about/index.md` | Página Sobre (pt) |
-| `content/en/about/index.md` | Página About (en) |
-| `content/search/index.md` | Página de busca (pt) |
-| `content/en/search/index.md` | Página de busca (en) |
-| `content/posts/bem-vindo-ao-blog/` | Post de exemplo (pt) com cover.png |
-| `content/en/posts/welcome-to-the-blog/` | Post de exemplo (en) com cover.png |
+## Critérios de aceitação
 
-## Tasks concluídas
+1. Archetypes de post disponíveis para PT e EN.
+2. Páginas base (`about`, `search`) criadas em ambos idiomas.
+3. Posts de exemplo com imagens renderizando corretamente no build.
 
-- [x] Archetype `archetypes/post/` criado (pt + en templates)
-- [x] Páginas `about` e `search` em ambos idiomas
-- [x] 2 posts de exemplo com imagens co-localizadas
-- [x] Build valida imagens processadas corretamente
+## Artefatos previstos
+
+- `archetypes/post/index.md`
+- `archetypes/post/index.en.md`
+- `content/about/index.md`
+- `content/en/about/index.md`
+- `content/search/index.md`
+- `content/en/search/index.md`
+
+## Validação
+
+- Build local com processamento correto de imagens dos bundles.
+
+## Referência de tarefas
+
+- Ver `specs/003-content-structure/tasks.md`.
