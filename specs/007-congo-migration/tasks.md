@@ -11,7 +11,7 @@
 - [x] Manter rotas e slugs atuais sem adicionar mudanças de permalink que alterem URLs
 - [x] Validar URLs representativas em PT e EN após a migração (home, about, posts, tags, busca)
 
-## Customização de Home + About — CONCLUÍDO (paleta atualizada no 10.3)
+## Customização de Home + About — CONCLUÍDO
 
 - [x] Criar arquivo CSS de override em `assets/` com tokens da paleta
 - [x] Adicionar overrides moderados de layout em `layouts/` para home (hero curto + destaque + recentes)
@@ -51,22 +51,24 @@
 - [x] Executar build de produção e verificar ausência de erros
 - [x] Fazer commit e abrir PR
 
-## Refinamento 10.3 — Paleta Crimson Circuitry (branch: style/crimson-palette)
+## Refinamento 10.3 — Paleta Crimson Circuitry — CONCLUÍDO
 
-- [ ] Criar branch `style/crimson-palette` a partir de `main`
-- [ ] Renomear `assets/css/schemes/graphite.css` → `assets/css/schemes/crimson.css`
-- [ ] Atualizar `colorScheme = "crimson"` no `hugo.toml`
-- [ ] Escrever escala primary (vermelhos: 50–950) em `crimson.css`
-- [ ] Escrever escala neutral (base branca, cinza quente, Mine Shaft em 700) em `crimson.css`
-- [ ] Escrever escala secondary (pedra quente: 50–950) em `crimson.css`
-- [ ] Substituir 7 valores `rgba` hardcoded de ciano em `assets/css/custom.css` por equivalentes crimson
-- [ ] Executar build de produção: `docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify`
-- [ ] Verificar manualmente light e dark mode em home, about e um artigo via `docker compose up`
-- [ ] Perguntar ao usuário: "Deseja validar com Playwright?"
-- [ ] Se aprovado, executar validação com Playwright e corrigir problemas encontrados
-- [ ] Fazer commit e abrir PR
+- [x] Criar branch `style/crimson-palette` a partir de `main`
+- [x] Renomear `assets/css/schemes/graphite.css` → `assets/css/schemes/crimson.css`
+- [x] Atualizar `colorScheme = "crimson"` no `hugo.toml`
+- [x] Escrever escala primary (vermelhos: 50–950) em `crimson.css`
+- [x] Escrever escala neutral (base branca, cinza quente, Mine Shaft em 700) em `crimson.css`
+- [x] Escrever escala secondary (pedra quente: 50–950) em `crimson.css`
+- [x] Substituir 7 valores `rgba` hardcoded de ciano em `assets/css/custom.css` por equivalentes crimson
+- [x] Recolorir `assets/img/logo_blog.png` para mahogany `#c93b3b` (primary-600) — light mode
+- [x] Recolorir `assets/img/logo_blog_dark.png` para coral `#ff6e61` (primary-400) — dark mode
+- [x] Regenerar favicons (`favicon-32x32.png`, `favicon-16x16.png`, `apple-touch-icon.png`) a partir do logo atualizado
+- [x] Executar build de produção: `docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify`
+- [x] Verificar manualmente light e dark mode em home, about e um artigo via `docker compose up`
+- [x] Validação com Playwright: não aplicável (dispensada pelo usuário)
+- [x] Fazer commit e abrir PR — https://github.com/luanmds/luanmds.github.io/pull/11
 
-## Validação e documentação
+## Validação e documentação — CONCLUÍDO
 
-- [ ] Atualizar `AGENTS.md` se houver mudanças arquiteturais
-- [ ] Marcar spec 007 como `concluído` após todas as tarefas finalizadas
+- [x] Atualizar `AGENTS.md` com status da spec 007 como concluído
+- [x] Marcar spec 007 como `concluído`

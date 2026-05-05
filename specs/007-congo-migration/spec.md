@@ -1,6 +1,6 @@
 # Spec 007 — Migração para Congo + About estruturado + link PT/EN no artigo
 
-**Status:** em andamento
+**Status:** concluído
 **Data:** 2026-04-22
 **Atualização:** 2026-05-05
 **Objetivo:** Migrar o tema PaperMod para Congo, preservar URLs atuais, manter recursos existentes, personalizar Home/About com a paleta Crimson Circuitry e adicionar link de tradução contextual dentro dos artigos.
@@ -92,7 +92,7 @@ O blog utilizava o tema PaperMod. A migração para o Congo moderniza o visual e
 - Congo detecta automaticamente os arquivos.
 - PR merged.
 
-### 10.3 — Paleta Crimson Circuitry (style/crimson-palette)
+### 10.3 — Paleta Crimson Circuitry (style/crimson-palette) — CONCLUÍDO
 
 Substituição da paleta Grafite + Ciano pela Crimson Circuitry.
 
