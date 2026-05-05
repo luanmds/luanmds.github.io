@@ -10,24 +10,23 @@ showBreadcrumbs: false
 showAuthor: false
 ---
 
-Sou **Luan Mello**, engenheiro de software back-end no Rio de Janeiro.
+<img src="/img/profile/luanmds-profile.jpg" alt="Foto de perfil de Luan Mello" style="width: 200px; height: 200px; border-radius: 9999px; object-fit: cover; margin: 0 auto;" />
 
-Atuo principalmente com **.NET e C#**, construindo APIs e sistemas distribuídos voltados para confiabilidade, desempenho e manutenção de longo prazo.
+Sou Engenheiro de Software baseado no Rio de Janeiro, com foco em Sistemas Distribuídos e Arquitetura de Backend. Com passagens por empresas como Stone, Saphira e BTG Pactual, especializei-me na construção de microsserviços de alta escala e fluxos de dados resilientes utilizando tecnologias como .NET, Kafka, Azure/AWS, entre outras.
 
-## Foco técnico
+## Tech Stack & Expertise
+- .NET & C#: Desenvolvimento de serviços de missão crítica.
+- Arquitetura: Event-Driven, CQRS, Event Sourcing e Modelagem C4/UML.
+- Infraestrutura: Cloud (Azure/AWS), Docker e mensageria com Kafka.
+- Qualidade: Clean Code, testes automatizados e práticas de engenharia moderna.
 
-- Arquitetura de backend para produtos e plataformas
-- Microsserviços, mensageria e integração orientada a eventos
-- Qualidade de código, testes e boas práticas de engenharia
-- IA aplicada ao workflow de desenvolvimento
+Escrevo para documentar meus estudos compartilhando conhecimentos aplicados no dia a dia e ajudando outras pessoas a tomar melhores decisões de engenharia.
 
-## Experiência e abordagem
+## Conecte-se comigo
 
-Tenho base em Ciência da Computação e gosto de combinar fundamentos com execução pragmática. No dia a dia, procuro simplificar problemas complexos, priorizando clareza de design, observabilidade e evolução contínua do software.
-
-## Onde me encontrar
-
-- LinkedIn: [in/luanmds](https://www.linkedin.com/in/luanmds/)
-- GitHub: [luanmds](https://github.com/luanmds)
-- Medium: [luanmds.medium.com](https://luanmds.medium.com/)
-- Dev.to: [dev.to/luanmds](https://dev.to/luanmds)
+<div class="not-prose" style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem; margin-top: 0.5rem; font-size: 2rem; line-height: 1;">
+  <a href="https://www.linkedin.com/in/luanmds/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">{{< icon linkedin >}}</a>
+  <a href="https://github.com/luanmds" target="_blank" rel="noopener noreferrer" aria-label="GitHub">{{< icon github >}}</a>
+  <a href="https://luanmds.medium.com/" target="_blank" rel="noopener noreferrer" aria-label="Medium">{{< icon medium >}}</a>
+  <a href="https://dev.to/luanmds" target="_blank" rel="noopener noreferrer" aria-label="Dev.to">{{< icon dev >}}</a>
+</div>

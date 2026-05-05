@@ -1,5 +1,5 @@
 baseURL = "https://luanmds.github.io/"
-title = "LuanMDS"
+title = "LuanMDS | Software Enginner"
 theme = "congo"
 
 enableRobotsTXT = true
@@ -131,7 +131,7 @@ summaryLength = 0
     languageName = "Português"
     languageDirection = "ltr"
     weight = 1
-    title = "LuanMDS"
+    title = "LuanMDS | Software Enginner"
     [languages.pt.params]
       dateFormat = "2 Jan 2006"
       mainSections = ["posts"]
@@ -139,7 +139,7 @@ summaryLength = 0
       [languages.pt.params.author]
         name = "Luan Mello"
         headline = "Engenheiro de software back-end no Rio de Janeiro, focado em .NET, arquitetura distribuida e boas praticas de engenharia."
-        bio = "Escrevo sobre desenvolvimento de software, IA aplicada ao dia a dia dev e sistemas distribuidos."
+        bio = "Documentando meus estudos através de artigos e tutoriais sobre os principais temas de Engenharia de Software"
         links = [
           { github = "https://github.com/luanmds" },
           { linkedin = "https://www.linkedin.com/in/luanmds/" },
@@ -188,7 +188,7 @@ summaryLength = 0
     languageName = "English"
     languageDirection = "ltr"
     weight = 2
-    title = "LuanMDS"
+    title = "LuanMDS | Software Enginner"
     [languages.en.params]
       dateFormat = "Jan 2, 2006"
       mainSections = ["posts"]
@@ -196,7 +196,7 @@ summaryLength = 0
       [languages.en.params.author]
         name = "Luan Mello"
         headline = "Back-end software engineer from Rio de Janeiro, focused on .NET, distributed architecture, and pragmatic engineering practices."
-        bio = "I write about software development, practical AI for developers, and distributed systems."
+        bio = "Documenting my studies through articles and tutorials on key Software Engineering topics."
         links = [
           { github = "https://github.com/luanmds" },
           { linkedin = "https://www.linkedin.com/in/luanmds/" },
