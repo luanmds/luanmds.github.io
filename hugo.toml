@@ -1,5 +1,5 @@
 baseURL = "https://luanmds.github.io/"
-title = "LuanMDS"
+title = "LuanMDS | Software Enginner"
 theme = "congo"
 
 enableRobotsTXT = true
@@ -131,7 +131,7 @@ summaryLength = 0
     languageName = "Português"
     languageDirection = "ltr"
     weight = 1
-    title = "LuanMDS"
+    title = "LuanMDS | Software Enginner"
     [languages.pt.params]
       dateFormat = "2 Jan 2006"
       mainSections = ["posts"]
@@ -188,7 +188,7 @@ summaryLength = 0
     languageName = "English"
     languageDirection = "ltr"
     weight = 2
-    title = "LuanMDS"
+    title = "LuanMDS | Software Enginner"
     [languages.en.params]
       dateFormat = "Jan 2, 2006"
       mainSections = ["posts"]
