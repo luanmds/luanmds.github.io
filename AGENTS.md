@@ -57,7 +57,7 @@ All specs are in `specs/` folder. Verify them when necessary.
 | 005  | Deploy GitHub Pages         | ✅ done   |
 | 006  | CodeRabbit Configuration    | ✅ done   |
 | 007  | Congo Migration             | 🟡 proposed |
-| 008  | Spec Template + Branding    | 🟡 in-progress |
+| 008  | Spec Template + Branding    | ✅ done |
 
 ---
 

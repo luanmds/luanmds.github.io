@@ -17,9 +17,8 @@
 ## Validação
 
 - [x] Executar build de produção com Hugo extended
-- [ ] Validar visualmente o ícone de GitHub no header PT/EN
+- [x] Validar visualmente o ícone de GitHub no header PT/EN
 
 ## Encerramento
 
-- [ ] Validar resultado com o usuário
-- [ ] Perguntar sobre validação automatizada com Playwright
+- [x] Validar resultado com o usuário
