@@ -39,7 +39,7 @@ Hugo **extended** é obrigatório. O tema Congo usa funcionalidades exclusivas d
 
 ## Comentários
 
-- **Giscus** — embed de comentários via GitHub Discussions. Configurado no `hugo.toml`, mas **ainda não funcional** (`repoId` e `categoryId` são strings vazias).
+- **Giscus** — embed de comentários via GitHub Discussions. Configurado no `hugo.toml`, mas **DISABLED FOR NOW** — `repoId` e `categoryId` estão vazios. Veja `.docs/integrations.md` para instruções de ativação.
 
 ## Dependências externas de runtime
 
