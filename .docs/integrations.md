@@ -33,8 +33,10 @@
 ## Giscus
 
 **Tipo:** Sistema de comentários via GitHub Discussions  
-**Status: PENDENTE — não funcional**  
+**Status: DISABLED FOR NOW — parcialmente implementado, mas não funcional**  
 **Script:** `https://giscus.app/client.js` (carregado no browser)
+
+> ⚠️ Os comentários não aparecem em nenhum post enquanto `repoId` e `categoryId` estiverem vazios. Esta é a fonte de verdade para reativar o Giscus no futuro.
 
 **Configuração necessária (em `hugo.toml`):**
 

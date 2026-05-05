@@ -26,7 +26,9 @@
 
 ---
 
-### 3. Giscus não configurado
+### 3. Giscus (DISABLED FOR NOW)
+
+**Status atual: DISABLED — comentários completamente inoperantes.**
 
 **Risco:** O sistema de comentários está parcialmente implementado (`comments.html`, parâmetros no `hugo.toml`), mas `repoId` e `categoryId` estão vazios. Os comentários não aparecem em nenhum post.
 
@@ -34,7 +36,7 @@
 
 **Mitigação atual:** O partial tem guarda condicional — não carrega scripts externos com valores vazios. Nenhum erro é gerado.
 
-**Ação para resolver:** Habilitar GitHub Discussions no repo, configurar em [giscus.app](https://giscus.app) e preencher `repoId` e `categoryId` no `hugo.toml`.
+**Ação para resolver:** Habilitar GitHub Discussions no repo, configurar em [giscus.app](https://giscus.app) e preencher `repoId` e `categoryId` no `hugo.toml`. Veja `.docs/integrations.md` para o passo a passo completo.
 
 ---
 
@@ -68,12 +70,6 @@ O submodule `themes/PaperMod/` está presente mas não é usado (tema ativo é C
 
 ---
 
-### 7. Primeiro post desatualizado
-
-O post `bem-vindo-ao-blog/index.md` menciona PaperMod como tema ("tema minimalista PaperMod"), mas o tema atual é Congo. O conteúdo está desatualizado em relação à stack atual.
-
----
-
-### 8. Sem verificação de links quebrados
+### 7. Sem verificação de links quebrados
 
 Não há passo de link check no CI. Links externos em posts podem quebrar ao longo do tempo sem nenhuma detecção automática.
