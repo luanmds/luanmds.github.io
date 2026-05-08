@@ -1,0 +1,112 @@
+---
+title: "A Engenharia por trás deste blog: SDD e Harness em um workflow 100% IA"
+date: 2026-05-08
+draft: true
+tags: ["engenharia-de-software", "inteligencia-artificial", "sdd", "harness-engineering", "hugo"]
+categories: ["Engenharia"]
+summary: "Um relato técnico sobre como este blog foi construído utilizando desenvolvimento assistido por IA, validando os limites de SDD e Harness Engineering."
+cover:
+  image: cover.png
+  alt: "Diagrama do ciclo de vida SDD assistido por IA"
+  relative: true
+translationKey: "engenharia-blog-sdd-harness"
+---
+
+# Laboratório de Engenharia: Validando SDD e Harness Engineering em um workflow 100% assistido por IA
+
+Este documento serve como estrutura base para o artigo técnico detalhando o experimento de construção do blog **luanmds.github.io** utilizando metodologias avançadas de engenharia assistida por IA.
+
+## I. O Contexto do Experimento
+
+- **Motivação:** Relato de um estudo prático para validar os limites do desenvolvimento assistido.
+- **Inspiração:** Referência aos trabalhos de Akita (uso de IA em projetos reais) e Eugênio/Gnios (documentação de contexto).
+- **A tese:** Validação da manutenção do rigor técnico (clean code, arquitetura) usando agentes de IA sem frameworks pesados de SDD, focando em "Harness Engineering" customizado.
+
+### Rascunho
+
+Esse artigo consolida todo o processo e conhecimento adquirido com o projeto como AI-Driven desde a escolha do framework base do blog até o deploy no Github Pages.
+
+Após passar as últimas semanas estudando e entendendo os conceitos de Spec-Driven Development (SDD) e, principalmente, Harness Engineering. Decidi colocar em prática com um pequeno projeto - chamado também de brownfield - que estava engavetado: meu próprio blog.
+
+Além disso, a ideia da prática partiu inicialmente do artigo do mestre Fábio Akita (link), no qual ele demonstra o uso da IA como assistente em um projeto real, contendo detalhes da implementação. E o projeto foi incrementado com docs do artigo do Eugênio (Gnios) com dicas de criação de docs sobre o projeto (link).
+
+Em resumo, esse projeto valida e traz pontos importantes sobre como é usar uma IA como assistente no dia a dia, discutindo ideias através de brainstorming, montando specs com um fluxo personalizado e bem simples de SDD e ajustando instruções para os agentes através do feedback dela mesma, usando os princípios do Harness Engineering.
+
+## II. O Setup do Laboratório (Tooling & Harness)
+
+- **Stack:** HuGo + Tema Congo (decisões via brainstorming-skill).
+  - Migração do Tema PaperMod para o Congo
+- **O Harness Customizado:**
+  - AGENTS.md: A "Constituição" do projeto e o manual de bordo para os agentes.
+  - Pasta .docs/: Engenharia de Contexto como fonte da verdade.
+  - **CodeRabbit:** Portão de qualidade (QA sintético) para revisão de PRs.
+
+### Rascunho
+
+Título: Tecnologias e padrões utilizados
+
+Antes de mergulharmos na metodologia e suas métricas, vamos destrinchar as tecnologias base e o harness customizado do projeto.
+
+Stack utilizada:
+
+- Framework HuGo para construção do corpo do site e o tema Congo com cores customizadas.
+- Github Pages e Github Actions para hospedar e realizar deploy, respectivamente. Tudo de forma gratuita do próprio Github. Para saber mais verifique essa doc deles:
+- CodeRabbit AI: Agente com free tier para revisar o código gerado em Pull Requests abertos por outros agentes no repositório.
+
+Harness Feedforward:
+
+- AGENTS.md : principal arquivo com todo o resumo do projeto e um manual de bordo para os agentes seguirem o workflow configurado para o projeto.
+- .docs/ : pasta com informações detalhadas do contexto relacionado ao projeto. Possui todas as diretivas e cada arquivo é mapeado no [AGENTS.md](http://agents.md) para que o agente possa ler quando necessário.
+- specs/ : pasta com as especificações desenvolvidas e implementadas. Cada especificação possui um arquivo [tasks.md](http://tasks.md) onde é listado tudo o que deve ser feito para que consideremos a implementação como Done.
+
+(print dos arquivos e pastas no projeto)
+
+## III. A Metodologia: SDD e Orquestração de Agentes
+
+- **Spec-Driven Development (SDD):** Por que a especificação (specs/) precede o código.
+- **Ciclo de Vida:** *Spec -> Tasks -> Implement*.
+- **Subagent-Driven Development:** O caso da **Spec 007** (Congo Migration) com 8 subagentes paralelos coordenados.
+
+### Rascunho
+
+Título: Spec-Driven e Orquestracão de Agentes
+
+O **Spec-Driven Development (SDD)** foi o pilar da produtividade. Diferente do modelo tradicional onde o código é o artefato principal, aqui a especificação (Spec) torna-se o contrato que guia todo o downstream.
+
+### O Ciclo de Vida da Entrega
+
+O fluxo de trabalho foi dividido em etapas claras e interdependentes:
+
+- **Brainstorming:** Uso da brainstorming-skill para validar decisões arquiteturais e de stack antes do primeiro commit.
+- **Especificação (Spec):** Criação de arquivos Markdown na pasta specs/ detalhando o comportamento esperado e as restrições técnicas.
+- **Decomposição em Tarefas:** Tradução da Spec para um tasks.md com itens atômicos, paralelizáveis e com *Definition of Done* (DoD) bem definida.
+- **Implementação:** Onde os agentes de IA executavam as tarefas sob a supervisão do *Harness*.
+
+### Orquestração: O Caso Spec 007
+
+O teste de fogo foi a **Spec 007 (Migração para o tema Congo)**. Em vez de uma execução linear, apliquei o **Subagent-Driven Development**: o agente orquestrador disparou **8 sub-agentes paralelos**. Cada sub-agente assumiu um domínio específico (cores, tipografia, estrutura de menus), todos operando simultaneamente sobre a mesma fonte da verdade (a Spec). Isso permitiu uma migração complexa em tempo recorde, com consistência arquitetural garantida.
+
+![SDD Lifecycle](lifecycle.png)
+
+## IV. Análise dos Dados (OpenCode Metrics)
+
+Dados extraídos do banco de dados do OpenCode (opencode.db) cobrindo o período de 22 de abril a 6 de maio de 2026.
+
+| Métrica | Valor | |---|---| | Total de Tokens Processados | ~141,7 milhões | | **Cache Reads (Eficiência de Contexto)** | ~134,2 milhões (**94,7%**) | | Cache Writes | ~4,35 milhões (3,1%) | | Output (Gerado pelo modelo) | ~548 mil (0,4%) | | Input Novo | ~2,26 milhões (1,6%) | | Tempo Ativo Real | ~738 min (~12,3 horas) | | Saldo Líquido de Código | +1.891 linhas (96 arquivos) |
+
+**Análise Técnica:** A taxa de **94,7% de Cache Reads** demonstra o sucesso do *Context Engineering*. Ao manter o contexto "quente" e estável, o agente pôde operar com máxima precisão, reduzindo alucinações. O fato de apenas 0,4% do processamento ter resultado em saída gerada prova que o valor real da IA está no **raciocínio sobre o contexto existente** para garantir que as 1.891 linhas líquidas de código fossem tecnicamente perfeitas.
+
+![Token Usage](tokens.png)
+
+Extras:
+
+- **Sobre os 141,7 milhões de tokens:** A grande maioria (94,7%) são cache reads — o OpenCode envia o contexto completo da sessão (arquivos abertos, docs, histórico) a cada mensagem, mas o que já estava cacheado não é reprocessado pelo modelo. O consumo real de inferência foi de apenas ~3,1 milhões de tokens no total do projeto
+- Trazer linhas de código escritas em cada sessão
+
+### Rascunho
+
+## V. Conclusões e Lições Aprendidas
+
+- Mudança de mindset: O desenvolvedor sênior como "Designer de Contexto" e "Orquestrador de Agentes".
+- A suficiência do AGENTS.md para projetos de escala média vs. frameworks complexos.
+- Próximos passos e aplicação em ambientes corporativos.

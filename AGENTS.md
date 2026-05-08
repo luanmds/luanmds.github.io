@@ -17,6 +17,7 @@ Hosted for free on GitHub Pages at `https://luanmds.github.io/`.
 
 **Mandatory flow:** `Spec (PLAN mode) → Verify and Validate → Create Tasks (Markdown) → Implement (code + tests)`
 
+- **EXCEPTION:** Creating new articles (content only) is exempt from the SDD flow. For content-only tasks, skip the Spec/Task creation and proceed directly to a branch/PR.
 - **NEVER write code without an approved spec and tasks** in PLAN mode
 - Tasks must be stored as `tasks.md` inside each spec folder (Markdown checklist format)
 - MANDATORY: Create the spec in `specs/` folder, Verify and Validate the spec with user before continue 
