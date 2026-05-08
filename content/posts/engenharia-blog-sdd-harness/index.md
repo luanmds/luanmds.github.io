@@ -1,38 +1,28 @@
 ---
 title: "A Engenharia por trás deste blog: SDD e Harness em um workflow 100% IA"
-date: 2026-05-08
+date: 2026-05-09
 draft: true
-tags: ["engenharia-de-software", "inteligencia-artificial", "sdd", "harness-engineering", "hugo"]
+tags: ["engenharia-de-software", "inteligencia-artificial", "sdd", "harness-engineering"]
 categories: ["Engenharia"]
 summary: "Um relato técnico sobre como este blog foi construído utilizando desenvolvimento assistido por IA, validando os limites de SDD e Harness Engineering."
 cover:
   image: cover.png
-  alt: "Diagrama do ciclo de vida SDD assistido por IA"
+  alt: "Capa representando o ciclo de vida SDD assistido por IA"
   relative: true
 translationKey: "engenharia-blog-sdd-harness"
 ---
 
-# Laboratório de Engenharia: Validando SDD e Harness Engineering em um workflow 100% assistido por IA
+Esse artigo consolida todo o processo e conhecimento adquirido com o projeto como **AI-Driven** desde a escolha do framework base do blog até o deploy no Github Pages.
 
-Este documento serve como estrutura base para o artigo técnico detalhando o experimento de construção do blog **luanmds.github.io** utilizando metodologias avançadas de engenharia assistida por IA.
+## Motivação e Contexto do Experimento
 
-## I. O Contexto do Experimento
+Após passar as últimas semanas me aprofundando e entendendo os conceitos de **Spec-Driven Development (SDD)** e, principalmente, **Harness Engineering**. Decidi colocar em prática com um pequeno projeto - chamado também de *brownfield* - que estava engavetado: _meu próprio blog_.
 
-- **Motivação:** Relato de um estudo prático para validar os limites do desenvolvimento assistido.
-- **Inspiração:** Referência aos trabalhos de Akita (uso de IA em projetos reais) e Eugênio/Gnios (documentação de contexto).
-- **A tese:** Validação da manutenção do rigor técnico (clean code, arquitetura) usando agentes de IA sem frameworks pesados de SDD, focando em "Harness Engineering" customizado.
+Além disso, a ideia da prática partiu inicialmente do artigo do mestre Fábio Akita ([aqui](https://akitaonrails.com/2026/02/20/do-zero-a-pos-producao-em-1-semana-como-usar-ia-em-projetos-de-verdade-bastidores-do-the-m-akita-chronicles/#o-claudemd-a-spec-que-evolui)), no qual ele demonstra o uso da IA como assistente em um projeto real, contendo detalhes da implementação. E o projeto foi incrementado com docs do artigo do Eugênio (Gnios) com dicas de como podemos documentar contexto sobre o projeto para uso das IAs ([aqui](https://gnios.github.io/blog/documentacao-antes-das-ferramentas/)).
 
-### Rascunho
+Em resumo, esse projeto valida a tese sobre **como é usar uma IA como assistente no dia a dia**. A seguir, trago como foi discutir ideias através de brainstormings, montar specs com um fluxo personalizado bem simples de SDD e ajustar instruções para os agentes através do feedback dela mesma usando princípios do Harness Engineering. Sem enrolacão, bora lá!
 
-Esse artigo consolida todo o processo e conhecimento adquirido com o projeto como AI-Driven desde a escolha do framework base do blog até o deploy no Github Pages.
-
-Após passar as últimas semanas estudando e entendendo os conceitos de Spec-Driven Development (SDD) e, principalmente, Harness Engineering. Decidi colocar em prática com um pequeno projeto - chamado também de brownfield - que estava engavetado: meu próprio blog.
-
-Além disso, a ideia da prática partiu inicialmente do artigo do mestre Fábio Akita (link), no qual ele demonstra o uso da IA como assistente em um projeto real, contendo detalhes da implementação. E o projeto foi incrementado com docs do artigo do Eugênio (Gnios) com dicas de criação de docs sobre o projeto (link).
-
-Em resumo, esse projeto valida e traz pontos importantes sobre como é usar uma IA como assistente no dia a dia, discutindo ideias através de brainstorming, montando specs com um fluxo personalizado e bem simples de SDD e ajustando instruções para os agentes através do feedback dela mesma, usando os princípios do Harness Engineering.
-
-## II. O Setup do Laboratório (Tooling & Harness)
+## Tooling, Stack & Harness Customizado do Projeto
 
 - **Stack:** HuGo + Tema Congo (decisões via brainstorming-skill).
   - Migração do Tema PaperMod para o Congo
@@ -41,35 +31,30 @@ Em resumo, esse projeto valida e traz pontos importantes sobre como é usar uma 
   - Pasta .docs/: Engenharia de Contexto como fonte da verdade.
   - **CodeRabbit:** Portão de qualidade (QA sintético) para revisão de PRs.
 
-### Rascunho
-
-Título: Tecnologias e padrões utilizados
-
 Antes de mergulharmos na metodologia e suas métricas, vamos destrinchar as tecnologias base e o harness customizado do projeto.
 
-Stack utilizada:
+### Stack utilizada
 
-- Framework HuGo para construção do corpo do site e o tema Congo com cores customizadas.
-- Github Pages e Github Actions para hospedar e realizar deploy, respectivamente. Tudo de forma gratuita do próprio Github. Para saber mais verifique essa doc deles:
-- CodeRabbit AI: Agente com free tier para revisar o código gerado em Pull Requests abertos por outros agentes no repositório.
+- `Framework HuGo`: Para **construção do corpo do site **e o tema [Congo](https://themes.gohugo.io/themes/congo) com cores customizadas.
+- `Github Pages e Github Actions`: para **hospedar e realizar deploy**, respectivamente. Tudo de forma gratuita do próprio Github. 
+  - Para saber mais verifique essa [doc deles](https://docs.github.com/en/pages).
+- `CodeRabbit AI`: Agente QA sintético - com free tier! - para **revisar o código gerado em Pull Requests abertos por outros agentes** no repositório. 
+  - Configurado através do arquivo `.coderabbit.yaml`
+- `Playwright via Docker`: Ferramenta para automatizar testes funcionais em páginas web. No projeto, tem o **papel de validar uma alteracão no front-end** antes de seguir com commit e merge.
 
-Harness Feedforward:
+### Harness Feedforward
 
-- AGENTS.md : principal arquivo com todo o resumo do projeto e um manual de bordo para os agentes seguirem o workflow configurado para o projeto.
-- .docs/ : pasta com informações detalhadas do contexto relacionado ao projeto. Possui todas as diretivas e cada arquivo é mapeado no [AGENTS.md](http://agents.md) para que o agente possa ler quando necessário.
-- specs/ : pasta com as especificações desenvolvidas e implementadas. Cada especificação possui um arquivo [tasks.md](http://tasks.md) onde é listado tudo o que deve ser feito para que consideremos a implementação como Done.
+- `AGENTS.md`: principal arquivo com todo o resumo do projeto e um manual de bordo para os agentes seguirem o workflow configurado para o projeto.
+- `.docs/`: pasta com informações detalhadas do contexto relacionado ao projeto. Possui todas as diretivas e cada arquivo é mapeado no `AGENTS.md`.
+- `specs/`: pasta com as especificações desenvolvidas e implementadas. Cada especificação possui um arquivo `tasks.md` onde é listado tudo o que deve ser feito para que consideremos a implementação como Done.
 
-(print dos arquivos e pastas no projeto)
+![print dos arquivos e pastas no projeto]()
 
-## III. A Metodologia: SDD e Orquestração de Agentes
+## A Metodologia Spec-Driven e Orquestracão de Agentes
 
 - **Spec-Driven Development (SDD):** Por que a especificação (specs/) precede o código.
 - **Ciclo de Vida:** *Spec -> Tasks -> Implement*.
 - **Subagent-Driven Development:** O caso da **Spec 007** (Congo Migration) com 8 subagentes paralelos coordenados.
-
-### Rascunho
-
-Título: Spec-Driven e Orquestracão de Agentes
 
 O **Spec-Driven Development (SDD)** foi o pilar da produtividade. Diferente do modelo tradicional onde o código é o artefato principal, aqui a especificação (Spec) torna-se o contrato que guia todo o downstream.
 
@@ -86,9 +71,8 @@ O fluxo de trabalho foi dividido em etapas claras e interdependentes:
 
 O teste de fogo foi a **Spec 007 (Migração para o tema Congo)**. Em vez de uma execução linear, apliquei o **Subagent-Driven Development**: o agente orquestrador disparou **8 sub-agentes paralelos**. Cada sub-agente assumiu um domínio específico (cores, tipografia, estrutura de menus), todos operando simultaneamente sobre a mesma fonte da verdade (a Spec). Isso permitiu uma migração complexa em tempo recorde, com consistência arquitetural garantida.
 
-![SDD Lifecycle](lifecycle.png)
 
-## IV. Análise dos Dados (OpenCode Metrics)
+## Análise de Métricas do OpenCode 
 
 Dados extraídos do banco de dados do OpenCode (opencode.db) cobrindo o período de 22 de abril a 6 de maio de 2026.
 
@@ -105,8 +89,27 @@ Extras:
 
 ### Rascunho
 
-## V. Conclusões e Lições Aprendidas
+## Conclusões e Lições Aprendidas
 
 - Mudança de mindset: O desenvolvedor sênior como "Designer de Contexto" e "Orquestrador de Agentes".
 - A suficiência do AGENTS.md para projetos de escala média vs. frameworks complexos.
 - Próximos passos e aplicação em ambientes corporativos.
+
+## Referências
+
+### SDD e Context Engineering
+
+- [Spec-Driven Development: AI Assisted Coding Explained](https://youtu.be/mViFYTwWvcM?si=7xuFcJLoD_18k71L)
+- [Spec-Driven Development: A Habilidade #1 para Devs de 2026 (Guia Completo)](https://www.youtube.com/watch?v=YFDp-smGYqQ)
+- [Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl — Martin Fowler](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html)
+- [The ONLY guide you'll need for GitHub Spec Kit](https://www.youtube.com/watch?v=a9eR1xsfvHg)
+- [Diving Into Spec-Driven Development With GitHub Spec Kit — Microsoft for Developers](https://developer.microsoft.com/blog/spec-driven-development-spec-kit)
+
+### AI-Assisted Development
+
+- [AI-Assisted Coding Tutorial – OpenClaw, GitHub Copilot, Claude Code, CodeRabbit, Gemini CLI](https://www.youtube.com/watch?v=wlpBCazAY9Q)
+- [Do Zero à Pós-Produção em 1 Semana — Fábio Akita](https://akitaonrails.com/2026/02/20/do-zero-a-pos-producao-em-1-semana-como-usar-ia-em-projetos-de-verdade-bastidores-do-the-m-akita-chronicles/#o-claudemd-a-spec-que-evolui)
+- [O Método Fábio Akita para programar com IA](https://youtu.be/cWY7iBafw7I?t=2301)
+- [Antes de qualquer ferramenta: como documentar seu projeto para a IA — Gnios](https://gnios.github.io/blog/documentacao-antes-das-ferramentas/)
+- [How do thinking and reasoning models work?](https://www.youtube.com/watch?v=xCRvOUykOX0)
+- [Large Language Models Survey — arxiv.org](https://arxiv.org/pdf/2601.20245)
