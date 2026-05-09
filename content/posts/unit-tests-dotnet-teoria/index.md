@@ -6,7 +6,7 @@ tags: ["testes", "dotnet", "unit-tests"]
 categories: ["testes"]
 summary: "Fundamentos e teoria dos Unit Tests com .Net — entenda o que é um bom teste de unidade, sua anatomia e os princípios F.I.R.S.T."
 cover:
-  image: image1.png
+  image: cover.png
   alt: "Pirâmide de testes com destaque para a camada de unit tests"
   relative: true
 ---

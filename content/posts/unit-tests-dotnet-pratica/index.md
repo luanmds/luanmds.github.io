@@ -6,7 +6,7 @@ tags: ["testes", "dotnet", "unit-tests", "xunit"]
 categories: ["testes"]
 summary: "Parte prática sobre boas práticas em Unit Tests com .Net — criando testes com xUnit, Moq e NSubstitute aplicando os fundamentos na prática."
 cover:
-  image: image1.png
+  image: cover.png
   alt: "Pirâmide de testes com destaque para a camada de unit tests"
   relative: true
 ---
