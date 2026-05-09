@@ -1,6 +1,6 @@
 ---
 name: content-review
-description: Use ONLY when the user explicitly requests a content review, text improvement, writing feedback on a blog article OR when there is a new article created in content/posts folder.
+description: Use ONLY when the user explicitly requests a content review, text improvement, writing feedback on a blog article OR when there is a new or modified article in content/posts folder OR content/en/posts folder (When there is an article to translate). Do NOT use it for other purposes.
 ---
 
 # Content Review — luanmds.github.io

@@ -1,9 +1,9 @@
 ---
 title: "A Engenharia por trás deste blog: SDD e Harness em um workflow 100% IA"
 date: 2026-05-09
-draft: true
-tags: ["engenharia-de-software", "inteligencia-artificial", "sdd", "harness-engineering"]
-categories: ["Engenharia"]
+draft: false
+tags: ["inteligencia-artificial", "sdd", "harness-engineering"]
+categories: ["inteligencia-artificial", "sdd", "harness-engineering"]
 summary: "Um relato técnico sobre como este blog foi construído utilizando desenvolvimento assistido por IA, validando os limites de SDD e Harness Engineering."
 cover:
   image: cover.png
@@ -12,13 +12,13 @@ cover:
 translationKey: "engenharia-blog-sdd-harness"
 ---
 
-Esse artigo consolida todo o processo e conhecimento adquirido com o projeto como **AI-Driven** desde a escolha do *framework* base do blog até o *deploy* no Github Pages.
+Esse artigo consolida todo o processo e conhecimento adquirido com o projeto como **AI-Driven**, desde a escolha do *framework* base do blog até o *deploy* no Github Pages.
 
 ## Motivação e Contexto do Experimento
 
-Após passar as últimas semanas me aprofundando e entendendo os conceitos de **Spec-Driven Development (SDD)** e, principalmente, **Harness Engineering**, decidi colocar em prática com um pequeno projeto - chamado também de *brownfield* - que estava engavetado: _meu próprio blog_.
+Após passar as últimas semanas me aprofundando e entendendo os conceitos de **Spec-Driven Development (SDD)** e, principalmente, **Harness Engineering**, decidi colocar em prática com um pequeno projeto - chamado também de **brownfield** - que estava engavetado: _meu próprio blog_.
 
-Além disso, a ideia da prática partiu inicialmente do artigo do mestre _Fábio Akita_ ([aqui](https://akitaonrails.com/2026/02/20/do-zero-a-pos-producao-em-1-semana-como-usar-ia-em-projetos-de-verdade-bastidores-do-the-m-akita-chronicles/#o-claudemd-a-spec-que-evolui)), no qual ele demonstra o uso da IA como assistente em um projeto real, contendo detalhes da implementação. E o projeto foi incrementado com docs do artigo do _Eugênio (Gnios)_ com dicas de como podemos documentar contexto sobre o projeto para uso das IAs ([aqui](https://gnios.github.io/blog/documentacao-antes-das-ferramentas/)).
+Além disso, a ideia da prática partiu inicialmente de um artigo do mestre _Fábio Akita_ ([aqui](https://akitaonrails.com/2026/02/20/do-zero-a-pos-producao-em-1-semana-como-usar-ia-em-projetos-de-verdade-bastidores-do-the-m-akita-chronicles/)), no qual ele demonstra o uso da IA como assistente em um projeto real, contendo detalhes da implementação. E o projeto foi incrementado com docs de contexto criadas a partir de insights de um artigo do _Eugênio (Gnios)_ com dicas de como podemos documentar contexto sobre o projeto para uso das IAs ([aqui](https://gnios.github.io/blog/documentacao-antes-das-ferramentas/)).
 
 Em resumo, esse projeto valida a tese sobre como é usar uma IA como assistente no dia a dia. A seguir, trago como foi discutir ideias através de *brainstormings*, montar *specs* com um fluxo personalizado bem simples de SDD e ajustar instruções para os agentes através do feedback dela mesma usando princípios do Harness Engineering.
 
@@ -42,9 +42,9 @@ Antes de mergulharmos na metodologia e suas métricas, vamos destrinchar as tecn
 
 ### Harness Feedforward
 
-- `AGENTS.md`: principal arquivo com todo o resumo do projeto e um manual de bordo para os agentes seguirem o workflow configurado para o projeto.
-- `.docs/`: pasta com informações detalhadas do contexto relacionado ao projeto. Possui todas as diretivas e cada arquivo é mapeado no `AGENTS.md`.
-- `specs/`: pasta com as especificações desenvolvidas e implementadas. Cada especificação possui um arquivo `tasks.md` onde é listado tudo o que deve ser feito para que consideremos a implementação como Done.
+- `AGENTS.md`: Principal arquivo com todo o resumo do projeto e um manual de bordo para os agentes seguirem o workflow configurado para o projeto.
+- `.docs/`: Pasta com informações detalhadas do contexto relacionado ao projeto. Possui todas as diretivas e cada arquivo é mapeado no `AGENTS.md`.
+- `specs/`: Pasta com as especificações desenvolvidas e implementadas. Cada especificação possui um arquivo `tasks.md` onde é listado tudo o que deve ser feito para que consideremos a implementação como Done.
 
 Abaixo, um print de como ficou o harness organizado no projeto:
 
@@ -54,7 +54,7 @@ Abaixo, um print de como ficou o harness organizado no projeto:
 
 Algo que aprendi estudando o Harness é que entender melhor o ciclo de vida é fundamental para o alinhamento inicial e, principalmente, o que pode ou não ser feito. 
 
-No Spec-Driven Development, a especificação é o pilar que guia todo o processo de criação de conteúdo. Iniciando por um *brainstorming*, passando por uma etapa de especificação, decomposição em tarefas e implementação. Aqui percebi que a especificação se torna o artefato principal desse processo, diferente do desenvolvimento tradicional onde o código é o artefato principal.
+No Spec-Driven Development, a especificação é o pilar que guia todo o processo de criação de conteúdo. Iniciando por um *brainstorming*, passando por uma etapa de especificação, decomposição em tarefas e, finalmente, a implementação. Aqui percebi que a **especificação se torna o artefato principal desse processo**, diferente do desenvolvimento tradicional onde o código é o artefato principal.
 
 ### O Ciclo de Vida da Entrega
 
@@ -111,17 +111,19 @@ flowchart TD
 Durante o tempo do experimento, alguns cenários destacaram, na prática, o potencial e a flexibilidade dessa abordagem.
 
 #### 1. A Sessão Gigante: Construindo a Base (Tema PaperMod + Multilingual)
-Esta foi a sessão inaugural e a mais densa de todo o projeto. Com duração de **285 minutos** de tempo ativo real e 671 mensagens trocadas, o agente foi responsável por gerar a base completa do tema PaperMod no blog e todo o sistema de troca de idioma. 
+
+Esta foi a mais densa de todo o projeto. Com duração de **285 minutos** de tempo ativo real e 671 mensagens trocadas, o agente foi responsável por gerar a base completa do tema PaperMod no blog e todo o sistema de troca de idioma. 
 O mais impressionante foram os números: **~73,9 milhões de tokens** foram consumidos nesta única sessão, resultando em um saldo de **+904 linhas de código** adicionadas. Desse total de tokens, incríveis 97% foram lidos diretamente do cache do contexto já estabelecido.
 
 #### 2. Spec 007: Migração do tema PaperMod para Congo com Subagents Paralelos
+
 Um outro caso notável foi a especificação **Spec 007 (Migração do tema PaperMod para Congo)**. O trabalho durou **71 minutos**, com uma alteração concentrada de +253 linhas e remoção de 229 linhas, e um consumo total de **~10,6 milhões de tokens**.
 
 Em vez de uma execução linear, apliquei o padrão **Subagent-Driven Development**: o agente orquestrador disparou **8 sub-agentes paralelos**. Cada sub-agente assumiu uma tarefa independente (cores, tipografia, estrutura de menus), todos operando simultaneamente sobre a mesma fonte da verdade (a Spec). Isso permitiu uma migração complexa em tempo recorde, com consistência arquitetural garantida.
 
 ## Análise de Métricas do OpenCode 
 
-Os dados abaixo foram extraídos diretamente do banco de dados do OpenCode (via arquivo `opencode.db`) cobrindo o período do projeto. No total, tivemos **25 sessões** (~12,3 horas de tempo ativo real), que modificaram 96 arquivos e geraram um saldo líquido de +1.891 linhas de código (+2.765 adicionadas, -874 removidas).
+Os dados abaixo foram extraídos diretamente do banco de dados do OpenCode (via arquivo `opencode.db`) cobrindo o período do projeto. No total, houveram **25 sessões** (~12,3 horas de tempo ativo real), que modificaram 96 arquivos e geraram um saldo líquido de +1.891 linhas de código (+2.765 adicionadas, -874 removidas).
 
 Abaixo o detalhamento das métricas de processamento:
 
@@ -135,11 +137,13 @@ Abaixo o detalhamento das métricas de processamento:
 | Input genuinamente novo | ~2,26 milhões | 1,6% |
 
 **A Mágica do *Cache* e Custo Zero**
-O dado mais revelador do experimento: **94,7% dos tokens foram lidos do *cache*** (Context Efficiency). O agente mantém o contexto completo "quente" (arquivos, documentação, histórico) a cada mensagem enviada, mas o modelo não precisa reprocessar o que já está cacheado. 
+
+O dado mais revelador desse experimento foi os **94,7% dos tokens serem lidos do *cache*** (Context Efficiency). É interessante notar que o agente mantém o contexto completo "quente" (arquivos, documentação, histórico) a cada mensagem enviada, mas não precisa reprocessar o que já está cacheado.
 
 Isso explica como foi possível consumir 141,7 milhões de tokens sem custo adicional usando a assinatura do GitHub Copilot. O consumo real de inferência (input novo + reasoning + output) foi de apenas ~3,1 milhões de tokens.
 
 **Sessões Principais e Produtividade**
+
 A tabela abaixo mostra a distribuição de esforço e saldo de código nas principais sessões do projeto:
 
 | Sessão (Foco) | Tempo Ativo | Saldo de Linhas | Tokens Totais |
@@ -157,6 +161,7 @@ A tabela abaixo mostra a distribuição de esforço e saldo de código nas princ
 > *Observação: A sessão de "Migração de artigos" levou 166 minutos e processou 23 milhões de tokens sem modificar nenhuma linha de código no repositório final. Isso ocorreu pois o conteúdo e as imagens foram processados fora do controle de versão (geração de conteúdo bruto em massa).*
 
 **Resumo das Atividades por Sessão:**
+
 - **Project Base**: Sessão mais densa. O agente configurou a base completa do blog com o Hugo, o tema inicial PaperMod e a infraestrutura de internacionalização (PT/EN) com chave de tradução.
 - **Migração de artigos**: Sessão longa focada em processar textos de rascunho (via Google Drive/Medium) e formatá-los para markdown com front matter adequado.
 - **Atualizar página Sobre/About**: Criação e atualização de conteúdo específico para a página *Sobre/About*, como foto de perfil, histórico e ajustes de design pontuais.
@@ -188,7 +193,7 @@ Após colocar a versão 1.0 do projeto em produção ([https://luanmds.github.io
   - O SDD, independente de usar um framework ou ferramenta específica (como o OpenCode), se mostra a melhor forma de documentar um projeto. Isso porque ele se baseia no conceito de *"documentação do que precisa ser feito"* ao invés de *"documentação do que foi feito"*.
 
 
-- **Processo de Harness é o mais importante no processo de uso da IA como assistente**: Sem ele, a IA tem dificuldade em entender o contexto do projeto e gerar respostas relevantes e precisas. Por isso, é importante estar sempre revisando o input usado pela IA (Feedforward) e o que ela retorna como resposta (Feedback) para que consiga refinar o contexto do projeto. 
+- **Processo de Harness é o mais importante no processo de uso da IA como assistente**: Sem ele, a IA tem dificuldade em entender o contexto do projeto e gerar respostas relevantes e precisas. Por isso, é importante estar sempre revisando o input usado pela IA (*Feedforward*) e o que ela retorna como resposta (*Feedback*) para que consiga refinar o contexto do projeto. 
 
 > Parafraseando o mestre Fábio Akita: *"Faça um bom prompt, teste, veja o que ele retornou. Se não ficou bom, conserte seu prompt e refaça"*.
 
