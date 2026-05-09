@@ -2,8 +2,8 @@
 title: "A Engenharia por trás deste blog: SDD e Harness em um workflow 100% IA"
 date: 2026-05-09
 draft: false
-tags: ["inteligencia-artificial", "sdd", "harness-engineering"]
-categories: ["inteligencia-artificial", "sdd", "harness-engineering"]
+tags: ["software-engineering", "inteligencia-artificial", "sdd", "harness-engineering"]
+categories: ["software-engineering", "inteligencia-artificial", "sdd", "harness-engineering"]
 summary: "Um relato técnico sobre como este blog foi construído utilizando desenvolvimento assistido por IA, validando os limites de SDD e Harness Engineering."
 cover:
   image: cover.png
@@ -115,11 +115,24 @@ Durante o tempo do experimento, alguns cenários destacaram, na prática, o pote
 Esta foi a mais densa de todo o projeto. Com duração de **285 minutos** de tempo ativo real e 671 mensagens trocadas, o agente foi responsável por gerar a base completa do tema PaperMod no blog e todo o sistema de troca de idioma. 
 O mais impressionante foram os números: **~73,9 milhões de tokens** foram consumidos nesta única sessão, resultando em um saldo de **+904 linhas de código** adicionadas. Desse total de tokens, incríveis 97% foram lidos diretamente do cache do contexto já estabelecido.
 
+**A atuação do CodeRabbit (QA Sintético)**  
+
+Apesar da geração massiva de código, os agentes autônomos podem cometer deslizes em detalhes estruturais. Neste [Pull Request #3](https://github.com/luanmds/luanmds.github.io/pull/3) que implementou as mudanças, o CodeRabbit identificou três pontos críticos de revisão:
+- Notou que o *build* via Docker na pipeline estava rodando como `root`, sugerindo a flag `--user $(id -u):$(id -g)` para evitar artefatos com problemas de permissão.
+- Alertou que o submódulo do tema estava atrelado a um *commit* de desenvolvimento instável e recomendou fixar na *release tag* oficial.
+- Cobrou a refatoração da lógica de internacionalização no front-end: em vez de usar *ifs* soltos e fixados nos templates (`{{ if eq .Lang "pt" }}`), orientou registrar essas *strings* nos arquivos de idioma corretos e utilizar chaves `i18n`.
+
 #### 2. Spec 007: Migração do tema PaperMod para Congo com Subagents Paralelos
 
 Um outro caso notável foi a especificação **Spec 007 (Migração do tema PaperMod para Congo)**. O trabalho durou **71 minutos**, com uma alteração concentrada de +253 linhas e remoção de 229 linhas, e um consumo total de **~10,6 milhões de tokens**.
 
 Em vez de uma execução linear, apliquei o padrão **Subagent-Driven Development**: o agente orquestrador disparou **8 sub-agentes paralelos**. Cada sub-agente assumiu uma tarefa independente (cores, tipografia, estrutura de menus), todos operando simultaneamente sobre a mesma fonte da verdade (a Spec). Isso permitiu uma migração complexa em tempo recorde, com consistência arquitetural garantida.
+
+**A atuação do CodeRabbit (QA Sintético)**  
+
+No [Pull Request #11](https://github.com/luanmds/luanmds.github.io/pull/11) focado na paleta de cores (Crimson Circuitry), o CodeRabbit agiu exigindo consistência nos padrões adotados: 
+- Localizou um débito técnico sutil: 7 valores de cores no formato numérico puro de `rgba()` esquecidos no `custom.css`. Ele exigiu que fossem substituídos pela invocação correta das variáveis CSS do nosso design system (`--color-primary-*`).
+- Além da revisão de código, ele leu as regras do Harness e revisou ativamente o cumprimento documentado da tarefa, exigindo que as caixas de seleção da própria *Spec* (arquivos `.md`) fossem atualizadas para "CONCLUÍDO".
 
 ## Análise de Métricas do OpenCode 
 

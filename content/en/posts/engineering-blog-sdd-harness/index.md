@@ -3,7 +3,7 @@ title: "The Engineering behind this blog: SDD and Harness in a 100% AI workflow"
 date: 2026-05-09
 draft: false
 tags: ["software-engineering", "artificial-intelligence", "sdd", "harness-engineering"]
-categories: [software-engineering", "artificial-intelligence", "sdd", "harness-engineering"]
+categories: ["software-engineering", "artificial-intelligence", "sdd", "harness-engineering"]
 summary: "A technical report on how this blog was built using AI-assisted development, validating the limits of SDD and Harness Engineering."
 cover:
   image: cover.png
@@ -115,11 +115,24 @@ During experiment time, some scenarios are highlighted, in the practice, showing
 This was the most dense session of the entire project. With **285 minutes** of real active time and 671 messages exchanged, the agent was responsible for generating the complete base of the PaperMod theme on the blog and the entire language switching system. 
 The most impressive numbers: **~73.9 million tokens** were consumed in this single session, resulting in a net balance of **+904 lines of code** added. Of this total of tokens, an incredible 97% were read directly from the already established context cache.
 
-#### 2. Spec 007: Migração do tema PaperMod para Congo com Subagents Paralelos
+**CodeRabbit's role (Synthetic QA)**  
 
-Another notable case was the specification **Spec 007 (PaperMod to Congo theme migration with Parallel Subagents)**. The work lasted **71 minutes**, with a concentrated change of +253 lines and removal of 229 lines, and a total consumption of **~10.6 million tokens**.
+Despite the massive code generation, autonomous agents can make mistakes in structural details. In the [Pull Request #3](https://github.com/luanmds/luanmds.github.io/pull/3) that implemented these changes, CodeRabbit identified three critical review points:
+- It noticed that the *build* via Docker in the pipeline was running as `root`, suggesting the `--user $(id -u):$(id -g)` flag to avoid artifacts with permission issues.
+- It warned that the theme submodule was tied to an unstable development *commit* and recommended fixing it to the official *release tag*.
+- It demanded the refactoring of the front-end internationalization logic: instead of using hardcoded *ifs* in the templates (`{{ if eq .Lang "pt" }}`), it advised registering these *strings* in the correct language files and using `i18n` keys.
+
+#### 2. Spec 007: PaperMod to Congo theme migration with Parallel Subagents
+
+Another notable case was the specification **Spec 007 (PaperMod to Congo theme migration)**. The work lasted **71 minutes**, with a concentrated change of +253 lines and removal of 229 lines, and a total consumption of **~10.6 million tokens**.
 
 Instead of a linear execution, I applied the **Subagent-Driven Development** pattern: the orchestrator agent triggered **8 parallel sub-agents**. Each sub-agent took on an independent task (colors, typography, menu structure), all operating simultaneously on the same source of truth (the Spec). This allowed for a complex migration in record time, with guaranteed architectural consistency.
+
+**CodeRabbit's role (Synthetic QA)**  
+
+In the [Pull Request #11](https://github.com/luanmds/luanmds.github.io/pull/11) focused on the color palette (Crimson Circuitry), CodeRabbit acted by demanding consistency in the adopted patterns: 
+- It located a subtle technical debt: 7 color values in the pure numeric format of `rgba()` forgotten in `custom.css`. It demanded that they be replaced by the correct invocation of our design system's CSS variables (`--color-primary-*`).
+- In addition to the code review, it read the Harness rules and actively reviewed the documented completion of the task, demanding that the checkboxes of the *Spec* itself (`.md` files) be updated to "DONE" (`- [x]`).
 
 ## Analysis about OpenCode metrics
 
@@ -165,7 +178,7 @@ Follow the table with the distribution of effort and code balance in the main pr
 - **Project Base**: Session is more dense than others, the agent set up the complete base of the blog with Hugo, the initial PaperMod theme and the internationalization infrastructure (PT/EN) with translation key.
 - **Articles Migration**: Session long focused in process text from draft (via Google Drive/Medium) and format them to markdown with front matter adequate.
 - **Update About Page**: Creation and update of specific content for the About page, such as profile picture, history and punctual design adjustments.
-- **Theme Congo Migration (Spec 007)**: Execução da Spec 007, orquestrando 8 sub-agentes paralelos para migrar as cores e layout do tema antigo para o Congo, ajustando tipografia e menus simultaneamente.
+- **Theme Congo Migration (Spec 007)**: Planning and Execution about Spec 007, orchestrating 8 parallel sub-agents to migrate the colors and layout of the old theme to the Congo, adjusting typography and menus simultaneously.
 - **Final adjustments + update specs**: Revision of templates, standardization of the format of the artifacts in the `specs/` folder and refinements before the final deploy.
 - **Responsiveness/favicon/Tags**: Fine adjustments of UI/UX, making navigation more responsive, fixing the favicon and adjusting the display of tags in the posts.
 - **README.md**: Generation of the repository public file, extracting context directly from the internal documentation after the project was almost finished.
