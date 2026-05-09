@@ -12,15 +12,17 @@ cover:
 translationKey: "engenharia-blog-sdd-harness"
 ---
 
-Esse artigo consolida todo o processo e conhecimento adquirido com o projeto como **AI-Driven** desde a escolha do framework base do blog até o deploy no Github Pages.
+Esse artigo consolida todo o processo e conhecimento adquirido com o projeto como **AI-Driven** desde a escolha do *framework* base do blog até o *deploy* no Github Pages.
 
 ## Motivação e Contexto do Experimento
 
-Após passar as últimas semanas me aprofundando e entendendo os conceitos de **Spec-Driven Development (SDD)** e, principalmente, **Harness Engineering**. Decidi colocar em prática com um pequeno projeto - chamado também de *brownfield* - que estava engavetado: _meu próprio blog_.
+Após passar as últimas semanas me aprofundando e entendendo os conceitos de **Spec-Driven Development (SDD)** e, principalmente, **Harness Engineering**, decidi colocar em prática com um pequeno projeto - chamado também de *brownfield* - que estava engavetado: _meu próprio blog_.
 
 Além disso, a ideia da prática partiu inicialmente do artigo do mestre _Fábio Akita_ ([aqui](https://akitaonrails.com/2026/02/20/do-zero-a-pos-producao-em-1-semana-como-usar-ia-em-projetos-de-verdade-bastidores-do-the-m-akita-chronicles/#o-claudemd-a-spec-que-evolui)), no qual ele demonstra o uso da IA como assistente em um projeto real, contendo detalhes da implementação. E o projeto foi incrementado com docs do artigo do _Eugênio (Gnios)_ com dicas de como podemos documentar contexto sobre o projeto para uso das IAs ([aqui](https://gnios.github.io/blog/documentacao-antes-das-ferramentas/)).
 
-Em resumo, esse projeto valida a tese sobre **como é usar uma IA como assistente no dia a dia**. A seguir, trago como foi discutir ideias através de brainstormings, montar specs com um fluxo personalizado bem simples de SDD e ajustar instruções para os agentes através do feedback dela mesma usando princípios do Harness Engineering. Sem enrolacão, bora lá!
+Em resumo, esse projeto valida a tese sobre como é usar uma IA como assistente no dia a dia. A seguir, trago como foi discutir ideias através de *brainstormings*, montar *specs* com um fluxo personalizado bem simples de SDD e ajustar instruções para os agentes através do feedback dela mesma usando princípios do Harness Engineering.
+
+**Hands-on:** O código-fonte resultante de todo esse experimento é o repositório aberto deste blog, disponível em [luanmds/luanmds.github.io](https://github.com/luanmds/luanmds.github.io).
 
 ## Tooling, Stack & Harness Customizado do Projeto
 
@@ -28,8 +30,8 @@ Antes de mergulharmos na metodologia e suas métricas, vamos destrinchar as tecn
 
 ### Stack utilizada
 
-- `HuGo Framework`: Para **construção do corpo do site** e o tema [Congo](https://themes.gohugo.io/themes/congo) com cores customizadas.
-- `Github Pages e Github Actions`: para **hospedar e realizar deploy**, respectivamente. Tudo de forma gratuita do próprio Github. 
+- `Hugo Framework`: Para construção do corpo do site e o tema [Congo](https://themes.gohugo.io/themes/congo) com cores customizadas.
+- `Github Pages e Github Actions`: para hospedar e realizar *deploy*, respectivamente. Tudo de forma gratuita do próprio Github. 
   - Para saber mais verifique essa [documentação deles](https://docs.github.com/en/pages).
 - `CodeRabbit`: AI Agent QA sintético - com free tier! - para **revisar o código gerado em Pull Requests abertos por outros agentes** no repositório. 
   - Configurado através do arquivo `.coderabbit.yaml`
@@ -50,9 +52,9 @@ Abaixo, um print de como ficou o harness organizado no projeto:
 
 ## A Metodologia Spec-Driven e Orquestracão de Agentes
 
-Algo que aprendi estudando o Harness é que **entender melhor o ciclo de vida é fundamental para o alinhamento inicial** e, principalmente, o que pode ou não ser feito. 
+Algo que aprendi estudando o Harness é que entender melhor o ciclo de vida é fundamental para o alinhamento inicial e, principalmente, o que pode ou não ser feito. 
 
-No Spec-Driven Development, **a especificação é o pilar que guia todo o processo de criação de conteúdo**. Iniciando por um _brainstorming_, passando por uma etapa de especificação, decomposição em tarefas e implementação. Aqui percebi que **a especificacão se torna o artefato principal desse processo**, diferente do desenvolvimento tradicional onde o código é o artefato principal.
+No Spec-Driven Development, a especificação é o pilar que guia todo o processo de criação de conteúdo. Iniciando por um *brainstorming*, passando por uma etapa de especificação, decomposição em tarefas e implementação. Aqui percebi que a especificação se torna o artefato principal desse processo, diferente do desenvolvimento tradicional onde o código é o artefato principal.
 
 ### O Ciclo de Vida da Entrega
 
@@ -132,10 +134,10 @@ Abaixo o detalhamento das métricas de processamento:
 | Reasoning (raciocínio oculto) | ~308 mil | 0,2% |
 | Input genuinamente novo | ~2,26 milhões | 1,6% |
 
-**A Mágica do Cache e Custo Zero**
-O dado mais revelador do experimento: **94,7% dos tokens foram lidos do cache** (Context Efficiency). O agente mantém o contexto completo "quente" (arquivos, documentação, histórico) a cada mensagem enviada, mas o modelo não precisa reprocessar o que já está cacheado. 
+**A Mágica do *Cache* e Custo Zero**
+O dado mais revelador do experimento: **94,7% dos tokens foram lidos do *cache*** (Context Efficiency). O agente mantém o contexto completo "quente" (arquivos, documentação, histórico) a cada mensagem enviada, mas o modelo não precisa reprocessar o que já está cacheado. 
 
-Isso explica como foi possível consumir **141,7 milhões de tokens sem custo adicional** usando a assinatura do GitHub Copilot. O consumo real de inferência (input novo + reasoning + output) foi de apenas ~3,1 milhões de tokens.
+Isso explica como foi possível consumir 141,7 milhões de tokens sem custo adicional usando a assinatura do GitHub Copilot. O consumo real de inferência (input novo + reasoning + output) foi de apenas ~3,1 milhões de tokens.
 
 **Sessões Principais e Produtividade**
 A tabela abaixo mostra a distribuição de esforço e saldo de código nas principais sessões do projeto:
@@ -173,22 +175,28 @@ A tabela abaixo mostra a distribuição de esforço e saldo de código nas princ
 | `claude-sonnet-4.6` | 20 | ~47,9M | ~43,4M (90%) | ~4,1M | **~387K** |
 | `claude-haiku-4.5` | 1 | ~4,9M | ~4,4M (91%) | ~368K | **~36K** |
 
-> ***Observação**: Real processado = input novo + output + reasoning — o que o modelo de fato inferiu.*
+> *Observação: Real processado = input novo + output + reasoning — o que o modelo de fato inferiu.*
 
 ## Conclusão
 
 Após colocar a versão 1.0 do projeto em produção ([https://luanmds.github.io](https://luanmds.github.io)), listei algumas conclusões e lições aprendidas ao longo do processo:
 
-- **Mudança de mindset como Dev**: O desenvolvedor passa a ser um "Designer de Contexto" e "Orquestrador de Agentes". O que não é ruim - no meu ponto de vista - mas exige um aprendizado de como interagir com as IAs para extrair o máximo de benefício. **Mas ainda é preciso entender o que a IA está gerando e ter um conhecimento sólido sobre Arquitetura e Design de Software** para garantir que o software mantenha um nível de qualidade aceitável.
+- **Mudança de *mindset* como Dev**: O desenvolvedor passa a ser um "Designer de Contexto" e "Orquestrador de Agentes". O que não é ruim - no meu ponto de vista - mas exige um aprendizado de como interagir com as IAs para extrair o máximo de benefício. Mas ainda é preciso entender o que a IA está gerando e ter um conhecimento sólido sobre Arquitetura e Design de Software para garantir que o software mantenha um nível de qualidade aceitável.
 
-- **Documentacão é a chave para uma boa experiência**: À medida que a GenAI avança, a capacidade de interagir com ela de forma eficaz se torna uma habilidade crítica. **A qualidade da documentação influencia diretamente a capacidade da IA de entender o contexto do projeto** e gerar respostas relevantes e precisas.
+- **Documentação é a chave para uma boa experiência**: À medida que a GenAI avança, a capacidade de interagir com ela de forma eficaz se torna uma habilidade crítica. A qualidade da documentação influencia diretamente a capacidade da IA de entender o contexto do projeto e gerar respostas relevantes e precisas.
   - A importância do `AGENTS.md` como artefato central de documentação, ou seja, um guia que o Agente sempre levar consigo ao interagirmos com ele.
   - O SDD, independente de usar um framework ou ferramenta específica (como o OpenCode), se mostra a melhor forma de documentar um projeto. Isso porque ele se baseia no conceito de *"documentação do que precisa ser feito"* ao invés de *"documentação do que foi feito"*.
 
 
 - **Processo de Harness é o mais importante no processo de uso da IA como assistente**: Sem ele, a IA tem dificuldade em entender o contexto do projeto e gerar respostas relevantes e precisas. Por isso, é importante estar sempre revisando o input usado pela IA (Feedforward) e o que ela retorna como resposta (Feedback) para que consiga refinar o contexto do projeto. 
 
->Parafraseando o mestre Fábio Akita: *"Faça um bom prompt, teste, veja o que ele retornou. Se não ficou bom, conserte seu prompt e refaça"*.
+> Parafraseando o mestre Fábio Akita: *"Faça um bom prompt, teste, veja o que ele retornou. Se não ficou bom, conserte seu prompt e refaça"*.
+
+## Isso é tudo pessoal…
+
+Gostou do relato ou tem alguma dúvida de como apliquei esses conceitos na prática? Deixe um comentário lá no repositório ou me chame nas redes. O *feedback* de vocês é sempre bem-vindo!
+
+---
 
 ## Referências
 
