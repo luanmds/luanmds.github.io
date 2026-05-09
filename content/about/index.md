@@ -12,13 +12,14 @@ showAuthor: false
 
 <img src="/img/profile/luanmds-profile.jpg" alt="Foto de perfil de Luan Mello" style="width: 200px; height: 200px; border-radius: 9999px; object-fit: cover; margin: 0 auto;" />
 
-Sou Engenheiro de Software baseado no Rio de Janeiro, com foco em Sistemas Distribuídos e Arquitetura de Backend. Com passagens por empresas como Stone, Saphira e BTG Pactual, especializei-me na construção de microsserviços de alta escala e fluxos de dados resilientes utilizando tecnologias como .NET, Kafka, Azure/AWS, entre outras.
+Sou Engenheiro de Software com foco em Sistemas Distribuídos e Arquitetura de Backend. Com passagens por empresas como Stone, Saphira e BTG Pactual, especializei-me na construção de microsserviços de alta escala e fluxos de dados resilientes utilizando tecnologias como .NET, Kafka, Azure/AWS, entre outras.
 
 ## Tech Stack & Expertise
 - .NET & C#: Desenvolvimento de serviços de missão crítica.
 - Arquitetura: Event-Driven, CQRS, Event Sourcing e Modelagem C4/UML.
 - Infraestrutura: Cloud (Azure/AWS), Docker e mensageria com Kafka.
 - Qualidade: Clean Code, testes automatizados e práticas de engenharia moderna.
+- Outras tecnologias: Python, JavaScript/TypeScript...
 
 Escrevo para documentar meus estudos compartilhando conhecimentos aplicados no dia a dia e ajudando outras pessoas a tomar melhores decisões de engenharia.
 

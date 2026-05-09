@@ -2,7 +2,7 @@
 title: "Testes de Integração: Visão Geral e Boas Práticas"
 date: 2026-03-28
 draft: false
-tags: ["testes", "integração"]
+tags: ["testes", "integracao"]
 categories: ["testes"]
 summary: "Conceitos, definições e boas práticas em Testes de Integração — quando usar, como estruturar sua suíte e quando evitar mocks."
 cover:
