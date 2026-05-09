@@ -17,6 +17,7 @@ Hosted for free on GitHub Pages at `https://luanmds.github.io/`.
 
 **Mandatory flow:** `Spec (PLAN mode) → Verify and Validate → Create Tasks (Markdown) → Implement (code + tests)`
 
+- **EXCEPTION:** Creating new articles (content only) is exempt from the SDD flow. For content-only tasks, skip the Spec/Task creation and proceed directly to a branch/PR.
 - **NEVER write code without an approved spec and tasks** in PLAN mode
 - Tasks must be stored as `tasks.md` inside each spec folder (Markdown checklist format)
 - MANDATORY: Create the spec in `specs/` folder, Verify and Validate the spec with user before continue 
@@ -25,7 +26,6 @@ Hosted for free on GitHub Pages at `https://luanmds.github.io/`.
 - Always use `specs/000-template/spec.md` + `specs/000-template/tasks.md` as the official template for all new specs.
 - After Implement phase, Validate the changes with user. If all ok: if have tasks from a spec as done, mark it in `tasks.md` from spec, after, commit the changes and create a Pull Request in repository.
 - **MANDATORY** When complete a task in `tasks.md` file, mark it as "Done" before commit the changes.
-
 
 ### Updating Specs and Tasks
 
@@ -42,6 +42,16 @@ After completing the implementation of a spec, **always ask the user**:
 - If **no**: skip and proceed to the validation/commit step.
 
 The Playwright skill is located at `.opencode/skills/playwright/`. The dev server must be running before executing tests (`docker compose up -d`).
+
+---
+
+## AI Skills (.opencode)
+
+The project includes specialized skills located in `.opencode/skills/`. Use them to automate complex workflows:
+
+- **playwright-skill** (`.opencode/skills/playwright/`): Complete browser automation. Use for automated testing, responsive design validation, and UX checks against the local dev server (`http://localhost:1313`).
+- **content-review** (`.opencode/skills/content-review/`): In-depth article review. Use to validate drafts against the author's voice (PT-BR/EN), structure patterns, and SEO checklist.
+- **github-branch-pr** (`.opencode/skills/github-branch-pr/`): Git workflow automation. Use to create branches following conventions (`type/scope`) and open draft Pull Requests to `main`.
 
 ---
 
