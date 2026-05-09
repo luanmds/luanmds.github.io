@@ -3,7 +3,7 @@ title: "The Engineering behind this blog: SDD and Harness in a 100% AI workflow"
 date: 2026-05-09
 draft: false
 tags: ["software-engineering", "artificial-intelligence", "sdd", "harness-engineering"]
-categories: ["software-engineering", "artificial-intelligence", "sdd", "harness-engineering"]
+categories: ["software-engineering"]
 summary: "A technical report on how this blog was built using AI-assisted development, validating the limits of SDD and Harness Engineering."
 cover:
   image: cover.png
