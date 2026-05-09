@@ -69,6 +69,7 @@ All specs are in `specs/` folder. Verify them when necessary.
 | 006  | CodeRabbit Configuration    | ✅ done   |
 | 007  | Congo Migration             | ✅ done   |
 | 008  | Spec Template + Branding    | ✅ done |
+| 009  | SEO: JSON-LD + Goatcounter  | 🔲 proposed |
 
 ---
 
