@@ -69,15 +69,29 @@
 
 | Sessão | Tempo | ±Linhas | Total | Cache Read | Cache Write | Output | Input novo |
 |---|---|---|---|---|---|---|---|
-| Configure code automation | 14 min | +101/-2 | **1,5M** | 1,4M (93%) | — | 7K | 100K |
-| Tema Congo + multilingual | 285 min | +904/-111 | **73,9M** | 72,0M (97%) | — | 99K | 1,8M |
-| Coleta de contexto | 16 min | +804/-198 | **3,6M** | 3,2M (89%) | 335K | 30K | ~0 |
-| Responsividade/favicon/Tags | 33 min | +25/-16 | **5,7M** | 5,2M (91%) | 465K | 35K | ~0 |
-| Migração de artigos | 166 min | +0/-0 | **23,2M** | 21,0M (91%) | 2,0M | 184K | ~0 |
-| Ajustes finais + specs | 39 min | +447/-214 | **5,9M** | 5,5M (94%) | — | 19K | 371K |
-| Atualizar página Sobre | 73 min | +36/-38 | **8,8M** | 8,5M (97%) | — | 21K | 279K |
-| Congo theme colors (Spec 007) | 71 min | +253/-229 | **10,6M** | 9,6M (91%) | 880K | 86K | ~0 |
-| README.md | 32 min | +144/-16 | **7,1M** | 6,6M (93%) | 475K | 43K | ~0 |
+| Configure code automation in project | 14 min | +101/-2 | **1,5M** | 1,4M (93%) | — | 7K | 100K |
+| Tema Congo e alternar idioma do artigo por link | 285 min | +904/-111 | **73,9M** | 72,0M (97%) | — | 99K | 1,8M |
+| Coleta de contexto para documentação do projeto | 16 min | +804/-198 | **3,6M** | 3,2M (89%) | 335K | 30K | ~0 |
+| Responsividade móvel, favicon e remover Tags | 33 min | +25/-16 | **5,7M** | 5,2M (91%) | 465K | 35K | ~0 |
+| Migração de artigos e imagens do Medium/Google Drive | 166 min | +0/-0 | **23,2M** | 21,0M (91%) | 2,0M | 184K | ~0 |
+| Ajustes finais no blog e padronização de specs | 39 min | +447/-214 | **5,9M** | 5,5M (94%) | — | 19K | 371K |
+| Atualizar página Sobre: foto e trajetória profissional | 73 min | +36/-38 | **8,8M** | 8,5M (97%) | — | 21K | 279K |
+| Congo theme colors and Spec 007 brainstorming | 71 min | +253/-229 | **10,6M** | 9,6M (91%) | 880K | 86K | ~0 |
+| README.md com base em documentos e AGENTS.md | 32 min | +144/-16 | **7,1M** | 6,6M (93%) | 475K | 43K | ~0 |
+
+### Resumo das Sessões Principais
+
+Abaixo um resumo do contexto e do que foi efetivamente executado em cada uma dessas sessões principais listadas acima:
+
+1. **Configure code automation in project**: Configuração das automações iniciais do projeto, como linting, CI/CD e configuração do CodeRabbit (QA sintético de Pull Requests).
+2. **Tema Congo e alternar idioma do artigo por link**: Apesar do título no banco citar o tema Congo inicialmente, nesta sessão (a mais densa do projeto), foi configurada a base completa do blog com o Hugo, o tema inicial PaperMod e a estrutura completa de internacionalização (PT/EN) com chave de tradução nos artigos.
+3. **Coleta de contexto para documentação do projeto**: Sessão dedicada a gerar a documentação base na pasta `.docs/`, mapeando stack, arquitetura, testes e estabelecendo o `AGENTS.md` a partir do estado atual do projeto.
+4. **Responsividade móvel, favicon e remover Tags**: Ajustes finos de UI e UX, garantindo que o blog fosse responsivo, configurando o favicon correto e ajustando a exibição de tags nas postagens.
+5. **Migração de artigos e imagens do Medium/Google Drive**: Uma sessão longa dedicada à migração de conteúdo em massa. O agente processou textos de rascunho (via Google Drive/Medium) e os formatou para markdown com front matter adequado, sem realizar commits diretos de engenharia.
+6. **Ajustes finais no blog e padronização de specs**: Revisão geral de templates, padronização do formato dos artefatos dentro da pasta `specs/` (Spec-Driven Development) e refinamentos no blog antes do deploy.
+7. **Atualizar página Sobre: foto e trajetória profissional**: Criação e atualização de conteúdo específico para a página *Sobre/About*, adicionando foto de perfil, histórico e ajustes de design específicos para essa rota.
+8. **Congo theme colors and Spec 007 brainstorming**: Execução do Spec 007, que orquestrou 8 sub-agentes paralelos para migrar as cores e o layout do tema antigo (PaperMod) para o Congo, ajustando tipografia, paleta e estrutura de menus simultaneamente.
+9. **README.md com base em documentos e AGENTS.md**: Geração do arquivo `README.md` público do repositório, extraindo todo o contexto do `AGENTS.md` e da documentação interna para apresentar o projeto.
 
 **Legenda das colunas:**
 - **Cache Read** — contexto reutilizado do cache (não reprocessado pelo modelo)
@@ -100,14 +114,14 @@ brainstorming → writing-plans → executing-plans → subagent-driven-developm
 | Sessão | Skills invocadas |
 |---|---|
 | List available skills | `writing-skills` |
-| Tema Congo + multilingual | `brainstorming`, `writing-plans`, `executing-plans`, `using-git-worktrees`, `subagent-driven-development`, `test-driven-development`, `verification-before-completion`, `playwright-skill`, `systematic-debugging`, `finishing-a-development-branch`, `receiving-code-review` |
-| Coleta de contexto | `brainstorming`, `writing-plans` |
-| Responsividade/favicon/Tags | `brainstorming`, `writing-plans` |
-| Migração de artigos | `brainstorming`, `systematic-debugging`, `github-branch-pr`, `receiving-code-review` |
-| Ajustes finais + specs | `brainstorming`, `writing-plans`, `executing-plans`, `systematic-debugging`, `playwright-skill`, `github-branch-pr` |
-| Atualizar página Sobre | `brainstorming`, `writing-plans`, `executing-plans`, `using-git-worktrees`, `subagent-driven-development`, `test-driven-development`, `systematic-debugging`, `verification-before-completion`, `github-branch-pr` |
-| Congo theme colors (Spec 007) | `brainstorming`, `writing-plans`, `subagent-driven-development` |
-| README.md | `github-branch-pr` |
+| Tema Congo e alternar idioma do artigo por link | `brainstorming`, `writing-plans`, `executing-plans`, `using-git-worktrees`, `subagent-driven-development`, `test-driven-development`, `verification-before-completion`, `playwright-skill`, `systematic-debugging`, `finishing-a-development-branch`, `receiving-code-review` |
+| Coleta de contexto para documentação do projeto | `brainstorming`, `writing-plans` |
+| Responsividade móvel, favicon e remover Tags | `brainstorming`, `writing-plans` |
+| Migração de artigos e imagens do Medium/Google Drive | `brainstorming`, `systematic-debugging`, `github-branch-pr`, `receiving-code-review` |
+| Ajustes finais no blog e padronização de specs | `brainstorming`, `writing-plans`, `executing-plans`, `systematic-debugging`, `playwright-skill`, `github-branch-pr` |
+| Atualizar página Sobre: foto e trajetória profissional | `brainstorming`, `writing-plans`, `executing-plans`, `using-git-worktrees`, `subagent-driven-development`, `test-driven-development`, `systematic-debugging`, `verification-before-completion`, `github-branch-pr` |
+| Congo theme colors and Spec 007 brainstorming | `brainstorming`, `writing-plans`, `subagent-driven-development` |
+| README.md com base em documentos e AGENTS.md | `github-branch-pr` |
 
 **Skills mais utilizadas (ranking):**
 
@@ -138,13 +152,13 @@ brainstorming → writing-plans → executing-plans → subagent-driven-developm
 94,7% dos tokens são cache reads. Em sessões Claude, o "Input novo" chega a valores próximos de zero (ex: `70`, `94`, `326` tokens por sessão inteira). O modelo literalmente só precisava processar uma frase nova por turno — todo o resto do contexto já estava cacheado.
 
 ### 3. Sessão gigante
-"Tema Congo e alternar idioma do artigo por link" — 671 mensagens, 73,9M tokens, 904 linhas adicionadas, gerou o tema Congo completo do blog e o sistema de troca de idioma. Foi a sessão inaugural mais densa, com 1,8M tokens de input novo (contexto sendo apresentado pela primeira vez).
+"Tema Congo e alternar idioma do artigo por link" — 671 mensagens, 73,9M tokens, 904 linhas adicionadas, gerou a base do blog e o sistema de troca de idioma. Foi a sessão inaugural mais densa, com 1,8M tokens de input novo (contexto sendo apresentado pela primeira vez).
 
 ### 4. Padrão de subagents paralelos
-Na sessão do Spec 007 (Congo theme colors), 8 subagents foram lançados em paralelo para implementar, revisar e validar tarefas independentes. O padrão `dispatching-parallel-agents` → `subagent-driven-development` fica visível nos títulos das sessões filhas no banco de dados.
+Na sessão "Congo theme colors and Spec 007 brainstorming", 8 subagents foram lançados em paralelo para implementar, revisar e validar tarefas independentes de migração de tema. O padrão `dispatching-parallel-agents` → `subagent-driven-development` fica visível nos títulos das sessões filhas no banco de dados.
 
 ### 5. Migração com 0 linhas no git
-A sessão de migração de artigos do Medium registrou 166 min de conversa ativa e 23,2M tokens, mas 0 linhas modificadas no repositório — imagens e conteúdo foram processados fora do controle de versão git.
+A sessão "Migração de artigos e imagens do Medium/Google Drive" registrou 166 min de conversa ativa e 23,2M tokens, mas 0 linhas modificadas no repositório — imagens e conteúdo foram processados fora do controle de versão git.
 
 ### 6. SDD como estrutura observável
 O fluxo Spec → Tasks → Implement é rastreável nos dados: sessões de brainstorming geram specs em `specs/`, sessões de execução consomem as tasks. O PR #8 (commits com `fix: address CodeRabbit`) passou por `receiving-code-review` após revisão automática do CodeRabbit.

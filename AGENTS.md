@@ -27,7 +27,6 @@ Hosted for free on GitHub Pages at `https://luanmds.github.io/`.
 - After Implement phase, Validate the changes with user. If all ok: if have tasks from a spec as done, mark it in `tasks.md` from spec, after, commit the changes and create a Pull Request in repository.
 - **MANDATORY** When complete a task in `tasks.md` file, mark it as "Done" before commit the changes.
 
-
 ### Updating Specs and Tasks
 
 - When update specs ALWAYS update the `tasks.md` in it.
@@ -43,6 +42,16 @@ After completing the implementation of a spec, **always ask the user**:
 - If **no**: skip and proceed to the validation/commit step.
 
 The Playwright skill is located at `.opencode/skills/playwright/`. The dev server must be running before executing tests (`docker compose up -d`).
+
+---
+
+## AI Skills (.opencode)
+
+The project includes specialized skills located in `.opencode/skills/`. Use them to automate complex workflows:
+
+- **playwright-skill** (`.opencode/skills/playwright/`): Complete browser automation. Use for automated testing, responsive design validation, and UX checks against the local dev server (`http://localhost:1313`).
+- **content-review** (`.opencode/skills/content-review/`): In-depth article review. Use to validate drafts against the author's voice (PT-BR/EN), structure patterns, and SEO checklist.
+- **github-branch-pr** (`.opencode/skills/github-branch-pr/`): Git workflow automation. Use to create branches following conventions (`type/scope`) and open draft Pull Requests to `main`.
 
 ---
 
