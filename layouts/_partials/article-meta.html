@@ -1,0 +1,109 @@
+{{/* Determine the correct context and scope */}}
+{{/* This allows for different logic depending on where the partial is called */}}
+{{ $context := . }}
+{{ $scope := default nil }}
+
+{{ if (reflect.IsMap . ) }}
+  {{ $context = .context }}
+  {{ $scope = cond (not .scope) nil .scope }}
+{{ end }}
+
+{{ with $context }}
+  {{ $meta := newScratch }}
+
+  {{/* Gather partials for this context */}}
+  {{ if .Params.showDate | default (.Site.Params.article.showDate | default true) }}
+    {{ $meta.Add "partials" (slice (partial "meta/date.html" .Date)) }}
+  {{ end }}
+
+  {{ if and (.Params.showDateUpdated | default (.Site.Params.article.showDateUpdated | default false)) (ne (partial "functions/date.html" .Date) (partial "functions/date.html" .Lastmod)) }}
+    {{ $meta.Add "partials" (slice (partial "meta/date-updated.html" .Lastmod)) }}
+  {{ end }}
+
+  {{ if and (.Params.showWordCount | default (.Site.Params.article.showWordCount | default false)) (ne .WordCount 0) }}
+    {{ $meta.Add "partials" (slice (partial "meta/word-count.html" .)) }}
+  {{ end }}
+
+  {{ if and (.Params.showReadingTime | default (.Site.Params.article.showReadingTime | default true)) (ne .ReadingTime 0) }}
+    {{ $meta.Add "partials" (slice (partial "meta/reading-time.html" .)) }}
+  {{ end }}
+
+  {{ if and (eq $scope "single") (.Params.showEdit | default (.Site.Params.article.showEdit | default false)) }}
+    {{ $meta.Add "partials" (slice (partial "meta/edit.html" .)) }}
+  {{ end }}
+
+  {{ if eq $scope "single" }}
+  <div class="flex flex-col items-center gap-1">
+  {{ else }}
+  <div class="flex flex-row flex-wrap items-center">
+  {{ end }}
+    {{/* Linha 1: Data · Tempo · Visualizações */}}
+    {{ if eq $scope "single" }}
+    <div class="flex flex-row flex-wrap items-center justify-center">
+    {{ else }}
+    <div class="flex flex-row flex-wrap items-center">
+    {{ end }}
+      {{/* Output partials */}}
+      {{ with ($meta.Get "partials") }}
+        {{ delimit . "<span class=\"px-2 text-primary-500\">&middot;</span>" | safeHTML }}
+      {{ end }}
+
+      {{/* View counter (Goatcounter) — only on single post pages */}}
+      {{ if and (eq $scope "single") (.Site.Params.goatcounter.code) (eq .Type "posts") }}
+        <span class="px-2 text-primary-500">&middot;</span>
+        <span id="goatcounter-views-meta"
+              class="flex items-center gap-1"
+              title="{{ if eq .Lang "pt" }}Visualizações da página{{ else }}Page views{{ end }}">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+          <span class="views-count">—</span>
+          {{ if eq .Lang "pt" }}visualizações{{ else }}views{{ end }}
+        </span>
+        <script>
+          (function() {
+            var path = location.pathname;
+            var code = "{{ .Site.Params.goatcounter.code }}";
+            if (!code) return;
+            var url = 'https://' + code + '.goatcounter.com/counter/' + encodeURIComponent(path) + '.json';
+            fetch(url)
+              .then(function(res) { if (!res.ok) throw new Error(); return res.json(); })
+              .then(function(data) {
+                if (data && data.count !== undefined) {
+                  var el = document.querySelector('#goatcounter-views-meta .views-count');
+                  if (el) el.textContent = parseInt(data.count).toLocaleString('{{ if eq .Lang "pt" }}pt-BR{{ else }}en-US{{ end }}');
+                }
+              })
+              .catch(function() { /* silently ignore — adblock, CORS, etc */ });
+          })();
+        </script>
+      {{ end }}
+
+      {{/* Output draft label */}}
+      {{ if and (eq $scope "single") (and .Draft .Site.Params.article.showDraftLabel) }}
+        <span class="ps-2">{{ partial "badge.html" (i18n "article.draft" | emojify) }}</span>
+      {{ end }}
+    </div>
+
+    {{/* Linha 2: Tags/Taxonomias */}}
+    {{ if or
+      (and (ne $scope "single") (.Params.showTaxonomies | default (.Site.Params.list.showTaxonomies | default (.Site.Params.article.showTaxonomies | default false))))
+      (and (eq $scope "single") (.Params.showTaxonomies | default (.Site.Params.article.showTaxonomies | default false)))
+    }}
+      <div class="my-1 flex flex-wrap text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
+        {{ range $taxonomy, $terms := .Site.Taxonomies }}
+          {{ if (gt (len ($context.GetTerms $taxonomy)) 0) }}
+            {{ range $context.GetTerms $taxonomy }}
+              <a
+                href="{{ .Permalink }}"
+                class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+                >{{ .LinkTitle }}</a
+              >
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+{{ end }}

@@ -1,0 +1,55 @@
+{{/* JSON-LD WebSite para a home */}}
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "{{ .Site.BaseURL }}",
+  "name": "{{ .Site.Title }}",
+  "description": "{{ .Site.Params.description }}",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ .Site.BaseURL }}search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+{{ end }}
+
+{{/* JSON-LD BlogPosting para artigos */}}
+{{ if and .IsPage (eq .Type "posts") (not (eq .Section "search")) }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  },
+  "headline": "{{ .Title | plainify }}",
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+  {{ with .Lastmod }}
+  "dateModified": "{{ .Format "2006-01-02T15:04:05Z07:00" }}",
+  {{ end }}
+  "author": {
+    "@type": "Person",
+    "name": "{{ .Site.Params.author.name | default .Site.Title }}"
+  },
+  "description": "{{ .Summary | plainify | default .Site.Params.description }}",
+  {{ with .Params.tags }}
+  "keywords": "{{ delimit . ", " }}",
+  {{ end }}
+  "inLanguage": "{{ .Lang }}"
+}
+</script>
+{{ end }}
+
+{{/* Goatcounter Tracking (somente se não for localhost e o config existir) */}}
+{{ if not .Site.IsServer }}
+  {{ with .Site.Params.goatcounter }}
+    {{ if .code }}
+      <script data-goatcounter="https://{{ .code }}.goatcounter.com/count"
+              async src="//gc.zgo.at/count.js"></script>
+    {{ end }}
+  {{ end }}
+{{ end }}
