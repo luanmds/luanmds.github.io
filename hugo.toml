@@ -100,6 +100,7 @@ summaryLength = 0
     showTaxonomies = true
     showWordCount = false
     showComments = false
+    sharingLinks = ["linkedin", "x-twitter", "threads", "bluesky", "telegram", "email"]
 
   [params.list]
     showBreadcrumbs = false
@@ -124,6 +125,9 @@ summaryLength = 0
     inputPosition = "bottom"
     theme = "preferred_color_scheme"
     lang = "pt"
+
+  [params.goatcounter]
+    code = "luanmds"
 
 [languages]
   [languages.pt]

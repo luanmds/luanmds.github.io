@@ -1,8 +1,8 @@
-# Spec 009 — SEO: JSON-LD Structured Data + Contador de Visualizações (Goatcounter)
+# Spec 009 — SEO: JSON-LD + Goatcounter + Botões de Compartilhamento
 
 **Status:** proposed  
 **Data:** 2026-05-09  
-**Objetivo:** Melhorar a indexação do blog com dados estruturados JSON-LD e adicionar rastreamento de visualizações com exibição por artigo via Goatcounter.
+**Objetivo:** Melhorar a indexação do blog com dados estruturados JSON-LD, adicionar rastreamento de visualizações via Goatcounter e habilitar os botões nativos de compartilhamento.
 
 ## Contexto
 
@@ -19,6 +19,7 @@ Como o blog é 100% estático (Hugo + GitHub Pages), um contador de views requer
 3. Criar conta no Goatcounter e adicionar o script de tracking
 4. Exibir o contador de visualizações no rodapé de cada artigo (via API JS do Goatcounter)
 5. Suporte bilíngue: JSON-LD deve usar o idioma correto do artigo
+6. Ativar botões de compartilhamento (LinkedIn, X, Threads, Bluesky, Telegram, Email) via configuração `sharingLinks` no tema.
 
 ## Fora de escopo
 
@@ -42,6 +43,7 @@ Como o blog é 100% estático (Hugo + GitHub Pages), um contador de views requer
 4. Contador de views exibido no artigo com texto "N visualizações" / "N views" conforme o idioma
 5. Build `hugo --minify` sem erros após as mudanças
 6. Nenhum arquivo em `themes/congo/` modificado
+7. Botões de compartilhamento visíveis ao final do artigo com os links corretamente gerados.
 
 ## Riscos e mitigação
 
