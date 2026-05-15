@@ -12,12 +12,13 @@
 
 <script>
   (function() {
-    var path = location.pathname;
+    var path = location.pathname.replace(/^\//, '').replace(/\/$/, '');
     var code = "{{ .Site.Params.goatcounter.code }}";
     if (!code) return;
-    
+
     // Goatcounter API endpoint para views da página
-    var url = 'https://' + code + '.goatcounter.com/counter/' + encodeURIComponent(path) + '.json';
+    // O path é armazenado sem barras inicial/final (ex: "posts/meu-artigo")
+    var url = 'https://' + code + '.goatcounter.com/counter/' + path + '.json';
     
     fetch(url)
       .then(function(res) {
