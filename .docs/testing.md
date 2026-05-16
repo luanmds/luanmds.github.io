@@ -20,11 +20,11 @@ O build **não garante** que o site funciona visualmente ou que links estão cor
 Testes de browser são executados manualmente quando invocados pela skill `playwright-skill`, antes de commitar ou criar PR. O processo:
 
 1. Subir servidor local: `docker compose up -d`
-2. Invocar a skill Playwright (`.opencode/skills/playwright/`)
+2. Invocar a skill Playwright (`.agents/skills/playwright-skill/`)
 3. Rodar testes contra `http://localhost:1313`
 4. Corrigir falhas antes de prosseguir
 
-A skill está disponível em `.opencode/skills/playwright/` e o servidor de dev deve estar ativo antes de usá-la.
+A skill local está disponível em `.agents/skills/playwright-skill/` e o servidor de dev deve estar ativo antes de usá-la. O OpenCode descobre esse diretório nativamente, sem ajustes adicionais no `opencode.json`.
 
 ---
 
