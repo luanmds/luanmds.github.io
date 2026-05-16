@@ -2,31 +2,7 @@
 
 > Contrato operacional do repositório para agentes e para o mantenedor. Atualize este arquivo quando regras do projeto, arquitetura, validação ou skills locais mudarem.
 
----
-
-## Project Overview
-
-Blog estático bilíngue (português brasileiro como idioma padrão e inglês em `/en/`) para publicação de artigos com imagens em page bundles.
-Hospedado no GitHub Pages em `https://luanmds.github.io/`.
-
-Este arquivo é a referência de entrada. Para contexto durável e aprofundado, use a tabela de roteamento para `.docs/` no final.
-
----
-
-## Role of This File
-
-`AGENTS.md` define o que é obrigatório para trabalhar neste repositório:
-
-- resumo do projeto
-- guardrails obrigatórios
-- como as skills locais são descobertas e quando elas ajudam
-- onde fica a documentação de contexto durável em `.docs/`
-
-Ele não impõe um workflow único para todo tipo de mudança. Quando houver mais de uma abordagem válida, alinhe a decisão com o usuário em vez de presumir uma política rígida.
-
----
-
-## Mandatory Guardrails
+## MANDATORY GUARDRAILS
 
 As regras abaixo valem independentemente do workflow escolhido:
 
@@ -37,10 +13,17 @@ As regras abaixo valem independentemente do workflow escolhido:
 - Preserve as convenções bilíngues e a estrutura de page bundles em `content/` e `content/en/`.
 - Mantenha `AGENTS.md` e `.docs/` sincronizados quando regras, arquitetura, validação ou skills mudarem.
 - Para mudanças com impacto em browser, ofereça validação automatizada com a skill `playwright-skill`.
+- Ao iniciar qualquer branch de trabalho, use a skill `github-branch-pr`.
 - Não faça commit direto em `main`.
 - Siga Conventional Commits para todos os commits.
 
----
+## Project Overview
+
+Blog estático bilíngue (português brasileiro como idioma padrão e inglês em `/en/`) para publicação de artigos com imagens em page bundles.
+Hospedado no GitHub Pages em `https://luanmds.github.io/`.
+
+Este arquivo é a referência de entrada. Para contexto durável e aprofundado, use a tabela de roteamento para `.docs/` no final.
+
 
 ## Workflow Guidance
 
@@ -59,9 +42,7 @@ Antes de fechar um trabalho:
 4. Atualize os artefatos de tracking correspondentes se o trabalho estiver usando PRD/tasks do Compozy.
 5. Só então prepare commit e Pull Request.
 
----
-
-## Local Skills
+## Skills
 
 Skills locais vivem em `.agents/skills/`. O OpenCode descobre `.agents/skills/<name>/SKILL.md` nativamente.
 
@@ -92,8 +73,6 @@ Skills locais vivem em `.agents/skills/`. O OpenCode descobre `.agents/skills/<n
 | `content-review` | `.agents/skills/content-review/` | Revisão editorial de artigos PT-BR/EN |
 | `github-branch-pr` | `.agents/skills/github-branch-pr/` | Criar branch e abrir draft PR para `main` seguindo convenções do repo |
 
----
-
 ## Notes for Agents
 
 - `baseURL` em `hugo.toml` é `https://luanmds.github.io/`.
@@ -101,8 +80,6 @@ Skills locais vivem em `.agents/skills/`. O OpenCode descobre `.agents/skills/<n
 - Docker pode criar arquivos como `root`; prefira `--user $(id -u):$(id -g)` ou ajuste permissões depois.
 - GitHub Actions usa `peaceiris/actions-hugo@v3` com `extended: true`.
 - CodeRabbit está configurado para auto review com `drafts: false`; a expectativa prática é review em PRs abertos que já estejam `Ready for review`.
-
----
 
 ## Context Routing Table
 

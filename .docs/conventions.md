@@ -36,6 +36,8 @@ Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
 
 Exemplos: `feat/post-intro-go`, `fix/giscus-config`, `chore/update-congo`, `docs/compozy-docs-governance`.
 
+**Regra operacional:** ao abrir qualquer branch de trabalho, use a skill `github-branch-pr` para padronizar criação da branch e abertura de PR.
+
 ---
 
 ## Forma de trabalhar
