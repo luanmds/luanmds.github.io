@@ -1,63 +1,83 @@
 # AGENTS.md — luanmds.github.io
 
-> Reference file for AI agents. Always keep it up to date after architectural changes.
+> Reference file for AI agents. Keep it updated after architectural or workflow changes.
 
 ---
 
 ## Project Overview
 
 Bilingual static blog (Brazilian Portuguese as default + English) for publishing articles with images.
-Hosted for free on GitHub Pages at `https://luanmds.github.io/`.
+Hosted on GitHub Pages at `https://luanmds.github.io/`.
 
-> For full context on the project, stack, architecture, conventions, and known concerns, see the **Context Routing Table** at the bottom of this file.
+For full project context, use the Context Routing Table at the end of this file.
 
 ---
 
 ## Methodology: Spec-Driven Development (SDD)
 
-**Mandatory flow:** `Spec (PLAN mode) → Verify and Validate → Create Tasks (Markdown) → Implement (code + tests)`
+Default flow:
 
-- **EXCEPTION:** Creating new articles (content only) is exempt from the SDD flow. For content-only tasks, skip the Spec/Task creation and proceed directly to a branch/PR.
-- **NEVER write code without an approved spec and tasks** in PLAN mode
-- Tasks must be stored as `tasks.md` inside each spec folder (Markdown checklist format)
-- MANDATORY: Create the spec in `specs/` folder, Verify and Validate the spec with user before continue 
-- Any decision with 2+ valid options: **stop and ask the user**
-- This file (`AGENTS.md`) must be updated whenever there are architectural changes
-- Always use `specs/000-template/spec.md` + `specs/000-template/tasks.md` as the official template for all new specs.
-- After Implement phase, Validate the changes with user. If all ok: if have tasks from a spec as done, mark it in `tasks.md` from spec, after, commit the changes and create a Pull Request in repository.
-- **MANDATORY** When complete a task in `tasks.md` file, mark it as "Done" before commit the changes.
+`Align scope → Validate decisions → Spec (when applicable) → tasks.md → Implement → Technical validation → User validation → Playwright offer (when applicable) → Commit → Pull Request`
 
-### Updating Specs and Tasks
+### Core rules
 
-- When update specs ALWAYS update the `tasks.md` in it.
-- Check with all tasks from a specific spec are done. Else, ask the user if he wants to implement or to remove them. 
+- SDD is the default for any task that changes behavior, architecture, templates, UX, content structure, or automation.
+- Create specs in `specs/` and always start from `specs/000-template/spec.md` plus `specs/000-template/tasks.md`.
+- Never write implementation code before the user validates the direction when a spec is required.
+- Keep `tasks.md` synchronized with the real state of the work.
+- Any decision with 2+ valid options: stop and ask the user.
+- Update this file (`AGENTS.md`) whenever architecture, workflow, or local skill conventions change.
+- When a task from `tasks.md` is completed, mark it as done before commit.
 
-### Implement phase — Testing with Playwright
+### Exceptions
 
-After completing the implementation of a spec, **always ask the user**:
+- Content-only article creation is exempt from spec creation. Go directly to branch and PR flow.
+- Low-risk maintenance or documentation work may skip spec creation only when the user explicitly approves that exception. In that case, work from an agreed plan and keep affected docs consistent.
 
-> "Would you like to validate the implementation with automated browser tests using the Playwright skill?"
+### Validation and closure order
 
-- If **yes**: invoke the `playwright-skill` skill immediately and run tests against the local dev server (`http://localhost:1313` via `docker compose up`). Fix any failures before proceeding.
-- If **no**: skip and proceed to the validation/commit step.
+1. Run the technical validation defined in the spec or agreed plan.
+2. Ask the user whether they want Playwright validation when the change affects browser behavior.
+3. Confirm acceptance with the user.
+4. Mark completed items in `tasks.md` when a spec exists.
+5. Only then create the commit and Pull Request.
 
-The Playwright skill is located at `.opencode/skills/playwright/`. The dev server must be running before executing tests (`docker compose up -d`).
+### Updating specs and tasks
+
+- When a spec changes, update its `tasks.md` too.
+- If a spec still has open tasks, ask the user whether to implement or remove them.
 
 ---
 
-## AI Skills (.opencode)
+## Playwright Validation
 
-The project includes specialized skills located in `.opencode/skills/`. Use them to automate complex workflows:
+After implementation that affects browser behavior, always ask the user:
 
-- **playwright-skill** (`.opencode/skills/playwright/`): Complete browser automation. Use for automated testing, responsive design validation, and UX checks against the local dev server (`http://localhost:1313`).
-- **content-review** (`.opencode/skills/content-review/`): In-depth article review. Use to validate drafts against the author's voice (PT-BR/EN), structure patterns, and SEO checklist.
-- **github-branch-pr** (`.opencode/skills/github-branch-pr/`): Git workflow automation. Use to create branches following conventions (`type/scope`) and open draft Pull Requests to `main`.
+> "Would you like to validate the implementation with automated browser tests using the Playwright skill?"
+
+- If yes: invoke `playwright-skill`, run against `http://localhost:1313`, and fix failures before proceeding.
+- If no: continue with the remaining validation and acceptance steps.
+- Start the local server first with `docker compose up -d` when Playwright validation is requested.
+
+The local Playwright skill lives at `.agents/skills/playwright-skill/`.
+
+---
+
+## Skills
+
+Project skills live in `.agents/skills/`. OpenCode discovers `.agents/skills/<name>/SKILL.md` natively, so no `opencode.json` change is required for local skill discovery in this repository.
+
+| Skill | Path | Purpose |
+|---|---|---|
+| `playwright-skill` | `.agents/skills/playwright-skill/` | Browser automation and UI validation against the local dev server |
+| `content-review` | `.agents/skills/content-review/` | Review article drafts against the author's PT-BR/EN voice, structure, and SEO expectations |
+| `github-branch-pr` | `.agents/skills/github-branch-pr/` | Create a branch following conventions and open a draft PR to `main` |
 
 ---
 
 ## SDD Specs
 
-All specs are in `specs/` folder. Verify them when necessary.
+All specs are in `specs/`.
 
 | Spec | Description                 | Status    |
 |------|-----------------------------|-----------|
@@ -68,19 +88,19 @@ All specs are in `specs/` folder. Verify them when necessary.
 | 005  | Deploy GitHub Pages         | ✅ done   |
 | 006  | CodeRabbit Configuration    | ✅ done   |
 | 007  | Congo Migration             | ✅ done   |
-| 008  | Spec Template + Branding    | ✅ done |
+| 008  | Spec Template + Branding    | ✅ done   |
 | 009  | SEO: JSON-LD + Goatcounter  | 🔲 proposed |
 
 ---
 
 ## Notes for Agents
 
-- Hugo **extended** is required (Congo uses extended-only features)
-- `baseURL` in `hugo.toml` is `https://luanmds.github.io/`
-- Giscus `repoId` and `categoryId` are placeholders — user fills them in at [giscus.app](https://giscus.app)
-- Docker creates files as `root` — always use `--user $(id -u):$(id -g)` or fix permissions afterwards
-- Run `docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify` to validate before committing
-- GitHub Actions uses `peaceiris/actions-hugo@v3` with `extended: true`
+- Hugo **extended** is required because Congo uses extended-only features.
+- `baseURL` in `hugo.toml` is `https://luanmds.github.io/`.
+- Giscus `repoId` and `categoryId` are placeholders that the user fills at `https://giscus.app/`.
+- Docker can create files as `root`; prefer `--user $(id -u):$(id -g)` or fix permissions afterwards.
+- Use `docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify` before committing when you need a production build check.
+- GitHub Actions uses `peaceiris/actions-hugo@v3` with `extended: true`.
 
 ---
 

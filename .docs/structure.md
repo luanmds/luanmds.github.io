@@ -4,9 +4,9 @@
 
 ```
 luanmds.github.io/
+├── .agents/            ← assets compartilhados para agentes (skills locais em `.agents/skills/`)
 ├── .docs/              ← documentação de contexto do projeto (este diretório)
 ├── .github/            ← GitHub Actions workflows
-├── .opencode/          ← configuração do agente OpenCode (skills customizadas)
 ├── .superpowers/       ← plugins/skills do sistema de superpowers
 ├── .vscode/            ← configurações do editor
 ├── archetypes/         ← templates para novos posts

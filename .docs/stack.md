@@ -54,4 +54,4 @@ Hugo **extended** é obrigatório. O tema Congo usa funcionalidades exclusivas d
 | Docker Compose | `docker compose up` para servidor local na porta 1313 |
 | Git submodules | Gestão do tema Congo |
 | CodeRabbit | Code review automatizado via `.coderabbit.yaml` |
-| OpenCode | Agente AI de desenvolvimento (`.opencode/`) |
+| OpenCode | Agente AI de desenvolvimento (descobre skills locais em `.agents/skills/`) |
