@@ -1,6 +1,6 @@
 ---
 name: github-branch-pr
-description: "Use when starting new work branch in this repository or a change that follows Conventional Commits (branch) and opens a draft PR to main. Create a branch and open a GitHub PR in this repo. "
+description: Use when starting new work branch in this repository or a change that follows Conventional Commits (branch) and opens a draft PR to main. Create a branch and open a GitHub PR in this repo.
 ---
 
 # GitHub Branch + PR (main)
