@@ -1,122 +1,98 @@
 # AGENTS.md — luanmds.github.io
 
-> Reference file for AI agents. Keep it updated after architectural or workflow changes.
+> Operational repository contract for agents and maintainers. Update this file whenever project rules, architecture, validation, or local skills change.
 
----
+## MANDATORY GUARDRAILS
+
+The rules below apply regardless of the chosen workflow:
+
+- Use Hugo **extended** for builds and validations.
+- Never edit files inside `themes/congo/`; overrides must stay in the project.
+- Validate relevant changes with the production build before closing work:
+  `docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify`
+- Preserve bilingual conventions and the page bundle structure in `content/` and `content/en/`.
+- Keep `AGENTS.md` and `.docs/` synchronized whenever rules, architecture, validation, or skills change.
+- For browser-facing changes, offer automated validation with the `playwright-skill`.
+- When starting any work branch, use the `github-branch-pr` skill.
+- Do not commit directly to `main`.
+- Follow Conventional Commits for all commits.
 
 ## Project Overview
 
-Bilingual static blog (Brazilian Portuguese as default + English) for publishing articles with images.
+Bilingual static blog (Brazilian Portuguese as default language and English under `/en/`) for publishing articles with images in page bundles.
 Hosted on GitHub Pages at `https://luanmds.github.io/`.
 
-For full project context, use the Context Routing Table at the end of this file.
+This file is the starting reference. For durable and deeper context, use the routing table to `.docs/` at the end.
 
----
+## Workflow Guidance
 
-## Methodology: Spec-Driven Development (SDD)
+The repository supports direct work and Compozy artifact-driven flows. The choice depends on scope:
 
-Default flow:
+- Small, localized, or purely editorial changes can follow direct work, as long as guardrails and required validation are respected.
+- Changes that benefit from structured exploration can use Compozy artifacts under `.compozy/tasks/`.
+- If there are 2 or more valid direction options, stop and ask the user.
 
-`Align scope → Validate decisions → Spec (when applicable) → tasks.md → Implement → Technical validation → User validation → Playwright offer (when applicable) → Commit → Pull Request`
+Before closing work:
 
-### Core rules
-
-- SDD is the default for any task that changes behavior, architecture, templates, UX, content structure, or automation.
-- Create specs in `specs/` and always start from `specs/000-template/spec.md` plus `specs/000-template/tasks.md`.
-- Never write implementation code before the user validates the direction when a spec is required.
-- Keep `tasks.md` synchronized with the real state of the work.
-- Any decision with 2+ valid options: stop and ask the user.
-- Update this file (`AGENTS.md`) whenever architecture, workflow, or local skill conventions change.
-- When a task from `tasks.md` is completed, mark it as done before commit.
-
-### Exceptions
-
-- Content-only article creation is exempt from spec creation. Go directly to branch and PR flow.
-- Low-risk maintenance or documentation work may skip spec creation only when the user explicitly approves that exception. In that case, work from an agreed plan and keep affected docs consistent.
-
-### Validation and closure order
-
-1. Run the technical validation defined in the spec or agreed plan.
-2. Ask the user whether they want Playwright validation when the change affects browser behavior.
-3. Confirm acceptance with the user.
-4. Mark completed items in `tasks.md` when a spec exists.
-5. Only then create the commit and Pull Request.
-
-### Updating specs and tasks
-
-- When a spec changes, update its `tasks.md` too.
-- If a spec still has open tasks, ask the user whether to implement or remove them.
-
----
-
-## Playwright Validation
-
-After implementation that affects browser behavior, always ask the user:
-
-> "Would you like to validate the implementation with automated browser tests using the Playwright skill?"
-
-- If yes: invoke `playwright-skill`, run against `http://localhost:1313`, and fix failures before proceeding.
-- If no: continue with the remaining validation and acceptance steps.
-- Start the local server first with `docker compose up -d` when Playwright validation is requested.
-
-The local Playwright skill lives at `.agents/skills/playwright-skill/`.
-
----
+1. Execute technical validation appropriate to the scope.
+2. If there is browser impact, ask the user:
+   "Would you like to validate the implementation with automated browser tests using the Playwright skill?"
+3. Confirm user acceptance when that is part of the agreed flow.
+4. Update corresponding tracking artifacts if the work uses Compozy PRD/tasks.
+5. Only then prepare commit and Pull Request.
 
 ## Skills
 
-Project skills live in `.agents/skills/`. OpenCode discovers `.agents/skills/<name>/SKILL.md` natively, so no `opencode.json` change is required for local skill discovery in this repository.
+Local skills live in `.agents/skills/`. OpenCode discovers `.agents/skills/<name>/SKILL.md` natively.
+
+### Compozy reference
 
 | Skill | Path | Purpose |
 |---|---|---|
-| `playwright-skill` | `.agents/skills/playwright-skill/` | Browser automation and UI validation against the local dev server |
-| `content-review` | `.agents/skills/content-review/` | Review article drafts against the author's PT-BR/EN voice, structure, and SEO expectations |
-| `github-branch-pr` | `.agents/skills/github-branch-pr/` | Create a branch following conventions and open a draft PR to `main` |
+| `compozy` | `.agents/skills/compozy/` | Reference for Compozy workflow, CLI, artifacts, and commands |
 
----
+### Compozy workflow skills
 
-## SDD Specs
+| Skill | Path | Purpose |
+|---|---|---|
+| `cy-create-prd` | `.agents/skills/cy-create-prd/` | Create PRDs focused on requirements and scope |
+| `cy-create-techspec` | `.agents/skills/cy-create-techspec/` | Translate PRD into technical specification |
+| `cy-create-tasks` | `.agents/skills/cy-create-tasks/` | Decompose PRD/TechSpec into executable tasks |
+| `cy-execute-task` | `.agents/skills/cy-execute-task/` | Execute a PRD task end-to-end |
+| `cy-review-round` | `.agents/skills/cy-review-round/` | Run a structured manual review round |
+| `cy-fix-reviews` | `.agents/skills/cy-fix-reviews/` | Resolve exported review issues |
+| `cy-final-verify` | `.agents/skills/cy-final-verify/` | Require fresh evidence before completion claims |
+| `cy-workflow-memory` | `.agents/skills/cy-workflow-memory/` | Maintain shared memory per workflow |
 
-All specs are in `specs/`.
+### Project utility skills
 
-| Spec | Description                 | Status    |
-|------|-----------------------------|-----------|
-| 001  | Hugo Setup                  | ✅ done   |
-| 002  | Multilingual Configuration  | ✅ done   |
-| 003  | Content Structure           | ✅ done   |
-| 004  | Features (search/tags/etc.) | ✅ done   |
-| 005  | Deploy GitHub Pages         | ✅ done   |
-| 006  | CodeRabbit Configuration    | ✅ done   |
-| 007  | Congo Migration             | ✅ done   |
-| 008  | Spec Template + Branding    | ✅ done   |
-| 009  | SEO: JSON-LD + Goatcounter  | 🔲 proposed |
-
----
+| Skill | Path | Purpose |
+|---|---|---|
+| `playwright-skill` | `.agents/skills/playwright-skill/` | Browser automation and UI validation against `http://localhost:1313` |
+| `content-review` | `.agents/skills/content-review/` | Editorial review of PT-BR/EN articles |
+| `github-branch-pr` | `.agents/skills/github-branch-pr/` | Create branch and open draft PR to `main` following repository conventions |
 
 ## Notes for Agents
 
-- Hugo **extended** is required because Congo uses extended-only features.
 - `baseURL` in `hugo.toml` is `https://luanmds.github.io/`.
-- Giscus `repoId` and `categoryId` are placeholders that the user fills at `https://giscus.app/`.
-- Docker can create files as `root`; prefer `--user $(id -u):$(id -g)` or fix permissions afterwards.
-- Use `docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify` before committing when you need a production build check.
+- Giscus remains disabled while `repoId` and `categoryId` are empty.
+- Docker may create files as `root`; prefer `--user $(id -u):$(id -g)` or fix permissions afterward.
 - GitHub Actions uses `peaceiris/actions-hugo@v3` with `extended: true`.
-
----
+- CodeRabbit is configured for auto review with `drafts: false`; practical expectation is review on open PRs already in `Ready for review`.
 
 ## Context Routing Table
 
-Detailed context documentation is in `.docs/`. Use the table below to find the right file for each topic.
+Detailed project context lives in `.docs/`. Use the table below to jump to the right source.
 
 | Topic | File | What it covers |
 |---|---|---|
-| What is the project, purpose, author | [`.docs/project.md`](.docs/project.md) | Project identity, domain, problem it solves |
-| Technologies, dependencies, runtime | [`.docs/stack.md`](.docs/stack.md) | Hugo, Congo, Docker, GitHub Pages, tools |
-| Architecture decisions and why | [`.docs/architecture.md`](.docs/architecture.md) | SSG model, bilingualism strategy, theme overrides, CI/CD |
-| Naming, commits, conventions, what to avoid | [`.docs/conventions.md`](.docs/conventions.md) | Conventional Commits, SDD flow, front matter, slugs |
-| Folder structure and responsibilities | [`.docs/structure.md`](.docs/structure.md) | Every directory and its purpose |
-| Testing strategy and how to validate | [`.docs/testing.md`](.docs/testing.md) | Playwright skill, build-as-test, local validation |
+| What is the project, purpose, author | [`.docs/project.md`](.docs/project.md) | Project identity, purpose, and audience |
+| Technologies, dependencies, runtime | [`.docs/stack.md`](.docs/stack.md) | Hugo, Congo, Docker, GitHub Pages, OpenCode, CodeRabbit |
+| Architecture decisions and why | [`.docs/architecture.md`](.docs/architecture.md) | SSG model, bilingual strategy, theme overrides, CI/CD |
+| Naming, commits, guardrails, and what to avoid | [`.docs/conventions.md`](.docs/conventions.md) | Conventional Commits, branches, slugs, editorial rules |
+| Folder structure and responsibilities | [`.docs/structure.md`](.docs/structure.md) | Directory structure, `.agents/skills/`, `.compozy/`, `specs/` |
+| Testing strategy and how to validate | [`.docs/testing.md`](.docs/testing.md) | Hugo build, manual Playwright, known gaps |
 | External services and APIs | [`.docs/integrations.md`](.docs/integrations.md) | GitHub Pages, Actions, Giscus, CodeRabbit |
-| Known risks, technical debt, fragile parts | [`.docs/concerns.md`](.docs/concerns.md) | Congo updates, CI alerts, Giscus, design system |
-| What features exist today | [`.docs/features.md`](.docs/features.md) | Complete inventory of implemented functionality |
-| Article format, front matter, images, migration | [`.docs/articles.md`](.docs/articles.md) | Page bundle structure, front matter fields, image rules, pngquant |
+| Known risks, technical debt, fragile parts | [`.docs/concerns.md`](.docs/concerns.md) | Operational risks and technical debt |
+| What features exist today | [`.docs/features.md`](.docs/features.md) | Inventory of implemented blog capabilities |
+| Article format, front matter, images, migration | [`.docs/articles.md`](.docs/articles.md) | Page bundles, front matter, images, compression |

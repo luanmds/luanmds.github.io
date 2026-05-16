@@ -2,25 +2,24 @@
 
 ## Visão geral da raiz
 
+Este mapa lista apenas diretórios rastreados e relevantes no repositório. Pastas ignoradas por `.gitignore` ficam de fora.
+
 ```
 luanmds.github.io/
 ├── .agents/            ← assets compartilhados para agentes (skills locais em `.agents/skills/`)
-├── .docs/              ← documentação de contexto do projeto (este diretório)
+├── .docs/              ← documentação de contexto durável do projeto
 ├── .github/            ← GitHub Actions workflows
-├── .superpowers/       ← plugins/skills do sistema de superpowers
-├── .vscode/            ← configurações do editor
 ├── archetypes/         ← templates para novos posts
 ├── assets/             ← CSS, JS e imagens (overrides do tema)
 ├── content/            ← conteúdo em pt (idioma padrão)
 ├── data/               ← dados JSON/YAML consumidos por templates Hugo
 ├── i18n/               ← strings de UI por idioma
 ├── layouts/            ← overrides de templates do Congo
-├── specs/              ← specs SDD (uma pasta por spec numerada)
+├── specs/              ← specs históricos do projeto
 ├── static/             ← arquivos estáticos copiados diretamente para public/
 ├── themes/             ← submodules dos temas
 ├── docker-compose.yml  ← servidor local de desenvolvimento
 ├── hugo.toml           ← configuração principal do Hugo
-├── AGENTS.md           ← referência para agentes AI
 └── opencode.json       ← configuração do OpenCode
 ```
 
@@ -114,20 +113,9 @@ archetypes/
 
 ## specs/
 
-Specs do SDD. Uma pasta numerada por spec.
+`specs/` mantém specs históricos do projeto gerados antes da adoção dos workflows atuais. Eles continuam úteis como referência de decisões e contexto, mas não representam sozinhos uma metodologia obrigatória para todo trabalho novo.
 
-```
-specs/
-├── 001-hugo-setup/
-├── 002-multilingual/
-├── 003-content-structure/
-├── 004-features/
-├── 005-deployment/
-├── 006-coderabbit/
-└── 007-congo-migration/
-```
-
-Cada pasta contém `spec.md` (ou similar) e `tasks.md` com checklist.
+Cada pasta normalmente contém `spec.md` (ou similar) e `tasks.md` com checklist.
 
 ---
 
@@ -159,6 +147,5 @@ themes/
 | `hugo.toml` | Configuração completa do Hugo: idiomas, tema, menus, params |
 | `docker-compose.yml` | Servidor de dev local (porta 1313) |
 | `opencode.json` | Config do agente OpenCode |
-| `AGENTS.md` | Referência de arquitetura e convenções para agentes AI |
 | `.coderabbit.yaml` | Configuração de review automatizado (CodeRabbit) |
-| `.gitmodules` | Declaração dos submodules (congo, PaperMod) |
+| `.gitmodules` | Declaração dos submodules (Congo, PaperMod) |

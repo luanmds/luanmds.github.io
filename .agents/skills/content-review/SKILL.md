@@ -3,15 +3,13 @@ name: content-review
 description: Use ONLY when the user explicitly requests a content review, text improvement, writing feedback on a blog article OR when there is a new or modified article in content/posts folder OR content/en/posts folder (When there is an article to translate). Do NOT use it for other purposes.
 ---
 
-# Content Review — luanmds.github.io
+# Content Review
 
 ## Overview
 
 This skill guides article content review for Luan's blog. The goal is to help improve drafts so they match the author's established tone, voice, and structure — not to rewrite them into a generic "good article" style.
 
 **Core principle:** Preserve the author's voice. Suggest changes that make the text sound *more like Luan*, not more formal.
-
----
 
 ## Author Voice Profile
 
@@ -48,7 +46,6 @@ Every published post follows this structure:
 | **Conclusion** | Wraps up, points to repo, asks for feedback. Can optionally use the header "Isso é tudo pessoal…" (PT) / "This is all Folks…" (EN) if appropriate. |
 | **References** | Plain list of links, always last |
 
----
 
 ## Formatting Conventions
 
@@ -60,7 +57,6 @@ Every published post follows this structure:
 - Numbered lists for ordered steps; bullet lists for unordered items
 - H3 sections under H2 use `####` for sub-sub-sections only when needed
 
----
 
 ## Review Checklist
 
@@ -94,7 +90,6 @@ When reviewing a draft, check each area and suggest specific improvements:
 - [ ] Are linked references real URLs (not placeholders)?
 - [ ] Is technical depth appropriate — detailed enough to be useful without being a textbook?
 
----
 
 ## How to Run a Review
 
@@ -125,7 +120,6 @@ When reviewing a draft, check each area and suggest specific improvements:
 5. **CRITICAL:** DO NOT apply any fixes directly to the file at this stage. You MUST present the review and the Execution Plan first, and then explicitly ask the user for permission to implement the changes.
 6. Only if the user explicitly approves the plan, apply the fixes exactly as planned, preserving everything that's already working.
 
----
 
 ## Common Issues to Watch For
 
@@ -140,7 +134,6 @@ When reviewing a draft, check each area and suggest specific improvements:
 | Missing references | No sources cited | Remind author to add references section |
 | Weak intro | Doesn't explain *why* this matters | Add a sentence explaining the practical impact |
 
----
 
 ## Example: Good Intro vs. Weak Intro
 
