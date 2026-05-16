@@ -74,6 +74,14 @@ O partial `layouts/_partials/comments.html` só renderiza o script se `repoId` e
 **Configuração:** `.coderabbit.yaml`  
 **Integração:** Comenta em PRs automaticamente com sugestões de revisão. Não bloqueia deploy.
 
+**Comportamento atual relevante para governança:**
+
+- `reviews.auto_review.enabled: true`
+- `reviews.auto_review.auto_incremental_review: true`
+- `reviews.auto_review.drafts: false`
+
+Na prática, a expectativa de review automático é para PRs abertos que já estejam `Ready for review`. Draft PRs não devem ser tratados como superfície garantida de review do CodeRabbit.
+
 ---
 
 ## Dependências de runtime no browser

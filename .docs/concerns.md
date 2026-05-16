@@ -10,7 +10,7 @@
 
 **Mitigação atual:** Nenhuma. O submodule não está fixado em uma tag/commit específica de forma deliberada.
 
-**Ação recomendada:** Ao atualizar o Congo, sempre testar localmente com `docker compose up` e rodar Playwright antes de fazer push.
+**Ação recomendada:** Ao atualizar o Congo, sempre testar localmente com `docker compose up`, oferecer Playwright por se tratar de mudança browser-facing e validar o build de produção antes de abrir ou atualizar o PR.
 
 ---
 
@@ -73,3 +73,9 @@ O submodule `themes/PaperMod/` está presente mas não é usado (tema ativo é C
 ### 7. Sem verificação de links quebrados
 
 Não há passo de link check no CI. Links externos em posts podem quebrar ao longo do tempo sem nenhuma detecção automática.
+
+---
+
+## Observação de governança
+
+Este arquivo documenta riscos e débitos técnicos. A pasta `.docs/` detalha contexto e operação sem impor, por si só, um workflow único.

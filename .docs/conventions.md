@@ -19,7 +19,7 @@ Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
 | `feat` | Novo post ou nova funcionalidade |
 | `fix` | Correção de conteúdo ou bug |
 | `chore` | Manutenção, configs, dependências |
-| `docs` | Documentação (AGENTS.md, specs, .docs/) |
+| `docs` | Documentação do repositório, contexto durável e artefatos de workflow |
 | `style` | CSS, visual, sem mudança de comportamento |
 | `refactor` | Reestruturação sem mudança de comportamento |
 | `ci` | Mudanças em workflows do GitHub Actions |
@@ -34,23 +34,25 @@ Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
 <tipo>/<escopo-curto>
 ```
 
-Exemplos: `feat/post-intro-go`, `fix/giscus-config`, `chore/update-congo`, `docs/spec-007`.
+Exemplos: `feat/post-intro-go`, `fix/giscus-config`, `chore/update-congo`, `docs/compozy-docs-governance`.
 
 ---
 
-## Workflow de desenvolvimento (SDD)
+## Forma de trabalhar
 
-Todo trabalho segue o fluxo Spec-Driven Development:
+O repositório não exige um único processo para toda mudança. O que é obrigatório é respeitar os guardrails e convenções vigentes do projeto.
 
-```
-Spec (PLAN mode) → Validar com usuário → tasks.md → Implementar → Validar → Commit + PR
-```
+- Trabalho direto é aceitável para mudanças pequenas, localizadas ou puramente editoriais.
+- Fluxos com artefatos do Compozy são úteis quando o escopo pede PRD, TechSpec, task breakdown, review rounds ou tracking mais explícito.
+- Qualquer decisão com 2+ opções válidas: parar e perguntar ao usuário.
+- Antes de encerrar trabalho relevante, rodar o build de produção do Hugo.
+- Após mudanças com impacto em browser, oferecer validação com Playwright.
 
-- Specs ficam em `specs/<NNN>-<nome>/`
-- Cada spec tem um `tasks.md` com checklist Markdown
-- **Nunca escrever código sem spec aprovada**
-- Qualquer decisão com 2+ opções válidas: parar e perguntar ao usuário
-- Após implementação: perguntar se quer validar com Playwright
+### Artefatos de planejamento
+
+- `specs/` contém specs históricos do projeto e pode continuar servindo como referência de decisões anteriores.
+- `.compozy/tasks/` contém workflows orientados por artefatos quando o Compozy é usado.
+- Se um workflow com tracking estiver em uso, mantenha seus arquivos sincronizados com o estado real do trabalho.
 
 ---
 

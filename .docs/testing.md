@@ -2,9 +2,9 @@
 
 ## Estratégia atual
 
-Não há suite de testes automatizados em CI. A estratégia é composta de duas camadas:
+Não há suite de testes automatizados em CI. A estratégia atual combina validação de build com validação manual de browser quando o escopo pede isso.
 
-### 1. Build como smoke test
+### 1. Build como smoke test obrigatório
 
 O build do Hugo (`hugo --minify`) é executado pelo GitHub Actions a cada push em `main`. Se o build falhar, o deploy não acontece. Isso captura:
 
@@ -15,9 +15,15 @@ O build do Hugo (`hugo --minify`) é executado pelo GitHub Actions a cada push e
 
 O build **não garante** que o site funciona visualmente ou que links estão corretos — apenas que compila.
 
-### 2. Playwright manual (via skill)
+Para fechar mudanças relevantes no repositório, execute também localmente:
 
-Testes de browser são executados manualmente quando invocados pela skill `playwright-skill`, antes de commitar ou criar PR. O processo:
+```bash
+docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify
+```
+
+### 2. Playwright manual para mudanças com impacto em browser
+
+Testes de browser são executados manualmente quando a mudança afeta UX, templates, navegação, responsividade ou qualquer comportamento visível no site. O processo:
 
 1. Subir servidor local: `docker compose up -d`
 2. Invocar a skill Playwright (`.agents/skills/playwright-skill/`)
@@ -28,22 +34,22 @@ A skill local está disponível em `.agents/skills/playwright-skill/` e o servid
 
 ---
 
-## Quando rodar os testes Playwright
+## Quando oferecer Playwright
 
-O fluxo SDD prevê perguntar ao usuário após cada implementação:
+Após implementar mudanças com impacto em browser, pergunte ao usuário:
 
-> "Gostaria de validar a implementação com testes automatizados de browser usando a skill Playwright?"
+> "Would you like to validate the implementation with automated browser tests using the Playwright skill?"
 
-Se sim: invocar a skill e rodar contra o servidor local antes do commit.
+Se sim: invocar a skill e rodar contra o servidor local antes do commit ou PR.
 
 ---
 
 ## O que não existe (e é ausência consciente)
 
-- Testes unitários — não há lógica de código, apenas templates e conteúdo
-- Testes de integração em CI — nenhum workflow roda Playwright automaticamente
-- Verificação de links quebrados — não há step de link-check no CI
-- Testes de acessibilidade automatizados
+- Testes unitários em CI para lógica de aplicação, porque o projeto é majoritariamente templates e conteúdo
+- Testes de integração em CI com Playwright
+- Verificação automática de links quebrados
+- Testes automatizados de acessibilidade
 - Testes de performance (Lighthouse, etc.)
 
 ---
@@ -58,4 +64,4 @@ docker compose up
 docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify
 ```
 
-O build de produção deve ser executado pelo menos uma vez antes de criar PR, pois o servidor de dev (`hugo server`) é mais permissivo que o build final.
+O build de produção deve ser executado pelo menos uma vez antes de criar PR em mudanças relevantes, pois o servidor de dev (`hugo server`) é mais permissivo que o build final.

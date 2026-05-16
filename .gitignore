@@ -17,3 +17,6 @@ docs/superpowers/
 scripts/__pycache__/
 scripts/*.pyc
 scripts/*.log
+
+# Compozy
+.compozy/

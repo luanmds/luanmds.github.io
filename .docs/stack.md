@@ -53,5 +53,14 @@ Hugo **extended** é obrigatório. O tema Congo usa funcionalidades exclusivas d
 |---|---|
 | Docker Compose | `docker compose up` para servidor local na porta 1313 |
 | Git submodules | Gestão do tema Congo |
-| CodeRabbit | Code review automatizado via `.coderabbit.yaml` |
+| CodeRabbit | Code review automatizado via `.coderabbit.yaml` em PRs prontos para review |
 | OpenCode | Agente AI de desenvolvimento (descobre skills locais em `.agents/skills/`) |
+| Compozy | Workflow opcional baseado em artefatos em `.compozy/tasks/` |
+
+## Skills locais
+
+As skills locais do repositório vivem em `.agents/skills/` e hoje se dividem em três grupos:
+
+- referência: `compozy`
+- workflow Compozy: `cy-create-prd`, `cy-create-techspec`, `cy-create-tasks`, `cy-execute-task`, `cy-review-round`, `cy-fix-reviews`, `cy-final-verify`, `cy-workflow-memory`
+- utilidades do projeto: `playwright-skill`, `content-review`, `github-branch-pr`

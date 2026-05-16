@@ -88,4 +88,4 @@ O que existe no projeto hoje. Não é roadmap — apenas o que está implementad
 
 ## Code review
 
-- **CodeRabbit** configurado via `.coderabbit.yaml` para review automatizado em PRs
+- **CodeRabbit** configurado via `.coderabbit.yaml` para review automatizado em PRs abertos que estejam `Ready for review`
