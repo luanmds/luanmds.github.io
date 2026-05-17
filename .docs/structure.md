@@ -52,7 +52,7 @@ content/
         └── index.md
 ```
 
-**Regra:** `content/en/` é o `contentDir` do idioma `en`. A estrutura interna deve espelhar `content/` para que as URLs sejam simétricas (`/posts/slug/` em pt, `/en/posts/slug/` em en).
+**Regra:** `content/en/` é o `contentDir` do idioma `en`. Para detalhes editoriais e de bilinguismo, veja `.docs/articles.md` e `.docs/architecture.md`.
 
 ---
 
@@ -113,9 +113,15 @@ archetypes/
 
 ## specs/
 
-`specs/` mantém specs históricos do projeto gerados antes da adoção dos workflows atuais. Eles continuam úteis como referência de decisões e contexto, mas não representam sozinhos uma metodologia obrigatória para todo trabalho novo.
+`specs/` mantém specs históricos do projeto gerados em ciclos anteriores. Eles continuam úteis como referência de decisões e contexto, mas não representam a documentação durável principal do projeto.
 
 Cada pasta normalmente contém `spec.md` (ou similar) e `tasks.md` com checklist.
+
+---
+
+## Artefatos temporários de workflow
+
+O repositório pode usar artefatos temporários de planejamento, execução ou review criados por ferramentas diferentes ao longo do tempo. Esses artefatos não fazem parte do harness durável do projeto e não devem substituir a documentação mantida em `.docs/`.
 
 ---
 

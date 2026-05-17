@@ -13,7 +13,6 @@ Hugo **extended** é obrigatório. O tema Congo usa funcionalidades exclusivas d
 | Tecnologia | Papel |
 |---|---|
 | **Congo** | Tema ativo. Git submodule de `jpanther/congo`. Fornece layouts, componentes, dark mode, busca e RSS nativos. |
-| PaperMod | Submodule legado (não usado). Mantido temporariamente para rollback de emergência. |
 
 ## Linguagens de conteúdo
 
@@ -39,7 +38,7 @@ Hugo **extended** é obrigatório. O tema Congo usa funcionalidades exclusivas d
 
 ## Comentários
 
-- **Giscus** — embed de comentários via GitHub Discussions. Configurado no `hugo.toml`, mas **DISABLED FOR NOW** — `repoId` e `categoryId` estão vazios. Veja `.docs/integrations.md` para instruções de ativação.
+- **Giscus** — integração de comentários via GitHub Discussions. Status e configuração em `.docs/integrations.md`.
 
 ## Dependências externas de runtime
 
@@ -51,16 +50,6 @@ Hugo **extended** é obrigatório. O tema Congo usa funcionalidades exclusivas d
 
 | Ferramenta | Uso |
 |---|---|
-| Docker Compose | `docker compose up` para servidor local na porta 1313 |
+| Docker Compose | Servidor local de desenvolvimento |
 | Git submodules | Gestão do tema Congo |
-| CodeRabbit | Code review automatizado via `.coderabbit.yaml` em PRs prontos para review |
-| OpenCode | Agente AI de desenvolvimento (descobre skills locais em `.agents/skills/`) |
-| Compozy | Workflow opcional baseado em artefatos em `.compozy/tasks/` |
-
-## Skills locais
-
-As skills locais do repositório vivem em `.agents/skills/` e hoje se dividem em três grupos:
-
-- referência: `compozy`
-- workflow Compozy: `cy-create-prd`, `cy-create-techspec`, `cy-create-tasks`, `cy-execute-task`, `cy-review-round`, `cy-fix-reviews`, `cy-final-verify`, `cy-workflow-memory`
-- utilidades do projeto: `playwright-skill`, `content-review`, `github-branch-pr`
+| CodeRabbit | Code review automatizado em Pull Requests |

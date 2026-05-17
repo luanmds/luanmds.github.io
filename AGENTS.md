@@ -1,4 +1,4 @@
-# AGENTS.md — luanmds.github.io
+# AGENTS.md
 
 > Operational repository contract for agents and maintainers. Update this file whenever project rules, architecture, validation, or local skills change.
 
@@ -19,17 +19,17 @@ The rules below apply regardless of the chosen workflow:
 
 ## Project Overview
 
-Bilingual static blog (Brazilian Portuguese as default language and English under `/en/`) for publishing articles with images in page bundles.
-Hosted on GitHub Pages at `https://luanmds.github.io/`.
+Bilingual static blog on Hugo, published on GitHub Pages, with Brazilian Portuguese as default language and English under `/en/`.
 
 This file is the starting reference. For durable and deeper context, use the routing table to `.docs/` at the end.
 
 ## Workflow Guidance
 
-The repository supports direct work and Compozy artifact-driven flows. The choice depends on scope:
+Use the lightest workflow that fits the scope:
 
 - Small, localized, or purely editorial changes can follow direct work, as long as guardrails and required validation are respected.
-- Changes that benefit from structured exploration can use Compozy artifacts under `.compozy/tasks/`.
+- Larger or riskier changes can use temporary planning, tracking, or review artifacts when helpful.
+- Durable project knowledge should be consolidated into `.docs/` rather than left in tool-specific workflow artifacts.
 - If there are 2 or more valid direction options, stop and ask the user.
 
 Before closing work:
@@ -38,23 +38,22 @@ Before closing work:
 2. If there is browser impact, ask the user:
    "Would you like to validate the implementation with automated browser tests using the Playwright skill?"
 3. Confirm user acceptance when that is part of the agreed flow.
-4. Update corresponding tracking artifacts if the work uses Compozy PRD/tasks.
+4. Update any tracking artifacts in use and consolidate durable context into `.docs/` when needed.
 5. Only then prepare commit and Pull Request.
 
 ## Skills
 
 Local skills live in `.agents/skills/`. OpenCode discovers `.agents/skills/<name>/SKILL.md` natively.
 
-### Compozy reference
+Skills are optional helpers for local workflows and validation. Their presence does not define the repository's official process or durable documentation model.
+
+### Project skills
 
 | Skill | Path | Purpose |
 |---|---|---|
-| `compozy` | `.agents/skills/compozy/` | Reference for Compozy workflow, CLI, artifacts, and commands |
-
-### Compozy workflow skills
-
-| Skill | Path | Purpose |
-|---|---|---|
+| `playwright-skill` | `.agents/skills/playwright-skill/` | Browser automation and UI validation against `http://localhost:1313` |
+| `content-review` | `.agents/skills/content-review/` | Editorial review of PT-BR/EN articles |
+| `github-branch-pr` | `.agents/skills/github-branch-pr/` | Create branch and open draft PR to `main` following repository conventions |
 | `cy-create-prd` | `.agents/skills/cy-create-prd/` | Create PRDs focused on requirements and scope |
 | `cy-create-techspec` | `.agents/skills/cy-create-techspec/` | Translate PRD into technical specification |
 | `cy-create-tasks` | `.agents/skills/cy-create-tasks/` | Decompose PRD/TechSpec into executable tasks |
@@ -64,21 +63,10 @@ Local skills live in `.agents/skills/`. OpenCode discovers `.agents/skills/<name
 | `cy-final-verify` | `.agents/skills/cy-final-verify/` | Require fresh evidence before completion claims |
 | `cy-workflow-memory` | `.agents/skills/cy-workflow-memory/` | Maintain shared memory per workflow |
 
-### Project utility skills
-
-| Skill | Path | Purpose |
-|---|---|---|
-| `playwright-skill` | `.agents/skills/playwright-skill/` | Browser automation and UI validation against `http://localhost:1313` |
-| `content-review` | `.agents/skills/content-review/` | Editorial review of PT-BR/EN articles |
-| `github-branch-pr` | `.agents/skills/github-branch-pr/` | Create branch and open draft PR to `main` following repository conventions |
-
 ## Notes for Agents
 
 - `baseURL` in `hugo.toml` is `https://luanmds.github.io/`.
-- Giscus remains disabled while `repoId` and `categoryId` are empty.
 - Docker may create files as `root`; prefer `--user $(id -u):$(id -g)` or fix permissions afterward.
-- GitHub Actions uses `peaceiris/actions-hugo@v3` with `extended: true`.
-- CodeRabbit is configured for auto review with `drafts: false`; practical expectation is review on open PRs already in `Ready for review`.
 
 ## Context Routing Table
 
@@ -87,12 +75,12 @@ Detailed project context lives in `.docs/`. Use the table below to jump to the r
 | Topic | File | What it covers |
 |---|---|---|
 | What is the project, purpose, author | [`.docs/project.md`](.docs/project.md) | Project identity, purpose, and audience |
-| Technologies, dependencies, runtime | [`.docs/stack.md`](.docs/stack.md) | Hugo, Congo, Docker, GitHub Pages, OpenCode, CodeRabbit |
+| Technologies, dependencies, runtime | [`.docs/stack.md`](.docs/stack.md) | Stack and development tools |
 | Architecture decisions and why | [`.docs/architecture.md`](.docs/architecture.md) | SSG model, bilingual strategy, theme overrides, CI/CD |
-| Naming, commits, guardrails, and what to avoid | [`.docs/conventions.md`](.docs/conventions.md) | Conventional Commits, branches, slugs, editorial rules |
-| Folder structure and responsibilities | [`.docs/structure.md`](.docs/structure.md) | Directory structure, `.agents/skills/`, `.compozy/`, `specs/` |
-| Testing strategy and how to validate | [`.docs/testing.md`](.docs/testing.md) | Hugo build, manual Playwright, known gaps |
-| External services and APIs | [`.docs/integrations.md`](.docs/integrations.md) | GitHub Pages, Actions, Giscus, CodeRabbit |
+| Naming, commits, guardrails, and what to avoid | [`.docs/conventions.md`](.docs/conventions.md) | Conventions and repository guardrails |
+| Folder structure and responsibilities | [`.docs/structure.md`](.docs/structure.md) | Directory structure, `.agents/skills/`, `.docs/`, `specs/` |
+| Testing strategy and how to validate | [`.docs/testing.md`](.docs/testing.md) | Validation workflow and known gaps |
+| External services and APIs | [`.docs/integrations.md`](.docs/integrations.md) | External integrations and configuration |
 | Known risks, technical debt, fragile parts | [`.docs/concerns.md`](.docs/concerns.md) | Operational risks and technical debt |
 | What features exist today | [`.docs/features.md`](.docs/features.md) | Inventory of implemented blog capabilities |
-| Article format, front matter, images, migration | [`.docs/articles.md`](.docs/articles.md) | Page bundles, front matter, images, compression |
+| Article format, front matter, images, migration | [`.docs/articles.md`](.docs/articles.md) | Editorial format and article workflow |

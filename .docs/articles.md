@@ -1,5 +1,7 @@
 # articles.md
 
+Este é o arquivo canônico para formato editorial, front matter, imagens e fluxo de criação de artigos.
+
 ## Page Bundle
 
 Cada artigo é um **Page Bundle** — uma pasta dedicada com `index.md` e todos os assets co-localizados.
