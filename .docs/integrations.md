@@ -3,7 +3,6 @@
 ## GitHub Pages
 
 **Tipo:** Hospedagem estática  
-**URL de produção:** `https://luanmds.github.io/`  
 **Integração:** O GitHub Actions faz deploy automaticamente após o build bem-sucedido. Não há configuração adicional além do workflow `.github/workflows/deploy.yml` e das permissões no repositório (Settings > Pages > Source: GitHub Actions).
 
 **Dependência:** O repositório deve ter GitHub Pages habilitado com source "GitHub Actions".
@@ -15,16 +14,6 @@
 **Tipo:** CI/CD  
 **Arquivo:** `.github/workflows/deploy.yml`  
 **Trigger:** Push em `main` ou `workflow_dispatch` (manual)  
-
-**Actions usadas:**
-
-| Action | Versão | Função |
-|---|---|---|
-| `actions/checkout@v4` | v4 | Checkout com submodules recursivos |
-| `peaceiris/actions-hugo@v3` | v3 | Instala Hugo extended |
-| `actions/configure-pages@v5` | v5 | Configura o ambiente do GitHub Pages |
-| `actions/upload-pages-artifact@v3` | v3 | Upload do artefato de build |
-| `actions/deploy-pages@v4` | v4 | Deploy para GitHub Pages |
 
 **Sem notificações de falha configuradas.** Falhas só são visíveis na aba Actions do repositório.
 
@@ -62,7 +51,7 @@ O partial `layouts/_partials/comments.html` só renderiza o script se `repoId` e
 
 **Tipo:** Ambiente de desenvolvimento local  
 **Imagem:** `hugomods/hugo:exts` (Hugo extended, sem versão fixada no compose)  
-**Comando:** `docker compose up` → servidor em `http://localhost:1313` com live reload
+**Uso principal:** servidor local com live reload e build de produção via container
 
 **Observação:** A imagem do Docker Compose não está fixada na mesma versão do Hugo usada no CI (0.154.5). Uma atualização da imagem `exts` pode introduzir divergências entre o comportamento local e o de produção.
 
@@ -74,13 +63,7 @@ O partial `layouts/_partials/comments.html` só renderiza o script se `repoId` e
 **Configuração:** `.coderabbit.yaml`  
 **Integração:** Comenta em PRs automaticamente com sugestões de revisão. Não bloqueia deploy.
 
-**Comportamento atual relevante para governança:**
-
-- `reviews.auto_review.enabled: true`
-- `reviews.auto_review.auto_incremental_review: true`
-- `reviews.auto_review.drafts: false`
-
-Na prática, a expectativa de review automático é para PRs abertos que já estejam `Ready for review`. Draft PRs não devem ser tratados como superfície garantida de review do CodeRabbit.
+**Comportamento atual relevante:** reviews automáticos são esperados em PRs abertos que já estejam `Ready for review`. Draft PRs não devem ser tratados como superfície garantida de review do CodeRabbit.
 
 ---
 

@@ -10,7 +10,7 @@
 
 **Mitigação atual:** Nenhuma. O submodule não está fixado em uma tag/commit específica de forma deliberada.
 
-**Ação recomendada:** Ao atualizar o Congo, sempre testar localmente com `docker compose up`, oferecer Playwright por se tratar de mudança browser-facing e validar o build de produção antes de abrir ou atualizar o PR.
+**Ação recomendada:** Ao atualizar o Congo, validar localmente e seguir o fluxo de verificação descrito em `.docs/testing.md`.
 
 ---
 
@@ -36,13 +36,13 @@
 
 **Mitigação atual:** O partial tem guarda condicional — não carrega scripts externos com valores vazios. Nenhum erro é gerado.
 
-**Ação para resolver:** Habilitar GitHub Discussions no repo, configurar em [giscus.app](https://giscus.app) e preencher `repoId` e `categoryId` no `hugo.toml`. Veja `.docs/integrations.md` para o passo a passo completo.
+**Ação para resolver:** Seguir o passo a passo de ativação em `.docs/integrations.md`.
 
 ---
 
 ### 4. Versão do Hugo divergente entre local e CI
 
-**Risco:** O CI usa `hugo-version: 0.154.5` fixado no workflow. O `docker-compose.yml` usa a imagem `hugomods/hugo:exts` sem versão fixada. Se a imagem local for atualizada para uma versão mais nova do Hugo, pode haver comportamentos diferentes entre local e CI.
+**Risco:** O CI usa `hugo-version: 0.154.5` fixado no workflow. O `docker-compose.yml` usa a imagem `hugomods/hugo:exts` sem versão fixada. Se a imagem local for atualizada, pode haver comportamentos diferentes entre local e CI.
 
 **Manifestação:** Algo funciona no `docker compose up` mas falha no build do CI (ou vice-versa).
 
@@ -73,9 +73,3 @@ O submodule `themes/PaperMod/` está presente mas não é usado (tema ativo é C
 ### 7. Sem verificação de links quebrados
 
 Não há passo de link check no CI. Links externos em posts podem quebrar ao longo do tempo sem nenhuma detecção automática.
-
----
-
-## Observação de governança
-
-Este arquivo documenta riscos e débitos técnicos. A pasta `.docs/` detalha contexto e operação sem impor, por si só, um workflow único.

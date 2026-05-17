@@ -66,7 +66,7 @@ O que existe no projeto hoje. Não é roadmap — apenas o que está implementad
 
 - **Giscus** configurado no `layouts/_partials/comments.html` e `hugo.toml`
 - **Status: DISABLED FOR NOW** — `repoId` e `categoryId` estão vazios; nenhum widget é renderizado
-- Instruções para ativar em `.docs/integrations.md`
+- Ativação e configuração em `.docs/integrations.md`
 
 ## SEO e descoberta
 
@@ -78,14 +78,14 @@ O que existe no projeto hoje. Não é roadmap — apenas o que está implementad
 ## CI/CD
 
 - **Deploy automático** para GitHub Pages a cada push em `main`
-- **Build com minificação** (`hugo --minify`)
+- **Build de produção** antes do deploy
 - **Trigger manual** via `workflow_dispatch`
 
 ## Desenvolvimento local
 
-- **Servidor de dev com live reload** via `docker compose up` (porta 1313)
+- **Servidor de dev com live reload**
 - **Archetypes** para criação de novos posts com front matter pré-preenchido
 
 ## Code review
 
-- **CodeRabbit** configurado via `.coderabbit.yaml` para review automatizado em PRs abertos que estejam `Ready for review`
+- **CodeRabbit** configurado para review automatizado em PRs prontos para revisão

@@ -95,9 +95,3 @@ Para ativar no futuro, veja `.docs/integrations.md`.
 | GitHub Pages | Netlify, Vercel | Gratuito, sem vendor lock-in além do GitHub já usado |
 | contentDir split | translationKey no mesmo dir | Clareza de organização por idioma |
 | Git submodule para tema | Copiar theme direto | Facilita updates do upstream Congo com `git submodule update` |
-
----
-
-## Documentação operacional
-
-A pasta `.docs/` reúne contexto durável sobre stack, arquitetura, validação, estrutura e integrações do repositório.
