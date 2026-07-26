@@ -1,4 +1,0 @@
-- [x] Criar `.github/workflows/deploy.yml` com Hugo extended e deploy no Pages
-- [x] Configurar `baseURL` em `hugo.toml`
-- [x] Validar build local de produção (`hugo --minify`)
-- [ ] Verificar site ao vivo após push em `main`

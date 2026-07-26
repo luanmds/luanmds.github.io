@@ -15,7 +15,6 @@ luanmds.github.io/
 ├── data/               ← dados JSON/YAML consumidos por templates Hugo
 ├── i18n/               ← strings de UI por idioma
 ├── layouts/            ← overrides de templates do Congo
-├── specs/              ← specs históricos do projeto
 ├── static/             ← arquivos estáticos copiados diretamente para public/
 ├── themes/             ← submodules dos temas
 ├── docker-compose.yml  ← servidor local de desenvolvimento
@@ -108,14 +107,6 @@ archetypes/
     ├── index.md      ← template de post em pt
     └── index.en.md   ← template de post em en
 ```
-
----
-
-## specs/
-
-`specs/` mantém specs históricos do projeto gerados em ciclos anteriores. Eles continuam úteis como referência de decisões e contexto, mas não representam a documentação durável principal do projeto.
-
-Cada pasta normalmente contém `spec.md` (ou similar) e `tasks.md` com checklist.
 
 ---
 
