@@ -1,4 +1,0 @@
-- [x] Configurar `[languages.pt]` e `[languages.en]` no `hugo.toml`
-- [x] Criar arquivos `i18n/pt.yaml` e `i18n/en.yaml`
-- [x] Configurar menus separados por idioma
-- [x] Validar build com páginas PT e EN geradas corretamente

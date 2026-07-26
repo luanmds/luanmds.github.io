@@ -54,14 +54,6 @@ Skills are optional helpers for local workflows and validation. Their presence d
 | `playwright-skill` | `.agents/skills/playwright-skill/` | Browser automation and UI validation against `http://localhost:1313` |
 | `content-review` | `.agents/skills/content-review/` | Editorial review of PT-BR/EN articles |
 | `github-branch-pr` | `.agents/skills/github-branch-pr/` | Create branch and open draft PR to `main` following repository conventions |
-| `cy-create-prd` | `.agents/skills/cy-create-prd/` | Create PRDs focused on requirements and scope |
-| `cy-create-techspec` | `.agents/skills/cy-create-techspec/` | Translate PRD into technical specification |
-| `cy-create-tasks` | `.agents/skills/cy-create-tasks/` | Decompose PRD/TechSpec into executable tasks |
-| `cy-execute-task` | `.agents/skills/cy-execute-task/` | Execute a PRD task end-to-end |
-| `cy-review-round` | `.agents/skills/cy-review-round/` | Run a structured manual review round |
-| `cy-fix-reviews` | `.agents/skills/cy-fix-reviews/` | Resolve exported review issues |
-| `cy-final-verify` | `.agents/skills/cy-final-verify/` | Require fresh evidence before completion claims |
-| `cy-workflow-memory` | `.agents/skills/cy-workflow-memory/` | Maintain shared memory per workflow |
 
 ## Notes for Agents
 
@@ -78,7 +70,7 @@ Detailed project context lives in `.docs/`. Use the table below to jump to the r
 | Technologies, dependencies, runtime | [`.docs/stack.md`](.docs/stack.md) | Stack and development tools |
 | Architecture decisions and why | [`.docs/architecture.md`](.docs/architecture.md) | SSG model, bilingual strategy, theme overrides, CI/CD |
 | Naming, commits, guardrails, and what to avoid | [`.docs/conventions.md`](.docs/conventions.md) | Conventions and repository guardrails |
-| Folder structure and responsibilities | [`.docs/structure.md`](.docs/structure.md) | Directory structure, `.agents/skills/`, `.docs/`, `specs/` |
+| Folder structure and responsibilities | [`.docs/structure.md`](.docs/structure.md) | Directory structure, `.agents/skills/`, `.docs/` |
 | Testing strategy and how to validate | [`.docs/testing.md`](.docs/testing.md) | Validation workflow and known gaps |
 | External services and APIs | [`.docs/integrations.md`](.docs/integrations.md) | External integrations and configuration |
 | Known risks, technical debt, fragile parts | [`.docs/concerns.md`](.docs/concerns.md) | Operational risks and technical debt |
