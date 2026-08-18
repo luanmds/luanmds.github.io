@@ -6,10 +6,6 @@ public/
 resources/_gen/
 .hugo_build.lock
 
-# Local brainstorming artifacts
-.superpowers/
-docs/superpowers/
-
 # Local isolated git worktrees
 .worktrees/
 
@@ -17,6 +13,3 @@ docs/superpowers/
 scripts/__pycache__/
 scripts/*.pyc
 scripts/*.log
-
-# Compozy
-.compozy/
