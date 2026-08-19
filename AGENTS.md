@@ -24,6 +24,8 @@ Personal bilingual Hugo blog published on GitHub Pages.
 
 - Prefer the lightest process that safely fits the change.
 - If two or more valid implementation directions exist, ask before choosing.
+- For scoped changes, use the OpenSpec flow: propose, apply, validate, then archive.
+- When a change needs a branch or PR, pair OpenSpec with `github-branch-pr` to create a Conventional Commit branch and open a draft PR to `main`.
 - For content work, follow `.docs/articles.md`.
 - For layout, theme, or browser-facing changes, check `.docs/architecture.md`, `.docs/structure.md`, and `.docs/testing.md`.
 - When starting a work branch, use the `github-branch-pr` skill.

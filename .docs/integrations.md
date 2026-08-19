@@ -22,28 +22,20 @@
 ## Giscus
 
 **Tipo:** Sistema de comentários via GitHub Discussions  
-**Status: DISABLED FOR NOW — parcialmente implementado, mas não funcional**  
+**Status: enabled**  
 **Script:** `https://giscus.app/client.js` (carregado no browser)
 
-> ⚠️ Os comentários não aparecem em nenhum post enquanto `repoId` e `categoryId` estiverem vazios. Esta é a fonte de verdade para reativar o Giscus no futuro.
-
-**Configuração necessária (em `hugo.toml`):**
+**Configuração atual (`hugo.toml`):**
 
 ```toml
 [params.giscus]
   repo = "luanmds/luanmds.github.io"
-  repoId = ""         # ← preencher em giscus.app
+  repoId = "R_kgDOSJA4eg"
   category = "Announcements"
-  categoryId = ""     # ← preencher em giscus.app
+  categoryId = "DIC_kwDOSJA4es4C7u__"
 ```
 
-**Para ativar:**
-1. Habilitar GitHub Discussions no repositório
-2. Acessar [giscus.app](https://giscus.app), configurar e copiar `repoId` e `categoryId`
-3. Preencher os valores no `hugo.toml`
-4. Commitar e fazer deploy
-
-O partial `layouts/_partials/comments.html` só renderiza o script se `repoId` e `categoryId` estiverem preenchidos — enquanto estiverem vazios, nenhum script é carregado.
+O partial `layouts/_partials/comments.html` só renderiza o script se `repoId` e `categoryId` estiverem preenchidos. Agora que os dois valores estão definidos, os comentários aparecem nos artigos.
 
 ---
 
