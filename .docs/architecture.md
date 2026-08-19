@@ -78,11 +78,9 @@ O Hugo gera um `index.json` com todos os posts (configurado em `outputs.home = [
 
 ---
 
-## Comentários: Giscus (DISABLED FOR NOW)
+## Comentários: Giscus
 
-Os comentários via Giscus estão desabilitados — `repoId` e `categoryId` estão vazios no `hugo.toml`. O partial `layouts/_partials/comments.html` verifica essa condição; se os valores estiverem vazios, nenhum script externo é carregado e o bloco de comentários não é renderizado.
-
-Para ativar no futuro, veja `.docs/integrations.md`.
+Os comentários via Giscus estão configurados no `hugo.toml` e o site renderiza o widget em artigos. O partial `layouts/_partials/comments.html` continua protegendo a renderização caso a configuração seja removida ou fique incompleta no futuro.
 
 ---
 

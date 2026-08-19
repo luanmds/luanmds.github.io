@@ -61,7 +61,7 @@ docker run --rm -v $(pwd):/src -w /src hugomods/hugo:exts hugo --minify
 | **GitHub Pages** | 🌍 Free static hosting |
 | **GitHub Actions** | 🔄 CI/CD — automatic build and deploy on push to `main` |
 | **Fuse.js** | 🔍 Client-side full-text search (native Congo integration) |
-| **Giscus** | 💬 Comment system via GitHub Discussions (currently placeholder config) |
+| **Giscus** | 💬 Comment system via GitHub Discussions (enabled on article pages) |
 
 ---
 
@@ -104,7 +104,7 @@ Detailed documentation is in `.docs/`. Use this table to find what you need:
 - **⭐ Hugo extended is mandatory** — Congo theme requires SCSS transpilation, which only works with extended version
 - **🔒 Docker user permissions** — Use `--user $(id -u):$(id -g)` flag or fix file ownership afterwards (Docker creates files as root by default)
 - **📦 Git submodules** — Update after clone: `git submodule update --init --recursive`
-- **💬 Giscus comments — DISABLED FOR NOW** — Currently uses placeholder config. To enable in the future: go to [giscus.app](https://giscus.app), configure repo, and update `repoId` and `categoryId` in `hugo.toml`
+- **💬 Giscus comments** — Enabled on article pages and configured in `hugo.toml`. The widget is rendered through the existing Congo override and follows the page language.
 - **🔄 GitHub Actions** — Uses `peaceiris/actions-hugo@v3` with `extended: true` for CI/CD
 
 ---

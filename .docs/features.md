@@ -62,10 +62,11 @@ O que existe no projeto hoje. Não é roadmap — apenas o que está implementad
 - **Box de autor** no rodapé de cada post com: nome, headline, bio e links sociais
 - Links: GitHub, LinkedIn, Medium, Dev.to
 
-## Comentários (DISABLED FOR NOW)
+## Comentários
 
 - **Giscus** configurado no `layouts/_partials/comments.html` e `hugo.toml`
-- **Status: DISABLED FOR NOW** — `repoId` e `categoryId` estão vazios; nenhum widget é renderizado
+- **Status: enabled** — `showComments = true` e os IDs do repositório/categoria já estão definidos
+- O widget segue o idioma da página
 - Ativação e configuração em `.docs/integrations.md`
 
 ## SEO e descoberta

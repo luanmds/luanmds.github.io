@@ -99,7 +99,7 @@ summaryLength = 0
     showTableOfContents = true
     showTaxonomies = true
     showWordCount = false
-    showComments = false
+    showComments = true
     sharingLinks = ["linkedin", "x-twitter", "threads", "bluesky", "telegram", "email"]
 
   [params.list]
@@ -115,16 +115,15 @@ summaryLength = 0
 
   [params.giscus]
     repo = "luanmds/luanmds.github.io"
-    repoId = ""
+    repoId = "R_kgDOSJA4eg"
     category = "Announcements"
-    categoryId = ""
+    categoryId = "DIC_kwDOSJA4es4C7u__"
     mapping = "pathname"
     strict = "0"
     reactionsEnabled = "1"
     emitMetadata = "0"
     inputPosition = "bottom"
     theme = "preferred_color_scheme"
-    lang = "pt"
 
   [params.goatcounter]
     code = "luanmds"

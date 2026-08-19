@@ -26,17 +26,15 @@
 
 ---
 
-### 3. Giscus (DISABLED FOR NOW)
+### 3. Giscus (external dependency)
 
-**Status atual: DISABLED — comentários completamente inoperantes.**
+**Status atual: ENABLED — comments render through Giscus on article pages.**
 
-**Risco:** O sistema de comentários está parcialmente implementado (`comments.html`, parâmetros no `hugo.toml`), mas `repoId` e `categoryId` estão vazios. Os comentários não aparecem em nenhum post.
+**Risco:** O sistema de comentários depende de GitHub Discussions e do serviço hospedado do Giscus. Se o serviço externo ficar indisponível, os comentários ficam inacessíveis.
 
-**Manifestação:** Visualmente invisível — o partial simplesmente não renderiza nada. Usuários não têm como comentar.
+**Manifestação:** O restante do artigo continua funcionando; apenas o widget de comentários pode falhar ao carregar.
 
-**Mitigação atual:** O partial tem guarda condicional — não carrega scripts externos com valores vazios. Nenhum erro é gerado.
-
-**Ação para resolver:** Seguir o passo a passo de ativação em `.docs/integrations.md`.
+**Mitigação atual:** O partial continua guardando a renderização e a integração fica isolada em `comments.html`, sem afetar homepage, list pages ou o build do site.
 
 ---
 
