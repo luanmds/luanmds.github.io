@@ -1,7 +1,7 @@
 ---
 title: "Mantendo a Modularidade, Coesão e Acoplamento com Guardrails na era da IA"
 date: 2026-09-01
-draft: true
+draft: false
 tags: ["software-architecture", "artificial-intelligence", "modularity", "cohesion", "coupling"]
 categories: ["software-architecture"]
 summary: "Exploração dos princípios e aplicabilidade da modularidade, coesão e acoplamento na arquitetura de software, especialmente no contexto da inteligência artificial."
@@ -12,20 +12,20 @@ cover:
 translationKey: "modularidade-coesao-acoplamento-guardrails-ia"
 ---
 
-Com o advento da inteligência artificial (famosa IA), você já deve ter percebido - e visto em diversos lugares - que a IA virou commodity com a capacidade de gerar código rápido e em grande escala. Mas isso não garante qualidade e segurança para o software que está sendo construído e gera dificuldades na manutenção e sustentação do sistema a longo prazo.
+Com o advento da inteligência artificial (famosa IA), você já deve ter percebido - e visto em diversos lugares - que a IA virou commodity com a capacidade de gerar código rápido e em grande escala. Entretanto, isso não garante qualidade e segurança do software que está sendo desenvolvido e gera dificuldades na manutenção e sustentação do sistema a longo prazo.
 
-Neste artigo, vamos relembrar alguns fundamentos da engenharia de software essenciais que sempre serviram como guardrails do design e arquitetura do nosso software, mas o uso deles hoje é muito mais que obrigatório quando incluímos IA no ciclo de desenvolvimento. Além disso, vamos entender como a IA vira uma parceira na manutenção desses guardrails no dia a dia do desenvolvimento.
+Neste artigo, vamos relembrar alguns fundamentos da engenharia de software essenciais que sempre serviram como guardrails do design e arquitetura do nosso software e entender a obrigatoriedade do uso deles hoje, especialmente quando incorporamos a IA como parceira de manutenção e desenvolvimento do ciclo de vida de software.
 
 
 ## Revisando Modularidade, Coesão e Acoplamento
 
 A seguir, vamos revisar os conceitos de modularidade, coesão e acoplamento, entendendo como eles se relacionam e como impactam a qualidade do software a longo prazo. Isso nos permite tomar decisões embasadas em *trade-offs* técnicos e de negócio.
 
-### Modularidade e Granularidade para organizar responsabilidades
+### Modularidade e Granularidade para Organizar Responsabilidades
 
-De forma resumida, **modularidade** é um termo geral usado para indicar qualquer agrupamento de código: classes (na orientação a objetos), funções (em paradigmas funcionais), bibliotecas, serviços, etc. O seu foco principal é dividir o sistema em partes (agrupamentos) que facilitem a compreensão, sendo independentes e coesas (vamos ver sobre coesão a seguir). Cada parte é chamada geralmente de **módulo**.
+De forma resumida, **modularidade** é um termo geral usado para indicar qualquer agrupamento de código: classes (na orientação a objetos), funções (em paradigmas funcionais), bibliotecas, serviços, etc. O seu foco principal é dividir o sistema em partes (agrupamentos) que facilitem a compreensão, enquanto são independentes e coesas (vamos ver sobre coesão a seguir). Cada parte é chamada geralmente de **módulo**.
 
-Sua maior vantagem está justamente nessa divisão em módulos, pois facilita a manutenção e evolução do software, possibilitando identificar qual código, ou em quais módulos, deve ser alterado para atender a uma nova necessidade ou correção de bug.
+Sua maior vantagem está justamente nessa divisão em módulos, tornando fácil a manutenção e evolução do software, possibilitando identificar qual código, ou em quais módulos, deve ser alterado para atender a uma nova necessidade ou correção de bug.
 
 #### Granularidade de Módulos
 
@@ -33,13 +33,13 @@ Enquanto a modularidade foca em agrupar código de acordo com as responsabilidad
 
 E a definição do quão granular um módulo deve ser parte do estilo de arquitetura escolhido: uma arquitetura monolítica pode ter módulos de acordo com regras de negócio (exemplo 1 abaixo) ou separados por partes técnicas, como na arquitetura em camadas. Já uma arquitetura de microsserviços tende a ter módulos menores, com responsabilidades mais específicas e focadas em domínios de negócio (exemplo 2 abaixo).
 
-> **Dica**: Trate a granularidade como um *trade-off* que acompanha a arquitetura escolhida para o sistema, mas que deve ser reavaliado constantemente para cada módulo. A evolução do sistema pode alterar a responsabilidade de um módulo e fazer com que dividi-lo em um novo serviço comece a fazer sentido.
+> **Dica**: Trate a granularidade como um *trade-off* que acompanha a arquitetura escolhida para o sistema e o reavalie constantemente para cada módulo. A evolução do sistema pode alterar a responsabilidade de um módulo, e esteja disponível para dividir um novo serviço.
 
 Seguem alguns exemplos de modularidade:
 
 *Exemplo 1: Monólito modular com fronteiras bem definidas.*
 
-```mermaid
+{{< mermaid >}}
 flowchart TD
     UI[Web Interface] --> App[Application Layer]
     App --> Auth[Auth Module]
@@ -50,11 +50,11 @@ flowchart TD
     Auth --> DB[(Single Database)]
     Catalog --> DB
     Order --> DB
-```
+{{< /mermaid >}}
 
 *Exemplo 2: Módulos em uma arquitetura de microsserviços.*
 
-```mermaid
+{{< mermaid >}}
 flowchart LR
     Client[Client] --> Gateway[API Gateway]
     Gateway --> CatalogSvc[Catalog Service]
@@ -63,36 +63,35 @@ flowchart LR
     CatalogSvc --> CatalogDB[(Catalog DB)]
     OrderSvc --> OrderDB[(Order DB)]
     NotifSvc --> NotifDB[(Notification DB)]
-```
+{{< /mermaid >}}
 
 
 ### Coesão para criar sentido entre as partes
 
-Agindo como uma métrica de qualidade, a coesão indica o quão bem as partes de um módulo estão relacionadas entre si, cumprindo a responsabilidade que lhe foi atribuída. Enquanto a modularidade agrupa, a coesão garante que o agrupamento faça sentido. Isso significa que as partes cumprem a responsabilidade atribuída ao módulo.
+Agindo como uma métrica de qualidade, a coesão indica o quão bem as partes de um módulo estão relacionadas entre si, cumprindo a responsabilidade que lhe foi atribuída. Enquanto a modularidade agrupa, a coesão garante que o agrupamento faça sentido.
 
-Num cenário ideal, um módulo considerado "coeso" contém tudo que é essencial para seu funcionamento, sem depender de outros módulos para cumprir sua responsabilidade. Tentar adicionar mais ações ou dividi-lo pode resultar em aumento de acoplamento (veremos a seguir) e perda de legibilidade.
-
-No fim, a coesão também é uma pergunta: *"O que esse módulo faz ou está fazendo? Ele cumpre a responsabilidade que lhe foi atribuída?"*
+Num cenário ideal, um módulo considerado "coeso" contém tudo que é essencial para seu funcionamento, sem depender de outros módulos para cumprir sua responsabilidade. Tentar adicionar mais ações ou dividi-lo pode resultar em aumento de acoplamento (veremos a seguir) e perda de legibilidade. No fim, a coesão também é uma pergunta: *"O que esse módulo faz ou está fazendo? Ele cumpre a responsabilidade que lhe foi atribuída?"*
 
 #### E como define a responsabilidade?
 
 A responsabilidade se define pela função que o módulo deve cumprir dentro do sistema. Seja por um domínio ou subdomínio definido usando Domain-Driven Design (DDD), seja por uma regra de negócio ou por uma funcionalidade técnica compartilhada (como um serviço de autenticação, por exemplo).
 
-> **Dica**: tenha o hábito de nomear os módulos de acordo com a responsabilidade que eles cumprem, isso ajuda a manter a coesão e facilita a compreensão do sistema. Sempre revise o que o módulo faz e se o que há nele ainda cumpre a responsabilidade atribuída a ele. Se não, é hora de refatorar.
+> **Dica**: Tenha o hábito de nomear os módulos de acordo com a responsabilidade que eles cumprem, isso ajuda a manter a coesão e facilita a compreensão do sistema. Sempre revise o que o módulo faz e se o que há nele ainda cumpre a responsabilidade atribuída a ele. Se não, é hora de refatorar.
 
 
 #### Tipos de coesão
 
 Há diversos tipos de coesão, mas os mais comuns, e nos quais devemos focar, são:
-- **Coesão Funcional (A melhor)**: Todas as partes do módulo trabalham juntas para realizar uma única função bem definida. É o caso ideal de módulo. **Exemplo**: Um módulo de autenticação que lida com login, logout e verificação de tokens.
-- **Coesão Coincidental (A pior)**: As partes do módulo estão agrupadas, mas não têm uma relação clara entre si. **Exemplo**: Um módulo que contém funções de autenticação, manipulação de arquivos e envio de e-mails.
+
+- **Coesão Funcional**: Todas as partes do módulo trabalham juntas para realizar uma única função bem definida. É o caso ideal de módulo. **Exemplo**: Um módulo de autenticação que lida com login, logout e verificação de tokens.
+- **Coesão Coincidental**: As partes do módulo estão agrupadas, mas não têm uma relação clara entre si. **Exemplo**: Um módulo que contém funções de autenticação, manipulação de arquivos e envio de e-mails.
 - Outros tipos de coesão incluem **Coesão Lógica**, **Coesão Temporal**, **Coesão Procedural**, entre outros, cada um com suas características e impactos na qualidade do software. *Recomendo a leitura do artigo [Cohesion and Coupling](https://www.geeksforgeeks.org/software-engineering/software-engineering-coupling-and-cohesion/) para uma visão mais detalhada.*
 
-**Alguns casos de uso de coesão**
+Alguns casos de uso de coesão:
 
 *Exemplo 1: Alta coesão em um módulo de autenticação.*
 
-```mermaid
+{{< mermaid >}}
 flowchart TD
     UI[Login Screen] --> Auth[Authentication Module]
     Auth --> Validate[Validate Credentials]
@@ -101,11 +100,11 @@ flowchart TD
     Validate --> UserDB[(Users Database)]
     Token --> TokenStore[(Token Store)]
     Refresh --> TokenStore
-```
+{{< /mermaid >}}
 
 *Exemplo 2: Baixa coesão misturando responsabilidades diferentes.*
 
-```mermaid
+{{< mermaid >}}
 flowchart TD
     UI[Admin Panel] --> Mixed[Mixed Module]
     Mixed --> Order[Create Order]
@@ -116,16 +115,14 @@ flowchart TD
     Payment --> PayDB[(Payments DB)]
     Email --> MailSvc[(Mail Service)]
     Report --> Analytics[(Analytics DB)]
-```
+{{< /mermaid >}}
 
 
 ### Acoplamento para reduzir dependências indesejadas
 
-O acoplamento tem um olhar mais amplo nesse meio e entra como uma forma de quantificar as conexões de dependência entre módulos, classes, funções e componentes menores do sistema.
+O acoplamento tem um olhar mais amplo nesse meio e entra como uma forma de quantificar as conexões de dependência entre módulos, classes, funções e componentes menores do sistema. Podemos entender o conceito de "acoplado" **quando uma alteração no código afeta obrigatoriamente ao menos dois componentes**, exigindo uma correção ou ajuste no comportamento.
 
-Podemos entender o conceito de "acoplado" **quando uma alteração no código afeta obrigatoriamente ao menos dois componentes**, exigindo uma correção ou ajuste no comportamento.
-
-**Ter um alto acoplamento entre módulos entende-se como um problema**, pois dificulta a manutenção, testabilidade - exigindo retestar e revalidar uma parte no sistema que não deveria ser afetada - e também afeta a própria modularidade pois acaba reduzindo-a e passando a ilusão de ter menos módulos por conta de dependência entre eles.
+**Ter um alto acoplamento entre módulos entende-se como um problema**, pois dificulta a manutenção, testabilidade - exigindo retestar e revalidar uma parte no sistema que não deveria ser afetada - e também afeta a própria modularidade, reduzindo-a e passando a ilusão de ter menos módulos por conta de dependência entre eles.
 
 #### Metrificação do acoplamento
 
@@ -140,27 +137,27 @@ São métricas que ajudam a medir o acoplamento de um módulo com outros módulo
 
 Neste exemplo, o `Módulo Billing` tem **acoplamento aferente** porque `Checkout` e `Orders` dependem dele, enquanto tem **acoplamento eferente** porque depende de `Payment Gateway` e `Shipping Service`.
 
-```mermaid
+{{< mermaid >}}
 flowchart LR
     Checkout[Checkout Service] -- Ca --> Billing[Billing Module]
     Orders[Order Service] -- Ca --> Billing
     Billing -- Ce --> Payments[Payment Gateway]
     Billing -- Ce --> Shipping[Shipping Service]
-```
+{{< /mermaid >}}
 
 **Conascência**
 
-É um modelo de classificação de formas de acoplamento introduzido por Meilir Page-Jones (veja mais nas referências) para estender a análise de acoplamento e interdependências a um design orientado a objetos. A conascência pode ser estática, quando a dependência é identificada no código, ou dinâmica, quando depende do comportamento em tempo de execução.
+É um modelo de classificação de formas de acoplamento introduzido por Meilir Page-Jones (veja mais nas referências) para estender a análise de acoplamento e interdependências a um design orientado a objetos. A conascência pode ser **estática**, quando a dependência é identificada no código, ou **dinâmica**, quando depende do comportamento em tempo de execução.
 
 Na prática, podemos usar a conascência para identificar como dois componentes dependem um do outro e buscar formas mais fracas de dependência. Por exemplo, compartilhar o nome de um parâmetro entre módulos é mais seguro do que depender da posição dos parâmetros, pois uma alteração na ordem pode quebrar o consumidor.
 
-```mermaid
+{{< mermaid >}}
 flowchart LR
     Client[Order Service] -->|amount, currency| Billing[Billing Module]
     Billing --> Contract[Payment Contract]
     Legacy[Legacy Client] -->|"values[0], values[1]"| Position[Positional Contract]
     Position -.-> Billing
-```
+{{< /mermaid >}}
 
 > **Dica**: Há outras formas de medição além de diversos outros tipos de acoplamento, mas o importante é entender que **quanto mais fraco o acoplamento, melhor**. E que a coesão e o acoplamento andam juntos, pois um módulo coeso tende a ter menos dependências externas e, portanto, menor acoplamento.
 
@@ -168,7 +165,7 @@ flowchart LR
 
 Até aqui, vimos como a modularidade, coesão e acoplamento auxiliam na tomada de decisões. Agora, vamos entender como podemos usar esses conceitos como *guardrails* do software e como a IA pode nos ajudar a automatizar os *checks* de qualidade do software.
 
-Após a implementação de um módulo - ou uma versão inicial do sistema - **precisamos garantir que a modularidade, coesão e acoplamento estão sendo respeitadas a cada *Pull Request* aberto**. O Sonar ou alguma outra ferramenta de análise de código ajuda bastante a garantir a qualidade do código evitando CVEs, bugs, vulnerabilidades e problemas de performance, mas não garante que a arquitetura e design do software estão sendo respeitados conforme o projeto, pois isso é muito particular do contexto que envolve a criação daquele sistema. 
+Após a implementação de um módulo - ou uma versão inicial do sistema - **precisamos garantir que a modularidade, coesão e acoplamento estão sendo respeitadas a cada *Pull Request* aberto**. O Sonar ou alguma outra ferramenta de análise de código ajuda bastante a garantir a qualidade do código evitando CVEs, bugs, vulnerabilidades e problemas de performance, mas não garante que a arquitetura e design do software estão sendo respeitados conforme o projeto por conta disso ser muito particular do contexto que envolve a criação daquele sistema. 
 
 Por isso, precisamos de mecanismos automatizados contendo as regras da arquitetura e do design desse software específico. A seguir, explico o que são as funções de aptidão (*fitness functions*) e como podemos usá-las como regras gerais que respeitem a arquitetura e o design do software.
 
@@ -177,7 +174,7 @@ Por isso, precisamos de mecanismos automatizados contendo as regras da arquitetu
 
 De forma geral, **fitness functions** são definidas como **qualquer mecanismo que fornece uma avaliação de integridade objetiva de alguma característica ou conjunto de características arquiteturais**. O termo é emprestado da computação evolutiva, onde um algoritmo genético usa uma função de aptidão para medir quão perto um resultado está de atingir seu objetivo.
 
-Na prática, elas servem como **guardrails automatizados** na sua esteira de integração contínua (CI/CD). Se um desenvolvedor (ou uma IA geradora de código) realizar uma alteração que viole uma decisão arquitetural, como introduzir uma dependência proibida ou degradar a performance, a fitness function falhará o build imediatamente, oferecendo feedback rápido e evitando a deterioração estrutural.
+As funções servem como **guardrails automatizados** na sua esteira de integração contínua (CI/CD). Se um desenvolvedor (ou uma IA geradora de código) realizar uma alteração que viole uma decisão arquitetural, como introduzir uma dependência proibida ou degradar a performance, a fitness function falhará o build imediatamente, oferecendo feedback rápido e evitando a deterioração estrutural.
 
 > **Dica**: Essas funções podem ser implementadas em qualquer linguagem de programação e em qualquer etapa da esteira CI/CD. Podemos usar ferramentas prontas como *ArchUnit (Java)*, *NetArchTest (C#)* ou até mesmo scripts customizados em *Python*, *Bash*, etc.
 
@@ -274,7 +271,7 @@ Imagine que uma alteração no módulo de pedidos passe a importar diretamente o
 
 Nesse fluxo, a IA atua como uma revisora capaz de interpretar a alteração e oferecer contexto para o time. O resultado pode ser combinado com uma *fitness function* determinística: se a regra for violada, a *pipeline* interrompe o *build* e devolve o motivo para que a alteração seja corrigida.
 
-```mermaid
+{{< mermaid >}}
 flowchart TD
     PR[Pull Request] --> Diff[Analyze diff]
     Rules[Architecture Rules] --> Agent[AI Review Agent]
@@ -286,7 +283,7 @@ flowchart TD
     Confirmed -->|No| Pass
     Confirmed -->|Yes| Fail[Stop build]
     Fail --> Feedback[Send feedback to team]
-```
+{{< /mermaid >}}
 
 ### As fitness function não substituem as ferramentas de análise de código
 

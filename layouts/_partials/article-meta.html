@@ -49,7 +49,7 @@
       {{ end }}
 
       {{/* View counter (Goatcounter) — only on single post pages */}}
-      {{ if and (eq $scope "single") (.Site.Params.goatcounter.code) (eq .Type "posts") }}
+      {{ if and (eq $scope "single") (not hugo.IsServer) (.Site.Params.goatcounter.code) (eq .Type "posts") }}
         <span class="px-2 text-primary-500">&middot;</span>
         <span id="goatcounter-views-meta"
               class="flex items-center gap-1"
