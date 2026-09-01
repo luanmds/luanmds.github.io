@@ -158,10 +158,9 @@ Na prática, podemos usar a conascência para identificar como dois componentes 
 flowchart LR
     Client[Order Service] -->|amount, currency| Billing[Billing Module]
     Billing --> Contract[Payment Contract]
-    Legacy[Legacy Client] -->|values[0], values[1]| Position[Positional Contract]
+    Legacy[Legacy Client] -->|"values[0], values[1]"| Position[Positional Contract]
     Position -.-> Billing
 ```
-
 
 > **Dica**: Há outras formas de medição além de diversos outros tipos de acoplamento, mas o importante é entender que **quanto mais fraco o acoplamento, melhor**. E que a coesão e o acoplamento andam juntos, pois um módulo coeso tende a ter menos dependências externas e, portanto, menor acoplamento.
 
@@ -291,11 +290,7 @@ flowchart TD
 
 ### As fitness function não substituem as ferramentas de análise de código
 
-Ferramentas atuais como o Qodana, SonarQube, ESLint, e outras ajudam a manter a qualidade do código, mas não substituem as fitness functions que verificam a conformidade arquitetural de forma automatizada.
-
-Por isso, é importante entender que **as fitness functions são complementares às ferramentas de análise de código**, e não substitutas. Elas atuam como uma camada adicional de proteção, garantindo que as decisões arquiteturais sejam respeitadas e que o software evolua de maneira sustentável.
-
-Com tanto código atual sendo gerado por agentes de IA, **é essencial que essas funções sejam implementadas e mantidas para evitar a degradação da arquitetura do sistema ao longo do tempo.**
+Ferramentas atuais como o Qodana, SonarQube, ESLint, e outras ajudam a manter a qualidade do código, mas não substituem as fitness functions que verificam a conformidade arquitetural de forma automatizada. Por isso, é importante entender que **as fitness functions são complementares às ferramentas de análise de código**, e não substitutas. Elas atuam como uma camada adicional de proteção, garantindo que as decisões arquiteturais sejam respeitadas e que o software evolua de maneira sustentável. Com tanto código atual sendo gerado por agentes de IA, **é essencial que essas funções sejam implementadas e mantidas para evitar a degradação da arquitetura do sistema ao longo do tempo.**
 
 ## Concluindo
 
