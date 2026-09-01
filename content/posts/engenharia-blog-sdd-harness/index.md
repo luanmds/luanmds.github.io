@@ -1,4 +1,4 @@
----
+**---
 title: "A Engenharia por trás deste blog: SDD e Harness em um workflow 100% IA"
 date: 2026-05-09
 draft: false

@@ -1,4 +1,4 @@
-{{ if .Site.Params.goatcounter.code }}
+{{ if and (not hugo.IsServer) .Site.Params.goatcounter.code }}
 <div class="article-views flex justify-center text-center text-sm text-neutral-500 dark:text-neutral-400 pb-4 mb-4 border-b border-dotted border-neutral-300 dark:border-neutral-600 print:hidden">
   <span id="goatcounter-views" class="flex items-center gap-1" title="{{ if eq .Lang "pt" }}Visualizações da página{{ else }}Page views{{ end }}">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
